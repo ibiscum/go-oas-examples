@@ -1,0 +1,141 @@
+openapi: 3.0.0
+tags:
+  - name: anything
+info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  title: API definition with a circular path $refs
+  description: Circular paths
+  version: 1.0.0
+servers:
+  - url: https://httpbin.org/anything
+paths:
+  '/anything':
+    get:
+      summary: Anything
+      description: Get anything
+      operationId: get_anything
+      tags:
+        - anything
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              example:
+              schema:
+                example: {}
+                type: object
+                properties:
+                  dateTime:
+                    example: "2024-08-31T13:00:00Z"
+                    type: string
+                    format: date-time
+                  offsetAfter:
+                    '$ref': '#/components/schemas/offset'
+                  offsetBefore:
+                    '$ref': '#/paths/~1anything/post/requestBody/content/application~1json/schema/properties/circular'
+    post:
+      summary: Anything Post
+      description: Post anything
+      operationId: post_anything
+      tags:
+        - anything
+      requestBody:
+        description: Post properties
+        content:
+          application/json:
+            example: {}
+            schema:
+              type: object
+              properties:
+                circular:
+                  '$ref': '#/components/schemas/offset'
+      responses:
+        '200':
+          description: OK offset
+    put:
+      summary: Update
+      description: This operation is different because it has a circular ref array
+        as a parameter and in its response, but not its request body.
+      operationId: put_anything
+      tags:
+        - anything
+      parameters:
+        - name: content
+          description: Update sale line
+          in: header
+          schema:
+            example: []
+            type: array
+            items:
+              '$ref': '#/components/schemas/SalesLine'
+          example:
+      responses:
+        '200':
+          description: OK complete
+          content:
+            application/json:
+              example: []
+              schema:
+                type: array
+                items:
+                  '$ref': '#/components/schemas/SalesLine'
+        '201':
+          description: OK received
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/SalesLine'
+components:
+  schemas:
+    offset:
+      example: {}
+      description: Offset rules
+      type: object
+      properties:
+        id:
+          example: 0f63615d-ca89-4a76-bf72-5f2de972b296
+          type: string
+        rules:
+          '$ref': '#/components/schemas/rules'
+    offsetTransition:
+      example: {}
+      description: Offset of transition
+      type: object
+      properties:
+        dateTime:
+          example: "2024-08-31T13:00:00Z"
+          type: string
+          format: date-time
+        offsetAfter:
+          '$ref': '#/components/schemas/offset'
+        offsetBefore:
+          '$ref': '#/components/schemas/offset'
+    rules:
+      example: {}
+      description: Ruleset
+      type: object
+      properties:
+        transitions:
+          example: []
+          type: array
+          items:
+            '$ref': '#/components/schemas/offsetTransition'
+    SalesLine:
+      description: Sales line
+      example: {}
+      type: object
+      properties:
+        stock:
+          '$ref': '#/components/schemas/ProductStock'
+    ProductStock:
+      description: Product stock
+      properties:
+        test_param:
+          example: []
+          type: array
+          items:
+            '$ref': '#/components/schemas/SalesLine'
