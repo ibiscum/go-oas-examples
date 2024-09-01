@@ -1,5 +1,9 @@
 openapi: 3.0.3
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: Support for different schema types
   description: |-
     Additionally some support for features that schema types may individually support.
@@ -839,7 +843,9 @@ paths:
             schema:
               allOf:
                 - type: string
+                  example: String
                 - type: integer
+                  example: 123
         required: true
       responses:
         '200':
@@ -866,29 +872,38 @@ paths:
       requestBody:
         content:
           application/json:
+            examples: {}
             schema:
               description: I am a description
               allOf:
                 - type: string
+                  example: String
                 - type: integer
+                  example: 123
         required: true
       responses:
         '200':
-          description: OK
+          description: OK polymorphism
 components:
   schemas:
     string_enum:
+      description: Enumeration
+      example: sold
       enum:
         - available
         - pending
         - sold
       type: string
     Circular:
+      description: Circular reference
+      example: {}
       type: object
       properties:
         string:
+          example: String
           type: string
         children:
+          example: []
           type: array
           items:
             '$ref': '#/components/schemas/Circular'

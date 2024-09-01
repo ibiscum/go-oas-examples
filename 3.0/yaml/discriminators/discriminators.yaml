@@ -1,16 +1,22 @@
 openapi: 3.0.3
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  version: 1.0.0
   title: Discriminator support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#discriminatorObject
-  version: 1.0.0
 servers:
   - url: https://httpbin.org/anything
 tags:
-  - name: Quirks
+  - name: quirks
 paths:
   '/discriminator-with-mapping':
     patch:
       operationId: oneOfWithTopLevelDiscriminatorAndMapping
+      tags:
+        - quirks
       summary: oneOf with discriminator and mapping
       description: Polymorphic `oneOf` schema with a top-level discriminator and a
         mapping definition.
@@ -32,6 +38,8 @@ paths:
   '/discriminator-with-no-mapping':
     patch:
       operationId: oneOfWithTopLevelDiscriminatorNoMapping
+      tags:
+        - quirks
       summary: oneOf with top-level discriminator (no mapping)
       description: Polymorphic `oneOf` schema with a top-level discriminator and **no**
         mapping definition.
@@ -49,6 +57,9 @@ paths:
           description: Updated
   '/embedded-discriminator':
     patch:
+      operationId: oneOfWithNestedAllOfAndEmbeddedDiscriminator
+      tags:
+        - quirks
       summary: oneOf request with a nested allOf and embedded discriminator
       description: This operation contains a request schema of a `oneOf` that itself
         contains an `allOf` with a discriminator for the afformentioned `allOf`. This
@@ -65,6 +76,9 @@ paths:
           description: Updated
   '/oneof-allof-top-level-disc':
     patch:
+      operationId: oneOfWithNestedAllOfAndTopLevelDiscriminator
+      tags:
+        - quirks
       summary: oneOf request with a nested allOf and top level discriminator
       description: This operation has a `oneOf`, with a discriminator, but its `oneOf`
         contents contain an `allOf` where that discriminator `propertyName` is in
@@ -83,6 +97,10 @@ paths:
           description: Updated
   '/nested-one-of-object-with-nested-one-of':
     patch:
+      operationId: oneOfWithNestedOneOfAndEmbeddedDiscriminator
+      tags:
+        - quirks
+      description: oneOf request with a nested oneOf, and embedded discriminator
       summary: oneOf request with a nested oneOf, and embedded discriminator
       requestBody:
         content:
@@ -103,6 +121,9 @@ paths:
           description: OK
   '/mapping-with-duplicate-schemas':
     patch:
+      operationId: mappingWithDuplicateSchemas
+      tags:
+        - quirks
       summary: Handle a schema with duplicate mapping schemas
       description: |-
         Render a schema with a discriminator, where the mapping reuses a schema more than once.
@@ -140,6 +161,9 @@ paths:
           description: OK
   '/mapping-of-schema-names':
     patch:
+      operationId: mappingOfSchemaNames
+      tags:
+        - quirks
       summary: Discriminator with a schema name mapping
       description: Schema names, instead of `$ref` pointers, can be used in discriminator
         mappings.
@@ -213,6 +237,7 @@ paths:
           description: OK
   '/potentially-undefined-formData':
     post:
+      operationId: potentiallyUndefinedFormData
       summary: Handling for potentially undefined formData
       description: This operation contains a schema that at one point produced an
         edgecase within the form system where `formData` was `undefined`.
@@ -250,53 +275,76 @@ components:
             additionalProperties: false
   schemas:
     OptionOneNoDisc:
+      example:
+        discrim: option
+      description: Option one no discriminator
       title: Schema title option one
       type: object
       required:
         - discrim
       properties:
         discrim:
+          example: option
           type: string
         optionone:
+          example: 1
           type: number
     OptionTwoNoDisc:
+      example:
+        discrim: option
+      description: Option two no discriminator
       title: Schema title option two
       type: object
       required:
         - discrim
       properties:
         discrim:
+          example: option
           type: string
         optiontwo:
+          example: two
           type: string
     OptionThreeNoDisc:
+      description: Option three no discriminator
+      example:
+        discrim: option
       title: Schema title option three
       type: object
       required:
         - discrim
       properties:
         discrim:
+          example: option
           type: string
         optionthree:
+          example: three
           type: string
     Pet:
+      example:
+        pet_type: bird
+      description: Definition of a pet
       type: object
       required:
         - pet_type
       properties:
         pet_type:
+          example: bird
           type: string
       discriminator:
         propertyName: pet_type
     Dog:
+      description: Definition of a dog
       title: Woof
       allOf:
         - '$ref': '#/components/schemas/Pet'
         - type: object
+          example:
+            bark: true
           properties:
             bark:
               type: boolean
             breed:
+              example: Dingo
               type: string
               enum:
                 - Dingo
@@ -304,52 +352,78 @@ components:
                 - Retriever
                 - Shepherd
     Cat:
+      description: Definition of a cat
+      example:
+        pet_type: cat
       title: Meow
       type: object
       allOf:
         - '$ref': '#/components/schemas/Pet'
         - type: object
+          example:
+            hunts: true
           properties:
             hunts:
               type: boolean
             age:
+              example: 10
               type: integer
     object1:
-      title: First type of object
+      description: First type of object
+      example:
+        a: Property A
       type: object
       properties:
         a:
+          example: Property A
           type: string
         b:
+          example: Property B
           type: string
     object2:
-      title: Second type of object
+      example:
+        c: Property C
+      description: Second type of object
       type: object
       properties:
         c:
+          example: Property C
           type: string
         d:
+          example: Property D
           type: string
     string1:
+      description: Variation one of string
+      example: B
       type: string
     string2:
+      example: A
+      description: Variation two of string
       type: string
     PetNoDisc:
+      description: Pet with no discriminator
+      example:
+        pet_type: cat
       type: object
       required:
         - pet_type
       properties:
         pet_type:
+          example: cat
           type: string
     DogNoDisc:
+      description: Variation dog
       title: Woof
       allOf:
         - '$ref': '#/components/schemas/PetNoDisc'
         - type: object
+          example:
+            bark: true
           properties:
             bark:
               type: boolean
             breed:
+              example: Husky
               type: string
               enum:
                 - Dingo
@@ -357,29 +431,48 @@ components:
                 - Retriever
                 - Shepherd
     CatNoDisc:
+      description: Variation cat
+      example:
+        pet_type: cat
       title: Meow
       type: object
       allOf:
         - '$ref': '#/components/schemas/PetNoDisc'
         - type: object
+          example:
+            hunts: true
+            age: 8
           properties:
             hunts:
               type: boolean
             age:
+              example: 8
               type: integer
     gcsImport:
+      example:
+        gcs_bucket: gb0
+        gcs_prefix: gcs_
+      description: Import into Google cloud service
       type: object
       properties:
         gcs_bucket:
+          example: gb0
           type: string
         gcs_prefix:
+          example: gcs_
           type: string
     s3Import:
+      description: Import into S3
+      example:
+        s3_bucket: b0
+        s3_prefix: s3_
       type: object
       properties:
         s3_bucket:
+          example: b0
           type: string
         s3_prefix:
+          example: s3_
           type: string
     ApplicationApprovedEvent:
       title: ApplicationApprovedEvent
@@ -392,39 +485,54 @@ components:
       allOf:
         - '$ref': '#/components/schemas/BasePurchaseWebhookEvent'
     BasePurchaseWebhookEvent:
+      description: Purchase webhook event
       allOf:
         - '$ref': '#/components/schemas/BaseBuyerWebhookEvent'
         - type: object
+          example:
+            order_id: o0001
           properties:
             order_id:
+              example: o0001
               type: string
               description: Provided Partner Order ID.
     BaseBuyerWebhookEvent:
+      description: Base definition of buyer webhook event
       allOf:
         - '$ref': '#/components/schemas/BaseWebhookEvent'
         - type: object
+          example: 
+            buyer_id: b0001
           properties:
             buyer_id:
+              example: b0001
               type: string
               description: ID of the buyer the event corresponds to.
           required:
             - buyer_id
     BaseWebhookEvent:
+      description: Base webhook event
+      example: 
+        event_type: application_approved
+        event_id: id0001
       type: object
       properties:
         event_type:
+          example: application_approved
           type: string
           description: Type of the webhook event.
           enum:
             - application_approved
             - application_denied
         event_id:
+          example: id0001
           type: string
           description: ID of the event.
       required:
         - event_type
         - event_id
     BaseVehicle:
+      example: {}
       type: object
       description: Vehicle (from [Redocly example](https://redocly.com/docs/resources/discriminator#when-to-use-the-openapi-discriminator))
       discriminator:
@@ -454,48 +562,48 @@ components:
           description: The 95th percentile range of a trip in kilometers.
           type: integer
           example: 100
-    ElectricVehicle:
-      allOf:
-        - $ref: '#/components/schemas/BaseVehicle'
-        - type: object
-          description: Electric Vehicle
-          properties:
-            chargeSpeed:
-              description: In range kilometers per hour.
-              type: integer
-            chargeAmps:
-              description: Amps recommended for charging.
-              type: integer
-            chargeVoltage:
-              description: Voltage recommended for charging.
-              type: integer
-    FueledVehicle:
-      allOf:
-        - $ref: '#/components/schemas/BaseVehicle'
-        - type: object
-          title: Gas-powered Vehicle
-          properties:
-            tankCapacity:
-              type: number
-              format: double
-              description: Capacity of the fuel tank in gallons.
-            milesPerGallon:
-              type: number
-              format: double
-              description: Miles per gallon on the highway.
-    PedaledVehicle:
-      allOf:
-        - $ref: '#/components/schemas/BaseVehicle'
-        - type: object
-          description: Pedaled Vehicle
-          properties:
-            handlebars:
-              type: string
-              description: Type of handlebars
-              enum:
-                - flat
-                - riser
-                - bullhorn
-                - drop
-                - aero
-                - cruiser
+    # ElectricVehicle:
+    #   allOf:
+    #     - $ref: '#/components/schemas/BaseVehicle'
+    #     - type: object
+    #       description: Electric Vehicle
+    #       properties:
+    #         chargeSpeed:
+    #           description: In range kilometers per hour.
+    #           type: integer
+    #         chargeAmps:
+    #           description: Amps recommended for charging.
+    #           type: integer
+    #         chargeVoltage:
+    #           description: Voltage recommended for charging.
+    #           type: integer
+    # FueledVehicle:
+    #   allOf:
+    #     - $ref: '#/components/schemas/BaseVehicle'
+    #     - type: object
+    #       title: Gas-powered Vehicle
+    #       properties:
+    #         tankCapacity:
+    #           type: number
+    #           format: double
+    #           description: Capacity of the fuel tank in gallons.
+    #         milesPerGallon:
+    #           type: number
+    #           format: double
+    #           description: Miles per gallon on the highway.
+    # PedaledVehicle:
+    #   allOf:
+    #     - $ref: '#/components/schemas/BaseVehicle'
+    #     - type: object
+    #       description: Pedaled Vehicle
+    #       properties:
+    #         handlebars:
+    #           type: string
+    #           description: Type of handlebars
+    #           enum:
+    #             - flat
+    #             - riser
+    #             - bullhorn
+    #             - drop
+    #             - aero
+    #             - cruiser

@@ -1,5 +1,9 @@
 openapi: 3.0.3
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   version: 1.0.0
   title: Support for different security types
   description: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#securitySchemeObject
@@ -12,8 +16,9 @@ tags:
   - name: OpenID Connect
   - name: Other
 paths:
-  '/anything/apiKey':
+  '/anything/apikey':
     get:
+      operationId: apiKey
       summary: Query parameter
       description: '`apiKey` auth will be supplied within an `apiKey` query parameter.'
       tags:
@@ -24,6 +29,7 @@ paths:
       security:
         - apiKey_query: []
     post:
+      operationId: cookie
       summary: Cookie
       description: '`apiKey` auth will be supplied within an `api_key` cookie.'
       tags:
@@ -34,6 +40,7 @@ paths:
       security:
         - apiKey_cookie: []
     put:
+      operationId: header
       summary: Header
       description: '`apiKey` auth will be supplied within an `X-API-KEY` header.'
       tags:
@@ -45,6 +52,7 @@ paths:
         - apiKey_header: []
   '/anything/basic':
     post:
+      operationId: basic
       summary: Basic
       description: |-
         Authentication credentials will be supplied within a `Basic` `Authorization` header.
@@ -59,6 +67,7 @@ paths:
         - basic: []
   '/anything/bearer':
     post:
+      operationId: bearer
       summary: Bearer
       description: |-
         Authentication credentials will be supplied within a `Bearer` `Authorization` header.
@@ -72,6 +81,7 @@ paths:
       security:
         - bearer: []
     put:
+      operationId: bearerJwt
       summary: Bearer (`jwt` format)
       description: |-
         Authentication credentials will be supplied within a `Bearer` `Authorization` header, but its data should be controlled as a JWT.
@@ -89,6 +99,7 @@ paths:
         - bearer_jwt: []
   '/anything/oauth2':
     post:
+      operationId: generalSupportAll
       summary: General support (all flow types)
       description: |-
         > ℹ️
@@ -104,6 +115,7 @@ paths:
         - oauth2:
             - write:things
     get:
+      operationId: generalSupportAuthorizationCode
       summary: General support (authorizationCode flow type)
       description: |-
         > ℹ️
@@ -119,72 +131,77 @@ paths:
         - oauth2_authorizationCode:
             - write:things
     put:
+      operationId: generalSupportClientCredentials
       summary: General support (clientCredentials flow type)
       description: |-
-        > ℹ️
-        > We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
+        We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
 
         https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#fixed-fields-23
       tags:
         - OAuth 2
       responses:
         '200':
-          description: OK
+          description: Client Credentials OK
       security:
         - oauth2_clientCredentials:
             - write:things
     patch:
+      operationId: generalSupportImplicit
       summary: General support (implicit flow type)
       description: |-
         > ℹ️
-        > We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
+        > We currently do not handle OAuth 2 authentication flows, like implicit flow, so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
 
         https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#fixed-fields-23
       tags:
         - OAuth 2
       responses:
         '200':
-          description: OK
+          description: Oauth 2 implicit OK 
       security:
         - oauth2_implicit:
             - write:things
     delete:
+      operationId: generalSupport
       summary: General support (password flow type)
       description: |-
         > ℹ️
-        > We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
+        > We currently do not handle OAuth 2 authentication flows, e.g. implicit flow, so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
 
         https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#fixed-fields-23
       tags:
         - OAuth 2
       responses:
         '200':
-          description: OK
+          description: Oauth 2 OK
       security:
         - oauth2_password:
             - write:things
-  '/anything/openIdConnect':
+  '/anything/open-id-connect':
     post:
+      operationId: openIdConnect
       summary: General support
       description: "\U0001F6A7 This is not supported."
       tags:
         - OpenID Connect
       responses:
         '200':
-          description: OK
+          description: open ID connect OK
       security:
         - openIdConnect: []
   '/anything/no-auth':
     post:
+      operationId: noAuthentication
       summary: No auth requirements
       description: This operation does not have any authentication requirements.
       tags:
         - Other
       responses:
         '200':
-          description: OK
+          description: No authentication OK
   '/anything/optional-auth':
     get:
+      operationId: optionalAuthentication
       summary: Optional auth
       description: |-
         The `apiKey` query parameter auth on this operation is optional.
@@ -194,18 +211,21 @@ paths:
         - Other
       responses:
         '200':
-          description: OK
+          description: Optional authentication OK
       security:
         - apiKey_query: []
         - {}
   '/status/401':
     post:
+      operationId: forcedInvalidAuthentication
       summary: Forced invalid authentication
       description: This endpoint requires an authentication header but making any
         request to it will forcefully return a 401 status code for invalid auth.
       tags:
         - Other
       responses:
+        '200':
+          description: Ok
         '401':
           description: Unauthorized
       security:

@@ -35,11 +35,13 @@ paths:
       tags:
         - pet
       summary: Add a new pet to the store
-      description: ''
+      description: Add a new pet to the store
       operationId: addPet
       requestBody:
         '$ref': '#/components/requestBodies/Pet'
       responses:
+        '200':
+          description: Added a new pet to the store
         '405':
           description: Invalid input
       security:
@@ -50,11 +52,13 @@ paths:
       tags:
         - pet
       summary: Update an existing pet
-      description: ''
+      description: Updating an existing pet
       operationId: updatePet
       requestBody:
         '$ref': '#/components/requestBodies/Pet'
       responses:
+        '200':
+          description: Updating pet
         '400':
           description: Invalid ID supplied
         '404':
@@ -183,7 +187,7 @@ paths:
       tags:
         - pet
       summary: Updates a pet in the store with form data
-      description: ''
+      description: Updating a pet in the store with form data
       operationId: updatePetWithForm
       parameters:
         - name: petId
@@ -373,6 +377,8 @@ paths:
             format: int64
             minimum: 1
       responses:
+        '200':
+          description: Order has been successful
         '400':
           description: Invalid ID supplied
         '404':
@@ -649,6 +655,10 @@ components:
       xml:
         name: Tag
     Pet:
+      description: Definition of a pet
+      example: 
+        name: Paula
+        photoUrls: []  
       type: object
       required:
         - name
@@ -666,6 +676,7 @@ components:
           type: string
           example: doggie
         photoUrls:
+          example: []
           type: array
           xml:
             name: photoUrl
@@ -674,6 +685,7 @@ components:
             type: string
             example: https://example.com/photo.png
         tags:
+          example: []
           type: array
           xml:
             name: tag
@@ -681,8 +693,9 @@ components:
           items:
             '$ref': '#/components/schemas/Tag'
         status:
+          example: pending
           type: string
-          description: pet status in the store
+          description: Pet status in the store
           enum:
             - available
             - pending
@@ -690,12 +703,18 @@ components:
       xml:
         name: Pet
     ApiResponse:
+      description: API responses with code
+      example:
+        code: 200
       type: object
       properties:
         code:
+          example: 400
           type: integer
           format: int32
         type:
+          example: status
           type: string
         message:
+          example: This is a message
           type: string

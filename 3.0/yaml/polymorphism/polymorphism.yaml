@@ -1,5 +1,12 @@
 openapi: 3.0.3
+tags: [
+  name: polymorphism
+]
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: Polymorphism support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#schema-object
   version: 1.0.0
@@ -9,6 +16,10 @@ paths:
   '/pets':
     patch:
       summary: oneOf request with a nested allOf
+      description: Variation oneOf request with a nested allOf
+      operationId: oneOfRequestWithANestedAllOf
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -23,7 +34,10 @@ paths:
           description: Updated
   '/anything/all-of-object':
     post:
-      summary: allOf with listed objects
+      description: allOf with listed objects
+      operationId: allOfObject
+      tags: 
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -49,7 +63,10 @@ paths:
           description: OK
   '/anything/any-of-object':
     post:
-      summary: anyOf object
+      description: anyOf object
+      operationId: anyOfObject
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -74,7 +91,10 @@ paths:
           description: OK
   '/anything/any-of-primitive':
     post:
-      summary: anyOf primitive
+      description: anyOf primitive
+      operationId: anyOfPrimitive
+      tags:
+      - polymorphism
       requestBody:
         content:
           application/json:
@@ -90,8 +110,10 @@ paths:
   '/any-of-with-type':
     post:
       summary: anyOf With Type
-      description: AnyOf's with a top level type parameter should not render that
-        type outside of their options
+      description: AnyOf's with a top level type parameter should not render that type outside of their options
+      operationId: anyOfWithType
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -110,7 +132,10 @@ paths:
           description: Provides no response body
   '/anything/one-of-object':
     post:
-      summary: oneOf object
+      description: oneOf object
+      operationId: oneOfObject
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -135,7 +160,10 @@ paths:
           description: OK
   '/anything/one-of-primitive':
     post:
-      summary: oneOf primitive
+      description: oneOf primitive
+      operationId: oneOfPrimitive
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -150,7 +178,10 @@ paths:
           description: OK
   '/anything/one-of-object-ref':
     post:
-      summary: oneOf object with $ref pointers
+      description: oneOf object with $ref pointers
+      operationId: oneOfObjectRef
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -163,7 +194,10 @@ paths:
           description: OK
   '/one-of-complex':
     post:
-      summary: oneOf object with a complex schema
+      description: oneOf object with a complex schema
+      operationId: oneOfComplex
+      tags:
+        - polymorphism
       requestBody:
         required: true
         content:
@@ -463,7 +497,10 @@ paths:
           description: OK
   '/anything/nested-one-of-object-ref':
     post:
-      summary: nested oneOf object with $ref pointers
+      description: nested oneOf object with $ref pointers
+      operationId: nestedOneOfObjectRef
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -480,6 +517,10 @@ paths:
           description: OK
   '/anything/nested-one-of-ref':
     post:
+      operationId: nestedOneOfRef
+      description: nested-one-of-ref
+      tags:
+        - polymorphism
       requestBody:
         '$ref': '#/components/requestBodies/nested-one-of-ref'
       responses:
@@ -487,6 +528,10 @@ paths:
           description: OK
   '/anything/nested-one-of-object-with-nested-one-of':
     post:
+      description: Nested oneOf object with nested oneOf
+      operationId: nestedOneOfObjectWithNestedOneOf
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -509,8 +554,10 @@ paths:
   '/one-of-with-type':
     post:
       summary: One Of With Type
-      description: OneOf's with a top level type parameter should not render that
-        type outside of their options
+      description: OneOf's with a top level type parameter should not render that type outside of their options
+      operationId: oneOfWithType
+      tags:
+        - polymorphism
       requestBody:
         content:
           application/json:
@@ -550,7 +597,7 @@ components:
       discriminator:
         propertyName: pet_type
     Dog:
-      title: Woof
+      description: Woof
       allOf:
         - '$ref': '#/components/schemas/Pet'
         - type: object
@@ -565,7 +612,7 @@ components:
                 - Retriever
                 - Shepherd
     Cat:
-      title: Meow
+      description: Meow
       type: object
       allOf:
         - '$ref': '#/components/schemas/Pet'
@@ -576,22 +623,34 @@ components:
             age:
               type: integer
     object1:
-      title: First type of object
+      example:
+        a: Property A
+      description: First type of object
       type: object
       properties:
         a:
+          example: Property A
           type: string
         b:
+          example: Property B
           type: string
     object2:
-      title: Second type of object
+      example:
+        c: Property C
+      description: Second type of object
       type: object
       properties:
         c:
+          example: Property C
           type: string
         d:
+          example: Property D
           type: string
     string1:
+      description: This is string one
+      example: String one
       type: string
     string2:
+      description: This is string two
+      example: String two
       type: string

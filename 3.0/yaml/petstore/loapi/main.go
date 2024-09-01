@@ -9,9 +9,8 @@ import (
 
 func main() {
 
-	// load in the petstore sample OpenAPI specification
-	// into a byte slice.
-	petstore, _ := os.ReadFile("petstore-simple.yaml")
+	// load the petstore sample OpenAPI specification into a byte slice.
+	petstore, _ := os.ReadFile("petstore.yaml")
 
 	// create a new Document from from the byte slice.
 	document, err := libopenapi.NewDocument(petstore)

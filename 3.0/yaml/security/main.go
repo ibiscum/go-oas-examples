@@ -9,12 +9,11 @@ import (
 
 func main() {
 
-	// load in the petstore sample OpenAPI specification
-	// into a byte slice.
-	petstore, _ := os.ReadFile("petstore-simple.yaml")
+	// load the security sample OpenAPI specification into a byte slice.
+	security, _ := os.ReadFile("security.yaml")
 
 	// create a new Document from from the byte slice.
-	document, err := libopenapi.NewDocument(petstore)
+	document, err := libopenapi.NewDocument(security)
 
 	// if anything went wrong, an error is thrown
 	if err != nil {
