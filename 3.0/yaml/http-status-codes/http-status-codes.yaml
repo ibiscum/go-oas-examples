@@ -268,8 +268,6 @@ paths:
       summary: Returns a "400 Bad Request"
       description: The server could not understand the request due to invalid syntax.
       responses:
-        '200':
-          description: OK
         '400':
           description: Bad Request
   '/status/401':
@@ -282,8 +280,6 @@ paths:
         this response means "unauthenticated". That is, the client must authenticate
         itself to get the requested response.
       responses:
-        '200':
-          description: OK
         '401':
           description: Unauthorized
   '/status/402':
@@ -296,8 +292,6 @@ paths:
         for creating this code was using it for digital payment systems, however this
         status code is used very rarely and no standard convention exists.
       responses:
-        '200':
-          description: OK
         '402':
           description: Payment Required
   '/status/403':
@@ -310,8 +304,6 @@ paths:
         it is unauthorized, so the server is refusing to give the requested resource.
         Unlike 401, the client's identity is known to the server.
       responses:
-        '200':
-          description: OK
         '403':
           description: Forbidden
   '/status/404':
@@ -327,12 +319,11 @@ paths:
         an unauthorized client. This response code is probably the most famous one
         due to its frequent occurrence on the web.
       responses:
-        '200':
-          description: OK
         '404':
           description: Not Found
   '/status/405':
     get:
+      operationId: getStatus405
       tags:
         - Client error responses
       summary: Returns a "405 Method Not Allowed"
@@ -343,6 +334,7 @@ paths:
           description: Method Not Allowed
   '/status/406':
     get:
+      operationId: getStatus406
       tags:
         - Client error responses
       summary: Returns a "406 Not Acceptable"
@@ -354,6 +346,7 @@ paths:
           description: Not Acceptable
   '/status/407':
     get:
+      operationId: getStatus407
       tags:
         - Client error responses
       summary: Returns a "407 Proxy Authentication Required"
@@ -364,6 +357,7 @@ paths:
           description: Proxy Authentication Required
   '/status/408':
     get:
+      operationId: getStatus408
       tags:
         - Client error responses
       summary: Returns a "408 Request Timeout"
@@ -378,6 +372,7 @@ paths:
           description: Request Timeout
   '/status/409':
     get:
+      operationId: getStatus409
       tags:
         - Client error responses
       summary: Returns a "409 Conflict"
@@ -388,6 +383,7 @@ paths:
           description: Conflict
   '/status/410':
     get:
+      operationId: getStatus410
       tags:
         - Client error responses
       summary: Returns a "410 Gone"
@@ -402,6 +398,7 @@ paths:
           description: Gone
   '/status/411':
     get:
+      operationId: getStatus411
       tags:
         - Client error responses
       summary: Returns a "411 Length Required"
@@ -412,6 +409,7 @@ paths:
           description: Length Required
   '/status/412':
     get:
+      operationId: getStatus412
       tags:
         - Client error responses
       summary: Returns a "412 Precondition Failed"
@@ -422,6 +420,7 @@ paths:
           description: Precondition Failed
   '/status/413':
     get:
+      operationId: getStatus413
       tags:
         - Client error responses
       summary: Returns a "413 Payload Too Large"
@@ -432,6 +431,7 @@ paths:
           description: Payload Too Large
   '/status/414':
     get:
+      operationId: getStatus414
       tags:
         - Client error responses
       summary: Returns a "414 URI Too Long"
@@ -442,6 +442,7 @@ paths:
           description: URI Too Long
   '/status/415':
     get:
+      operationId: getStatus415
       tags:
         - Client error responses
       summary: Returns a "415 Unsupported Media Type"
@@ -452,6 +453,7 @@ paths:
           description: Unsupported Media Type
   '/status/416':
     get:
+      operationId: getStatus416
       tags:
         - Client error responses
       summary: Returns a "416 Range Not Satisfiable"
@@ -463,6 +465,7 @@ paths:
           description: Range Not Satisfiable
   '/status/417':
     get:
+      operationId: getStatus417
       tags:
         - Client error responses
       summary: Returns a "417 Expectation Failed"
@@ -473,6 +476,7 @@ paths:
           description: Expectation Failed
   '/status/418':
     get:
+      operationId: getStatus418
       tags:
         - Client error responses
       summary: Returns a "418 I'm a teapot"
@@ -482,6 +486,7 @@ paths:
           description: I'm a teapot
   '/status/419':
     get:
+      operationId: getStatus419
       tags:
         - Client error responses
       summary: Returns a "419 Page Expired"
@@ -491,6 +496,7 @@ paths:
           description: Page Expired
   '/status/420':
     get:
+      operationId: getStatus420
       tags:
         - Client error responses
       summary: Returns a "420 Enhance Your Calm"
@@ -500,6 +506,7 @@ paths:
           description: Enhance Your Calm
   '/status/421':
     get:
+      operationId: getStatus421
       tags:
         - Client error responses
       summary: Returns a "421 Misdirected Request"
@@ -512,6 +519,7 @@ paths:
           description: Misdirected Request
   '/status/422':
     get:
+      operationId: getStatus422
       tags:
         - Client error responses
       summary: Returns a "422 Unprocessable Entity"
@@ -522,6 +530,7 @@ paths:
           description: Unprocessable Entity
   '/status/423':
     get:
+      operationId: getStatus423
       tags:
         - Client error responses
       summary: Returns a "423 Locked"
@@ -531,6 +540,7 @@ paths:
           description: Locked
   '/status/424':
     get:
+      operationId: getStatus424
       tags:
         - Client error responses
       summary: Returns a "424 Failed Dependency"
@@ -540,6 +550,7 @@ paths:
           description: Failed Dependency
   '/status/425':
     get:
+      operationId: getStatus425
       tags:
         - Client error responses
       summary: Returns a "425 Too Early"
@@ -550,6 +561,7 @@ paths:
           description: Too Early
   '/status/426':
     get:
+      operationId: getStatus426
       tags:
         - Client error responses
       summary: Returns a "426 Upgrade Required"
@@ -559,9 +571,10 @@ paths:
         header in a 426 response to indicate the required protocol(s).
       responses:
         '426':
-          description: Upgrade REquired
+          description: Upgrade Required
   '/status/428':
     get:
+      operationId: getStatus428
       tags:
         - Client error responses
       summary: Returns a "428 Precondition Required"
@@ -575,6 +588,7 @@ paths:
           description: Precondition Required
   '/status/429':
     get:
+      operationId: getStatus429
       tags:
         - Client error responses
       summary: Returns a "429 Too Many Requests"
@@ -585,6 +599,7 @@ paths:
           description: Too Many Requests
   '/status/430':
     get:
+      operationId: getStatus430
       tags:
         - Client error responses
       summary: |-
@@ -598,6 +613,7 @@ paths:
           description: Request Header Fields Too Large
   '/status/431':
     get:
+      operationId: getStatus431
       tags:
         - Client error responses
       summary: Returns a "431 Request Header Fields Too Large"
@@ -609,6 +625,7 @@ paths:
           description: Request Header Fields Too Large
   '/status/440':
     get:
+      operationId: getStatus440
       tags:
         - Client error responses
       summary: Returns a "440 Login Time-out"
@@ -618,6 +635,7 @@ paths:
           description: Login Time-out
   '/status/444':
     get:
+      operationId: getStatus444
       tags:
         - Client error responses
       summary: Returns a "444 No Response"
@@ -627,6 +645,7 @@ paths:
           description: No Response
   '/status/449':
     get:
+      operationId: getStatus449
       tags:
         - Client error responses
       summary: Returns a "449 Retry With"
@@ -636,6 +655,7 @@ paths:
           description: Retry With
   '/status/450':
     get:
+      operationId: getStatus450
       tags:
         - Client error responses
       summary: Returns a "450 Blocked by Windows Parental Controls"
@@ -645,6 +665,7 @@ paths:
           description: Blocked by Windows Parental Controls
   '/status/451':
     get:
+      operationId: getStatus451
       tags:
         - Client error responses
       summary: Returns a "451 Unavailable For Legal Reasons"
@@ -655,6 +676,7 @@ paths:
           description: Unavailable For Legal Reasons
   '/status/494':
     get:
+      operationId: getStatus494
       tags:
         - Client error responses
       summary: Returns a "494 Request Header Too Large"
@@ -664,6 +686,7 @@ paths:
           description: Request Header Too Large
   '/status/495':
     get:
+      operationId: getStatus495
       tags:
         - Client error responses
       summary: Returns a "495 SSL Certificate Error"
@@ -673,6 +696,7 @@ paths:
           description: SSL Certificate Error
   '/status/496':
     get:
+      operationId: getStatus496
       tags:
         - Client error responses
       summary: Returns a "496 SSL Certificate Required"
@@ -682,6 +706,7 @@ paths:
           description: SSL Certificate Required
   '/status/497':
     get:
+      operationId: getStatus497
       tags:
         - Client error responses
       summary: Returns a "497 HTTP Request Sent to HTTPS Port"
@@ -691,6 +716,7 @@ paths:
           description: HTTP Request Sent to HTTPS Port
   '/status/498':
     get:
+      operationId: getStatus498
       tags:
         - Client error responses
       summary: Returns a "498 Invalid Token"
@@ -700,6 +726,7 @@ paths:
           description: Invalid Token
   '/status/499':
     get:
+      operationId: getStatus499
       tags:
         - Client error responses
       summary: Returns a "499 Client Error"
@@ -709,6 +736,7 @@ paths:
           description: Client Error
   '/status/500':
     get:
+      operationId: getStatus500
       tags:
         - Server error responses
       summary: Returns a "500 Internal Server Error"
@@ -718,6 +746,7 @@ paths:
           description: Internal Server Error
   '/status/501':
     get:
+      operationId: getStatus501
       tags:
         - Server error responses
       summary: Returns a "501 Not Implemented"
@@ -729,6 +758,7 @@ paths:
           description: Not Implemented
   '/status/502':
     get:
+      operationId: getStatus502
       tags:
         - Server error responses
       summary: Returns a "502 Bad Gateway"
@@ -739,6 +769,7 @@ paths:
           description: Bad Gateway
   '/status/503':
     get:
+      operationId: getStatus503
       tags:
         - Server error responses
       summary: Returns a "503 Service Unavailable"
@@ -755,6 +786,7 @@ paths:
           description: Service Unavailable
   '/status/504':
     get:
+      operationId: getStatus504
       tags:
         - Server error responses
       summary: Returns a "504 Gateway Timeout"
@@ -765,15 +797,17 @@ paths:
           description: Gateway Timeout
   '/status/505':
     get:
+      operationId: getStatus505
       tags:
         - Server error responses
       summary: Returns a "505 HTTP Version Not Supported"
-      description: ''
+      description: 505 HTTP Version Not Supported
       responses:
         '505':
           description: HTTP Version Not Supported
   '/status/506':
     get:
+      operationId: getStatus506
       tags:
         - Server error responses
       summary: Returns a "506 Variant Also Negotiates"
@@ -785,6 +819,7 @@ paths:
           description: Variant Also Negotiates
   '/status/507':
     get:
+      operationId: getStatus507
       tags:
         - Server error responses
       summary: Returns a "507 Insufficient Storage"
@@ -796,6 +831,7 @@ paths:
           description: Insufficient Storage
   '/status/508':
     get:
+      operationId: getStatus508
       tags:
         - Server error responses
       summary: Returns a "508 Loop Detected"
@@ -806,6 +842,9 @@ paths:
   '/status/509':
     get:
       operationId: getStatus509
+      description: |-
+        Bandwidth Limit Exceeded (Apache Web Server/cPanel). The server has exceeded the bandwidth specified
+        by the server administrator; this is often used by shared hosting providers to limit the bandwidth of customers.
       tags:
         - Server error responses
       summary: Returns a "508 Bandwidth Limit Exceeded"
@@ -840,7 +879,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "520 Web Server Returned an Unknown Error"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Web Server Returned an Unknown Error'
       responses:
         '520':
           description: Web Server Returned an Unknown Error
@@ -850,7 +889,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "512 Web Server Is Down"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Web Server Is Down'
       responses:
         '521':
           description: Web Server Is Down
@@ -860,7 +899,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "522 Connection Timed Out"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Connection Timed Out'
       responses:
         '522':
           description: Connection Timed Out
@@ -870,7 +909,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "523 Origin Is Unreachable"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Origin Is Unreachable'
       responses:
         '523':
           description: Origin Is Unreachable
@@ -880,7 +919,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "524 A Timeout Occurred"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. A Timeout Occurred'
       responses:
         '524':
           description: A Timeout Occurred
@@ -890,7 +929,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "525 SSL Handshake Failed"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. SSL Handshake Failed'
       responses:
         '525':
           description: SSL Handshake Failed
@@ -900,7 +939,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "526 Invalid SSL Certificate"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Invalid SSL Certificate'
       responses:
         '526':
           description: Invalid SSL Certificate
@@ -910,7 +949,7 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "527 Railgun Error"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Railgun Error'
       responses:
         '527':
           description: Railgun Error
@@ -920,7 +959,8 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "529 Site is Overloaded"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code.  Site is overloaded. Used by Qualys in the SSLLabs server
+        testing API to signal that the site can not process the request.'
       responses:
         '529':
           description: Site is Overloaded
@@ -930,7 +970,8 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "530 Site is Frozen"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. Site is frozen. Used by the Pantheon Systems web platform
+        to indicate a site that has been frozen due to inactivity.'
       responses:
         '530':
           description: Site is Frozen
@@ -940,7 +981,8 @@ paths:
       tags:
         - Server error responses
       summary: Returns a "598 Network Read Timeout Error"
-      description: '> ⚠️ Unofficial Status Code'
+      description: '> ⚠️ Unofficial Status Code. (Informal convention) Network read timeout error.
+        Used by some HTTP proxies to signal a network read timeout behind the proxy to a client in front of the proxy.'
       responses:
         '598':
           description: Network Read Timeout Error

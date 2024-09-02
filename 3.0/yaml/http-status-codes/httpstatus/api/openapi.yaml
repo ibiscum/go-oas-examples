@@ -1,0 +1,1040 @@
+openapi: 3.0.3
+info:
+  contact:
+    email: support@example.com
+    name: API Support
+    url: http://www.example.com/support
+  description: Demos how we handle various status codes. Documentation pulled from
+    https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
+  title: HTTP Status Codes
+  version: 1.0.0
+servers:
+- url: https://httpbin.org
+tags:
+- name: Successful responses
+- name: Redirection messages
+- name: Client error responses
+- name: Information responses
+- name: Server error responses
+paths:
+  /status/200:
+    get:
+      description: |-
+        The request has succeeded. The meaning of the success depends on the HTTP method:
+        * `GET`: The resource has been fetched and is transmitted in the message body.
+        * `HEAD`: The representation headers are included in the response without any message body.
+        * `PUT` or `POST`: The resource describing the result of the action is transmitted in the message body.
+        * `TRACE`: The message body contains the request message as received by the server.
+      operationId: getStatus200
+      responses:
+        "200":
+          description: OK
+      summary: Returns a "200 OK"
+      tags:
+      - Successful responses
+  /status/201:
+    get:
+      description: "The request has succeeded and a new resource has been created\
+        \ as a result. This is typically the response sent after `POST` requests,\
+        \ or some `PUT` requests."
+      operationId: getStatus201
+      responses:
+        "201":
+          description: Created
+      summary: Returns a "201 Created"
+      tags:
+      - Successful responses
+  /status/202:
+    get:
+      description: "The request has been received but not yet acted upon. It is noncommittal,\
+        \ since there is no way in HTTP to later send an asynchronous response indicating\
+        \ the outcome of the request. It is intended for cases where another process\
+        \ or server handles the request, or for batch processing."
+      operationId: getStatus202
+      responses:
+        "202":
+          description: Accepted
+      summary: Returns a "202 Accepted"
+      tags:
+      - Successful responses
+  /status/203:
+    get:
+      description: "This response code means the returned meta-information is not\
+        \ exactly the same as is available from the origin server, but is collected\
+        \ from a local or a third-party copy. This is mostly used for mirrors or backups\
+        \ of another resource. Except for that specific case, the \"200 OK\" response\
+        \ is preferred to this status."
+      operationId: getStatus203
+      responses:
+        "203":
+          description: Non-Authoritative Information
+      summary: Returns a "203 Non-Authoritative Information"
+      tags:
+      - Successful responses
+  /status/204:
+    get:
+      description: "There is no content to send for this request, but the headers\
+        \ may be useful. The user-agent may update its cached headers for this resource\
+        \ with the new ones."
+      operationId: getStatus204
+      responses:
+        "204":
+          description: No Content
+      summary: Returns a "204 No Content"
+      tags:
+      - Successful responses
+  /status/205:
+    get:
+      description: Tells the user-agent to reset the document which sent this request.
+      operationId: getStatus205
+      responses:
+        "205":
+          description: Reset Content
+      summary: Returns a "205 Reset Content"
+      tags:
+      - Successful responses
+  /status/206:
+    get:
+      description: "This response code is used when the [Range](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range)\
+        \ header is sent from the client to request only part of a resource."
+      operationId: getStatus206
+      responses:
+        "206":
+          description: Partial Content
+      summary: Returns a "206 Partial Content"
+      tags:
+      - Successful responses
+  /status/207:
+    get:
+      description: "Conveys information about multiple resources, for situations where\
+        \ multiple status codes might be appropriate."
+      operationId: getStatus207
+      responses:
+        "207":
+          description: Multi-Status
+      summary: Returns a "200 Multi-Status"
+      tags:
+      - Successful responses
+  /status/208:
+    get:
+      description: Used inside a `<dav:propstat>` response element to avoid repeatedly
+        enumerating the internal members of multiple bindings to the same collection.
+      operationId: getStatus208
+      responses:
+        "208":
+          description: Already Reported
+      summary: Returns a "208 Already Reported"
+      tags:
+      - Successful responses
+  /status/218:
+    get:
+      description: No description for status code 218
+      operationId: getStatus218
+      responses:
+        "218":
+          description: This is fine
+      summary: Returns a "218 This is fine"
+      tags:
+      - Successful responses
+  /status/226:
+    get:
+      description: "The server has fulfilled a GET request for the resource, and the\
+        \ response is a representation of the result of one or more instance-manipulations\
+        \ applied to the current instance."
+      operationId: getStatus226
+      responses:
+        "226":
+          description: IM Used
+      summary: Returns a "226 IM Used"
+      tags:
+      - Successful responses
+  /status/300:
+    get:
+      description: "The request has more than one possible response. The user-agent\
+        \ or user should choose one of them. (There is no standardized way of choosing\
+        \ one of the responses, but HTML links to the possibilities are recommended\
+        \ so the user can pick.)"
+      operationId: getStatus300
+      responses:
+        "300":
+          description: Multiple Choice
+      summary: Returns a "300 Multiple Choice"
+      tags:
+      - Redirection messages
+  /status/301:
+    get:
+      description: The URL of the requested resource has been changed permanently.
+        The new URL is given in the response.
+      operationId: getStatus301
+      responses:
+        "301":
+          description: Moved Permanently
+      summary: Returns a "301 Moved Permanently"
+      tags:
+      - Redirection messages
+  /status/302:
+    get:
+      description: "This response code means that the URI of requested resource has\
+        \ been changed temporarily. Further changes in the URI might be made in the\
+        \ future. Therefore, this same URI should be used by the client in future\
+        \ requests."
+      operationId: getStatus302
+      responses:
+        "302":
+          description: Found
+      summary: Returns a "302 Found"
+      tags:
+      - Redirection messages
+  /status/303:
+    get:
+      description: The server sent this response to direct the client to get the requested
+        resource at another URI with a GET request.
+      operationId: getStatus303
+      responses:
+        "303":
+          description: See Other
+      summary: Returns a "303 See Other"
+      tags:
+      - Redirection messages
+  /status/304:
+    get:
+      description: "This is used for caching purposes. It tells the client that the\
+        \ response has not been modified, so the client can continue to use the same\
+        \ cached version of the response."
+      operationId: getStatus304
+      responses:
+        "304":
+          description: Not Modified
+      summary: Returns a "304 Not Modified"
+      tags:
+      - Redirection messages
+  /status/305:
+    get:
+      description: Defined in a previous version of the HTTP specification to indicate
+        that a requested response must be accessed by a proxy. It has been deprecated
+        due to security concerns regarding in-band configuration of a proxy.
+      operationId: getStatus305
+      responses:
+        "305":
+          description: Use Proxy
+      summary: Returns a "305 Use Proxy"
+      tags:
+      - Redirection messages
+  /status/306:
+    get:
+      description: This response code is no longer used; it is just reserved. It was
+        used in a previous version of the HTTP/1.1 specification.
+      operationId: getStatus306
+      responses:
+        "306":
+          description: Switch Proxy
+      summary: Returns a "306 Switch Proxy"
+      tags:
+      - Redirection messages
+  /status/307:
+    get:
+      description: "The server sends this response to direct the client to get the\
+        \ requested resource at another URI with same method that was used in the\
+        \ prior request. This has the same semantics as the `302 Found` HTTP response\
+        \ code, with the exception that the user agent must not change the HTTP method\
+        \ used: If a `POST` was used in the first request, a `POST` must be used in\
+        \ the second request."
+      operationId: getStatus307
+      responses:
+        "307":
+          description: Temporary Redirect
+      summary: Returns a "307 Temporary Redirect"
+      tags:
+      - Redirection messages
+  /status/308:
+    get:
+      description: "This means that the resource is now permanently located at another\
+        \ URI, specified by the `Location:` HTTP Response header. This has the same\
+        \ semantics as the `301 Moved Permanently` HTTP response code, with the exception\
+        \ that the user agent must not change the HTTP method used: If a `POST` was\
+        \ used in the first request, a `POST` must be used in the second request."
+      operationId: getStatus308
+      responses:
+        "308":
+          description: Permanent Redirect
+      summary: Returns a "308 Permanent Redirect"
+      tags:
+      - Redirection messages
+  /status/400:
+    get:
+      description: The server could not understand the request due to invalid syntax.
+      operationId: getStatus400
+      responses:
+        "400":
+          description: Bad Request
+      summary: Returns a "400 Bad Request"
+      tags:
+      - Client error responses
+  /status/401:
+    get:
+      description: "Although the HTTP standard specifies \"unauthorized\", semantically\
+        \ this response means \"unauthenticated\". That is, the client must authenticate\
+        \ itself to get the requested response."
+      operationId: getStatus401
+      responses:
+        "401":
+          description: Unauthorized
+      summary: Returns a "401 Unauthorized"
+      tags:
+      - Client error responses
+  /status/402:
+    get:
+      description: "This response code is reserved for future use. The initial aim\
+        \ for creating this code was using it for digital payment systems, however\
+        \ this status code is used very rarely and no standard convention exists."
+      operationId: getStatus402
+      responses:
+        "402":
+          description: Payment Required
+      summary: Returns a "402 Payment Required"
+      tags:
+      - Client error responses
+  /status/403:
+    get:
+      description: "The client does not have access rights to the content; that is,\
+        \ it is unauthorized, so the server is refusing to give the requested resource.\
+        \ Unlike 401, the client's identity is known to the server."
+      operationId: getStatus403
+      responses:
+        "403":
+          description: Forbidden
+      summary: Returns a "403 Forbidden"
+      tags:
+      - Client error responses
+  /status/404:
+    get:
+      description: "The server can not find the requested resource. In the browser,\
+        \ this means the URL is not recognized. In an API, this can also mean that\
+        \ the endpoint is valid but the resource itself does not exist. Servers may\
+        \ also send this response instead of 403 to hide the existence of a resource\
+        \ from an unauthorized client. This response code is probably the most famous\
+        \ one due to its frequent occurrence on the web."
+      operationId: getStatus404
+      responses:
+        "404":
+          description: Not Found
+      summary: Returns a "404 Not Found"
+      tags:
+      - Client error responses
+  /status/405:
+    get:
+      description: "The request method is known by the server but is not supported\
+        \ by the target resource. For example, an API may forbid DELETE-ing a resource."
+      operationId: getStatus405
+      responses:
+        "405":
+          description: Method Not Allowed
+      summary: Returns a "405 Method Not Allowed"
+      tags:
+      - Client error responses
+  /status/406:
+    get:
+      description: "This response is sent when the web server, after performing [server-driven\
+        \ content negotiation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Content_negotiation#server-driven_negotiation),\
+        \ doesn't find any content that conforms to the criteria given by the user\
+        \ agent."
+      operationId: getStatus406
+      responses:
+        "406":
+          description: Not Acceptable
+      summary: Returns a "406 Not Acceptable"
+      tags:
+      - Client error responses
+  /status/407:
+    get:
+      description: This is similar to 401 but authentication is needed to be done
+        by a proxy.
+      operationId: getStatus407
+      responses:
+        "407":
+          description: Proxy Authentication Required
+      summary: Returns a "407 Proxy Authentication Required"
+      tags:
+      - Client error responses
+  /status/408:
+    get:
+      description: "This response is sent on an idle connection by some servers, even\
+        \ without any previous request by the client. It means that the server would\
+        \ like to shut down this unused connection. This response is used much more\
+        \ since some browsers, like Chrome, Firefox 27+, or IE9, use HTTP pre-connection\
+        \ mechanisms to speed up surfing. Also note that some servers merely shut\
+        \ down the connection without sending this message."
+      operationId: getStatus408
+      responses:
+        "408":
+          description: Request Timeout
+      summary: Returns a "408 Request Timeout"
+      tags:
+      - Client error responses
+  /status/409:
+    get:
+      description: This response is sent when a request conflicts with the current
+        state of the server.
+      operationId: getStatus409
+      responses:
+        "409":
+          description: Conflict
+      summary: Returns a "409 Conflict"
+      tags:
+      - Client error responses
+  /status/410:
+    get:
+      description: "This response is sent when the requested content has been permanently\
+        \ deleted from server, with no forwarding address. Clients are expected to\
+        \ remove their caches and links to the resource. The HTTP specification intends\
+        \ this status code to be used for \"limited-time, promotional services\".\
+        \ APIs should not feel compelled to indicate resources that have been deleted\
+        \ with this status code."
+      operationId: getStatus410
+      responses:
+        "410":
+          description: Gone
+      summary: Returns a "410 Gone"
+      tags:
+      - Client error responses
+  /status/411:
+    get:
+      description: Server rejected the request because the `Content-Length` header
+        field is not defined and the server requires it.
+      operationId: getStatus411
+      responses:
+        "411":
+          description: Length Required
+      summary: Returns a "411 Length Required"
+      tags:
+      - Client error responses
+  /status/412:
+    get:
+      description: The client has indicated preconditions in its headers which the
+        server does not meet.
+      operationId: getStatus412
+      responses:
+        "412":
+          description: Precondition Failed
+      summary: Returns a "412 Precondition Failed"
+      tags:
+      - Client error responses
+  /status/413:
+    get:
+      description: Request entity is larger than limits defined by server; the server
+        might close the connection or return an `Retry-After` header field.
+      operationId: getStatus413
+      responses:
+        "413":
+          description: Payload Too Large
+      summary: Returns a "413 Payload Too Large"
+      tags:
+      - Client error responses
+  /status/414:
+    get:
+      description: The URI requested by the client is longer than the server is willing
+        to interpret.
+      operationId: getStatus414
+      responses:
+        "414":
+          description: URI Too Long
+      summary: Returns a "414 URI Too Long"
+      tags:
+      - Client error responses
+  /status/415:
+    get:
+      description: "The media format of the requested data is not supported by the\
+        \ server, so the server is rejecting the request."
+      operationId: getStatus415
+      responses:
+        "415":
+          description: Unsupported Media Type
+      summary: Returns a "415 Unsupported Media Type"
+      tags:
+      - Client error responses
+  /status/416:
+    get:
+      description: The range specified by the `Range` header field in the request
+        can't be fulfilled; it's possible that the range is outside the size of the
+        target URI's data.
+      operationId: getStatus416
+      responses:
+        "416":
+          description: Range Not Satisfiable
+      summary: Returns a "416 Range Not Satisfiable"
+      tags:
+      - Client error responses
+  /status/417:
+    get:
+      description: This response code means the expectation indicated by the `Expect`
+        request header field can't be met by the server.
+      operationId: getStatus417
+      responses:
+        "417":
+          description: Expectation Failed
+      summary: Returns a "417 Expectation Failed"
+      tags:
+      - Client error responses
+  /status/418:
+    get:
+      description: The server refuses the attempt to brew coffee with a teapot.
+      operationId: getStatus418
+      responses:
+        "418":
+          description: I'm a teapot
+      summary: Returns a "418 I'm a teapot"
+      tags:
+      - Client error responses
+  /status/419:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus419
+      responses:
+        "419":
+          description: Page Expired
+      summary: Returns a "419 Page Expired"
+      tags:
+      - Client error responses
+  /status/420:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus420
+      responses:
+        "420":
+          description: Enhance Your Calm
+      summary: Returns a "420 Enhance Your Calm"
+      tags:
+      - Client error responses
+  /status/421:
+    get:
+      description: The request was directed at a server that is not able to produce
+        a response. This can be sent by a server that is not configured to produce
+        responses for the combination of scheme and authority that are included in
+        the request URI.
+      operationId: getStatus421
+      responses:
+        "421":
+          description: Misdirected Request
+      summary: Returns a "421 Misdirected Request"
+      tags:
+      - Client error responses
+  /status/422:
+    get:
+      description: The request was well-formed but was unable to be followed due to
+        semantic errors.
+      operationId: getStatus422
+      responses:
+        "422":
+          description: Unprocessable Entity
+      summary: Returns a "422 Unprocessable Entity"
+      tags:
+      - Client error responses
+  /status/423:
+    get:
+      description: The resource that is being accessed is locked.
+      operationId: getStatus423
+      responses:
+        "423":
+          description: Locked
+      summary: Returns a "423 Locked"
+      tags:
+      - Client error responses
+  /status/424:
+    get:
+      description: The request failed due to failure of a previous request.
+      operationId: getStatus424
+      responses:
+        "424":
+          description: Failed Dependency
+      summary: Returns a "424 Failed Dependency"
+      tags:
+      - Client error responses
+  /status/425:
+    get:
+      description: Indicates that the server is unwilling to risk processing a request
+        that might be replayed.
+      operationId: getStatus425
+      responses:
+        "425":
+          description: Too Early
+      summary: Returns a "425 Too Early"
+      tags:
+      - Client error responses
+  /status/426:
+    get:
+      description: "The server refuses to perform the request using the current protocol\
+        \ but might be willing to do so after the client upgrades to a different protocol.\
+        \ The server sends an [`Upgrade`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade)\
+        \ header in a 426 response to indicate the required protocol(s)."
+      operationId: getStatus426
+      responses:
+        "426":
+          description: Upgrade Required
+      summary: Returns a "426 Upgrade Required"
+      tags:
+      - Client error responses
+  /status/428:
+    get:
+      description: "The origin server requires the request to be conditional. This\
+        \ response is intended to prevent the 'lost update' problem, where a client\
+        \ GETs a resource's state, modifies it, and PUTs it back to the server, when\
+        \ meanwhile a third party has modified the state on the server, leading to\
+        \ a conflict."
+      operationId: getStatus428
+      responses:
+        "428":
+          description: Precondition Required
+      summary: Returns a "428 Precondition Required"
+      tags:
+      - Client error responses
+  /status/429:
+    get:
+      description: The user has sent too many requests in a given amount of time ("rate
+        limiting").
+      operationId: getStatus429
+      responses:
+        "429":
+          description: Too Many Requests
+      summary: Returns a "429 Too Many Requests"
+      tags:
+      - Client error responses
+  /status/430:
+    get:
+      description: The server is unwilling to process the request because its header
+        fields are too large. The request may be resubmitted after reducing the size
+        of the request header fields.
+      operationId: getStatus430
+      responses:
+        "430":
+          description: Request Header Fields Too Large
+      summary: |-
+        > ⚠️ Unofficial Status Code
+        Returns a "430 Request Header Fields Too Large"
+      tags:
+      - Client error responses
+  /status/431:
+    get:
+      description: The server is unwilling to process the request because its header
+        fields are too large. The request may be resubmitted after reducing the size
+        of the request header fields.
+      operationId: getStatus431
+      responses:
+        "431":
+          description: Request Header Fields Too Large
+      summary: Returns a "431 Request Header Fields Too Large"
+      tags:
+      - Client error responses
+  /status/440:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus440
+      responses:
+        "440":
+          description: Login Time-out
+      summary: Returns a "440 Login Time-out"
+      tags:
+      - Client error responses
+  /status/444:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus444
+      responses:
+        "444":
+          description: No Response
+      summary: Returns a "444 No Response"
+      tags:
+      - Client error responses
+  /status/449:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus449
+      responses:
+        "449":
+          description: Retry With
+      summary: Returns a "449 Retry With"
+      tags:
+      - Client error responses
+  /status/450:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus450
+      responses:
+        "450":
+          description: Blocked by Windows Parental Controls
+      summary: Returns a "450 Blocked by Windows Parental Controls"
+      tags:
+      - Client error responses
+  /status/451:
+    get:
+      description: "The user-agent requested a resource that cannot legally be provided,\
+        \ such as a web page censored by a government."
+      operationId: getStatus451
+      responses:
+        "451":
+          description: Unavailable For Legal Reasons
+      summary: Returns a "451 Unavailable For Legal Reasons"
+      tags:
+      - Client error responses
+  /status/494:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus494
+      responses:
+        "494":
+          description: Request Header Too Large
+      summary: Returns a "494 Request Header Too Large"
+      tags:
+      - Client error responses
+  /status/495:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus495
+      responses:
+        "495":
+          description: SSL Certificate Error
+      summary: Returns a "495 SSL Certificate Error"
+      tags:
+      - Client error responses
+  /status/496:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus496
+      responses:
+        "496":
+          description: SSL Certificate Required
+      summary: Returns a "496 SSL Certificate Required"
+      tags:
+      - Client error responses
+  /status/497:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus497
+      responses:
+        "497":
+          description: HTTP Request Sent to HTTPS Port
+      summary: Returns a "497 HTTP Request Sent to HTTPS Port"
+      tags:
+      - Client error responses
+  /status/498:
+    get:
+      description: '> ⚠️ Unofficial Status Code'
+      operationId: getStatus498
+      responses:
+        "498":
+          description: Invalid Token
+      summary: Returns a "498 Invalid Token"
+      tags:
+      - Client error responses
+  /status/499:
+    get:
+      description: "\"Token Request\" on ArcGIS, \"Client Closed Request\" on nginx"
+      operationId: getStatus499
+      responses:
+        "499":
+          description: Client Error
+      summary: Returns a "499 Client Error"
+      tags:
+      - Client error responses
+  /status/500:
+    get:
+      description: The server has encountered a situation it doesn't know how to handle.
+      operationId: getStatus500
+      responses:
+        "500":
+          description: Internal Server Error
+      summary: Returns a "500 Internal Server Error"
+      tags:
+      - Server error responses
+  /status/501:
+    get:
+      description: The request method is not supported by the server and cannot be
+        handled. The only methods that servers are required to support (and therefore
+        that must not return this code) are `GET` and `HEAD`.
+      operationId: getStatus501
+      responses:
+        "501":
+          description: Not Implemented
+      summary: Returns a "501 Not Implemented"
+      tags:
+      - Server error responses
+  /status/502:
+    get:
+      description: "This error response means that the server, while working as a\
+        \ gateway to get a response needed to handle the request, got an invalid response."
+      operationId: getStatus502
+      responses:
+        "502":
+          description: Bad Gateway
+      summary: Returns a "502 Bad Gateway"
+      tags:
+      - Server error responses
+  /status/503:
+    get:
+      description: "The server is not ready to handle the request. Common causes are\
+        \ a server that is down for maintenance or that is overloaded. Note that together\
+        \ with this response, a user-friendly page explaining the problem should be\
+        \ sent. This response should be used for temporary conditions and the `Retry-After`:\
+        \ HTTP header should, if possible, contain the estimated time before the recovery\
+        \ of the service. The webmaster must also take care about the caching-related\
+        \ headers that are sent along with this response, as these temporary condition\
+        \ responses should usually not be cached."
+      operationId: getStatus503
+      responses:
+        "503":
+          description: Service Unavailable
+      summary: Returns a "503 Service Unavailable"
+      tags:
+      - Server error responses
+  /status/504:
+    get:
+      description: This error response is given when the server is acting as a gateway
+        and cannot get a response in time.
+      operationId: getStatus504
+      responses:
+        "504":
+          description: Gateway Timeout
+      summary: Returns a "504 Gateway Timeout"
+      tags:
+      - Server error responses
+  /status/505:
+    get:
+      description: 505 HTTP Version Not Supported
+      operationId: getStatus505
+      responses:
+        "505":
+          description: HTTP Version Not Supported
+      summary: Returns a "505 HTTP Version Not Supported"
+      tags:
+      - Server error responses
+  /status/506:
+    get:
+      description: "The server has an internal configuration error: the chosen variant\
+        \ resource is configured to engage in transparent content negotiation itself,\
+        \ and is therefore not a proper end point in the negotiation process."
+      operationId: getStatus506
+      responses:
+        "506":
+          description: Variant Also Negotiates
+      summary: Returns a "506 Variant Also Negotiates"
+      tags:
+      - Server error responses
+  /status/507:
+    get:
+      description: The method could not be performed on the resource because the server
+        is unable to store the representation needed to successfully complete the
+        request.
+      operationId: getStatus507
+      responses:
+        "507":
+          description: Insufficient Storage
+      summary: Returns a "507 Insufficient Storage"
+      tags:
+      - Server error responses
+  /status/508:
+    get:
+      description: The server detected an infinite loop while processing the request.
+      operationId: getStatus508
+      responses:
+        "508":
+          description: Loop Detected
+      summary: Returns a "508 Loop Detected"
+      tags:
+      - Server error responses
+  /status/509:
+    get:
+      description: |-
+        Bandwidth Limit Exceeded (Apache Web Server/cPanel). The server has exceeded the bandwidth specified
+        by the server administrator; this is often used by shared hosting providers to limit the bandwidth of customers.
+      operationId: getStatus509
+      responses:
+        "509":
+          description: Bandwidth Limit Exceeded
+      summary: Returns a "508 Bandwidth Limit Exceeded"
+      tags:
+      - Server error responses
+  /status/510:
+    get:
+      description: Further extensions to the request are required for the server to
+        fulfill it.
+      operationId: getStatus510
+      responses:
+        "510":
+          description: Not Extended
+      summary: Returns a "510 Not Extended"
+      tags:
+      - Server error responses
+  /status/511:
+    get:
+      description: The 511 status code indicates that the client needs to authenticate
+        to gain network access.
+      operationId: getStatus511
+      responses:
+        "511":
+          description: Network Authentication Required
+      summary: Returns a "511 Network Authentication Required"
+      tags:
+      - Server error responses
+  /status/520:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Web Server Returned an Unknown Error'
+      operationId: getStatus520
+      responses:
+        "520":
+          description: Web Server Returned an Unknown Error
+      summary: Returns a "520 Web Server Returned an Unknown Error"
+      tags:
+      - Server error responses
+  /status/512:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Web Server Is Down'
+      operationId: getStatus512
+      responses:
+        "521":
+          description: Web Server Is Down
+      summary: Returns a "512 Web Server Is Down"
+      tags:
+      - Server error responses
+  /status/522:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Connection Timed Out'
+      operationId: getStatus522
+      responses:
+        "522":
+          description: Connection Timed Out
+      summary: Returns a "522 Connection Timed Out"
+      tags:
+      - Server error responses
+  /status/523:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Origin Is Unreachable'
+      operationId: getStatus523
+      responses:
+        "523":
+          description: Origin Is Unreachable
+      summary: Returns a "523 Origin Is Unreachable"
+      tags:
+      - Server error responses
+  /status/524:
+    get:
+      description: '> ⚠️ Unofficial Status Code. A Timeout Occurred'
+      operationId: getStatus524
+      responses:
+        "524":
+          description: A Timeout Occurred
+      summary: Returns a "524 A Timeout Occurred"
+      tags:
+      - Server error responses
+  /status/525:
+    get:
+      description: '> ⚠️ Unofficial Status Code. SSL Handshake Failed'
+      operationId: getStatus525
+      responses:
+        "525":
+          description: SSL Handshake Failed
+      summary: Returns a "525 SSL Handshake Failed"
+      tags:
+      - Server error responses
+  /status/526:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Invalid SSL Certificate'
+      operationId: getStatus526
+      responses:
+        "526":
+          description: Invalid SSL Certificate
+      summary: Returns a "526 Invalid SSL Certificate"
+      tags:
+      - Server error responses
+  /status/527:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Railgun Error'
+      operationId: getStatus527
+      responses:
+        "527":
+          description: Railgun Error
+      summary: Returns a "527 Railgun Error"
+      tags:
+      - Server error responses
+  /status/529:
+    get:
+      description: '> ⚠️ Unofficial Status Code.  Site is overloaded. Used by Qualys
+        in the SSLLabs server testing API to signal that the site can not process
+        the request.'
+      operationId: getStatus529
+      responses:
+        "529":
+          description: Site is Overloaded
+      summary: Returns a "529 Site is Overloaded"
+      tags:
+      - Server error responses
+  /status/530:
+    get:
+      description: '> ⚠️ Unofficial Status Code. Site is frozen. Used by the Pantheon
+        Systems web platform to indicate a site that has been frozen due to inactivity.'
+      operationId: getStatus530
+      responses:
+        "530":
+          description: Site is Frozen
+      summary: Returns a "530 Site is Frozen"
+      tags:
+      - Server error responses
+  /status/598:
+    get:
+      description: '> ⚠️ Unofficial Status Code. (Informal convention) Network read
+        timeout error. Used by some HTTP proxies to signal a network read timeout
+        behind the proxy to a client in front of the proxy.'
+      operationId: getStatus598
+      responses:
+        "598":
+          description: Network Read Timeout Error
+      summary: Returns a "598 Network Read Timeout Error"
+      tags:
+      - Server error responses
+  /status/100:
+    get:
+      description: "This interim response indicates that everything so far is OK and\
+        \ that the client should continue the request, or ignore the response if the\
+        \ request is already finished."
+      operationId: getStatus100
+      responses:
+        "100":
+          description: Continue
+      summary: Returns a "100 Continue"
+      tags:
+      - Information responses
+  /status/101:
+    get:
+      description: "This code is sent in response to an [`Upgrade`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Upgrade)\
+        \ request header from the client, and indicates the protocol the server is\
+        \ switching to."
+      operationId: getStatus101
+      responses:
+        "101":
+          description: Switching Protocols
+      summary: Returns a "101 Switching Protocols"
+      tags:
+      - Information responses
+  /status/102:
+    get:
+      description: "This code indicates that the server has received and is processing\
+        \ the request, but no response is available yet."
+      operationId: getStatus102
+      responses:
+        "102":
+          description: Processing
+      summary: Returns a "102 Processing"
+      tags:
+      - Information responses
+  /status/103:
+    get:
+      description: "This status code is primarily intended to be used with the [`Link`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Link)\
+        \ header, letting the user agent start [preloading](https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types/preload)\
+        \ resources while the server prepares a response."
+      operationId: getStatus103
+      responses:
+        "103":
+          description: Early Hints
+      summary: Returns a "103 Early Hints"
+      tags:
+      - Information responses
+components:
+  schemas: {}
