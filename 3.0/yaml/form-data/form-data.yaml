@@ -1,5 +1,11 @@
 openapi: 3.0.3
+tags:
+  - name: anything
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: x-www-form-urlencoded support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#support-for-x-www-form-urlencoded-request-bodies
   version: 1.0.0
@@ -8,6 +14,9 @@ servers:
 paths:
   '/anything':
     post:
+      description: Demo handling of formData
+      tags:
+        - anything
       summary: Demo handling of formData
       operationId: demoFormData
       requestBody:

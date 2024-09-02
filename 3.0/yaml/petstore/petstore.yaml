@@ -509,14 +509,15 @@ paths:
       tags:
         - user
       summary: Updated user
-      description: This can only be done by the logged in user.
+      description: Updating the records can only be done by the logged in user.
       operationId: updateUser
       parameters:
         - name: username
           in: path
-          description: name that need to be updated
+          description: Name that need to be updated
           required: true
           schema:
+            example: jane_doe
             type: string
       requestBody:
         content:
@@ -526,15 +527,17 @@ paths:
         description: Updated user object
         required: true
       responses:
+        '200':
+          description: User updated successfully
         '400':
-          description: Invalid user supplied
+          description: Cannot update, invalid user supplied
         '404':
-          description: User not found
+          description: User to be updated not found
     delete:
       tags:
         - user
       summary: Delete user
-      description: This can only be done by the logged in user.
+      description: Deletion can only be done by the logged in user.
       operationId: deleteUser
       parameters:
         - name: username
@@ -542,12 +545,15 @@ paths:
           description: The name that needs to be deleted
           required: true
           schema:
+            example: john_doe
             type: string
       responses:
+        '200':
+          description: User deleted successfully
         '400':
-          description: Invalid username supplied
+          description: Cannot delete, invalid username supplied
         '404':
-          description: User not found
+          description: User to delete not found
 components:
   requestBodies:
     Pet:
@@ -564,6 +570,7 @@ components:
       content:
         application/json:
           schema:
+            example: []
             type: array
             items:
               '$ref': '#/components/schemas/User'
@@ -571,6 +578,7 @@ components:
       required: true
   securitySchemes:
     petstore_auth:
+      description: Authenticate to pet store
       type: oauth2
       flows:
         implicit:
@@ -579,26 +587,40 @@ components:
             write:pets: modify pets in your account
             read:pets: read your pets
     api_key:
+      description: API key fo accessing the services
       type: apiKey
       name: api_key
       in: header
   schemas:
     Order:
+      description: Ordering a pet
+      example:
+        id: 3456
+        petId: 234
+        quantity: 1
+        shipDate: "2024-09-01T13:00:00Z"
+        status: approved
+        complete: false
       type: object
       properties:
         id:
+          example: 123456
           type: integer
           format: int64
         petId:
+          example: 345
           type: integer
           format: int64
         quantity:
+          example: 5
           type: integer
           format: int32
         shipDate:
+          example: "2024-08-31T13:00:00Z"
           type: string
           format: date-time
         status:
+          example: placed
           type: string
           description: Order Status
           enum:
@@ -611,46 +633,72 @@ components:
       xml:
         name: Order
     Category:
+      description: Pet category
+      example:
+        id: 2
+        name: doggie
       type: object
       properties:
         id:
+          example: 2
           type: integer
           format: int64
         name:
+          example: doggie
           type: string
       xml:
         name: Category
     User:
+      description: Registered store user
+      example: 
+        id: 123
+        username: john_doe
+        firstname: John
+        lastname: Doe
       type: object
       properties:
         id:
+          example: 123
           type: integer
           format: int64
         username:
+          example: john_doe
           type: string
         firstName:
+          example: John
           type: string
         lastName:
+          example: Doe
           type: string
         email:
+          example: john.doe@example.com
           type: string
         password:
+          example: my_secret
           type: string
         phone:
+          example: +00-000-0000
           type: string
         userStatus:
+          example: 5
           type: integer
           format: int32
           description: User Status
       xml:
         name: User
     Tag:
+      description: Tag definition
+      example: 
+        id: 123
+        name: Daisy
       type: object
       properties:
         id:
+          example: 123
           type: integer
           format: int64
         name:
+          example: Daisy
           type: string
       xml:
         name: Tag

@@ -1,5 +1,12 @@
 openapi: 3.0.3
+tags:
+  - name: image/png
+  - name: multipart/form-data
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: File uploading support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#considerations-for-file-uploads
   version: 1.0.0
@@ -8,6 +15,7 @@ servers:
 paths:
   '/anything/image-png':
     post:
+      operationId: "postAnythingImagePng"
       summary: '`image/png` uploads'
       description: |-
         Support for a `requestBody` with an `image/png` media type to upload a single image binary.
@@ -26,6 +34,7 @@ paths:
           description: OK
   '/anything/multipart-formdata':
     post:
+      operationId: "postAnythingMultipartFormdata"
       summary: Single file
       description: |-
         Support for a `requestBody` with a `multipart/form-data` media type.
@@ -50,6 +59,7 @@ paths:
         '200':
           description: OK
     put:
+      operationId: "putAnythingMultipartFormdata"
       summary: Multiple files
       description: |-
         Support for a `requestBody` with a `multipart/form-data` containing multiple files.

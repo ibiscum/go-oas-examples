@@ -1,5 +1,11 @@
 openapi: 3.0.3
+tags:
+  - name: anything
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: Common parameters
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#path-item-object
   version: 1.0.0
@@ -21,12 +27,18 @@ paths:
         schema:
           type: string
     get:
+      operationId: "getAnythingId"
+      tags:
+        - anything
       summary: '[get] Summary'
       description: '[get] Description'
       responses:
         '200':
           description: OK
     post:
+      operationId: "postAnythingId"
+      tags:
+        - anything
       summary: '[post] Summary'
       description: '[post] Description'
       parameters:
@@ -55,36 +67,42 @@ paths:
             - statistics
         required: true
     get:
+      operationId: "getAnythingIdAction"
+      tags:
+        - anything
       summary: '[get] Summary'
       description: '[get] Description'
       responses:
         '200':
           description: OK
-  '/anything/{id}/{action}/{id}':
-    summary: '[common] Summary'
-    description: '[common] Description on an operation with **multiple** common path
-      parameters, one of which is used more than once in the path.'
-    parameters:
-      - in: path
-        name: id
-        schema:
-          type: number
-        required: true
-      - in: path
-        name: action
-        description: Action parameter
-        schema:
-          type: string
-          enum:
-            - lists
-            - statistics
-        required: true
-    get:
-      summary: '[get] Summary'
-      description: '[get] Description'
-      responses:
-        '200':
-          description: OK
+  # '/anything/{id}/{action}/{id}':
+  #   summary: '[common] Summary'
+  #   description: '[common] Description on an operation with **multiple** common path
+  #     parameters, one of which is used more than once in the path.'
+  #   parameters:
+  #     - in: path
+  #       name: id
+  #       schema:
+  #         type: number
+  #       required: true
+  #     - in: path
+  #       name: action
+  #       description: Action parameter
+  #       schema:
+  #         type: string
+  #         enum:
+  #           - lists
+  #           - statistics
+  #       required: true
+  #   get:
+  #     operationId: "getAnythingIdActionId"
+  #     tags:
+  #       - anything
+  #     summary: '[get] Summary'
+  #     description: '[get] Description'
+  #     responses:
+  #       '200':
+  #         description: OK
   '/anything/{id}/override':
     summary: This path item has a common parameter that's overridden by the more specific
       operation.
@@ -96,6 +114,10 @@ paths:
           type: string
         required: true
     get:
+      operationId: "getAnythingIdOverride"
+      description: "Override path"
+      tags:
+        - anything
       parameters:
         - name: id
           in: path

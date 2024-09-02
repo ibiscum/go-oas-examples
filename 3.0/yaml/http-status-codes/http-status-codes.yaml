@@ -1,5 +1,15 @@
 openapi: 3.0.3
+tags:
+  - name: Successful responses
+  - name: Redirection messages
+  - name: Client error responses
+  - name: Information responses
+  - name: Server error responses
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   version: 1.0.0
   title: HTTP Status Codes
   description: Demos how we handle various status codes. Documentation pulled from
@@ -9,6 +19,7 @@ servers:
 paths:
   '/status/200':
     get:
+      operationId: getStatus200
       tags:
         - Successful responses
       summary: Returns a "200 OK"
@@ -23,6 +34,7 @@ paths:
           description: OK
   '/status/201':
     get:
+      operationId: getStatus201
       tags:
         - Successful responses
       summary: Returns a "201 Created"
@@ -34,6 +46,7 @@ paths:
           description: Created
   '/status/202':
     get:
+      operationId: getStatus202
       tags:
         - Successful responses
       summary: Returns a "202 Accepted"
@@ -46,6 +59,7 @@ paths:
           description: Accepted
   '/status/203':
     get:
+      operationId: getStatus203
       tags:
         - Successful responses
       summary: Returns a "203 Non-Authoritative Information"
@@ -59,6 +73,7 @@ paths:
           description: Non-Authoritative Information
   '/status/204':
     get:
+      operationId: getStatus204
       tags:
         - Successful responses
       summary: Returns a "204 No Content"
@@ -70,6 +85,7 @@ paths:
           description: No Content
   '/status/205':
     get:
+      operationId: getStatus205
       tags:
         - Successful responses
       summary: Returns a "205 Reset Content"
@@ -79,6 +95,7 @@ paths:
           description: Reset Content
   '/status/206':
     get:
+      operationId: getStatus206
       tags:
         - Successful responses
       summary: Returns a "206 Partial Content"
@@ -90,6 +107,7 @@ paths:
           description: Partial Content
   '/status/207':
     get:
+      operationId: getStatus207
       tags:
         - Successful responses
       summary: Returns a "200 Multi-Status"
@@ -100,6 +118,7 @@ paths:
           description: Multi-Status
   '/status/208':
     get:
+      operationId: getStatus208
       tags:
         - Successful responses
       summary: Returns a "208 Already Reported"
@@ -110,6 +129,8 @@ paths:
           description: Already Reported
   '/status/218':
     get:
+      operationId: getStatus218
+      description: No description for status code 218
       tags:
         - Successful responses
       summary: Returns a "218 This is fine"
@@ -118,6 +139,7 @@ paths:
           description: This is fine
   '/status/226':
     get:
+      operationId: getStatus226
       tags:
         - Successful responses
       summary: Returns a "226 IM Used"
@@ -129,6 +151,7 @@ paths:
           description: IM Used
   '/status/300':
     get:
+      operationId: getStatus300
       tags:
         - Redirection messages
       summary: Returns a "300 Multiple Choice"
@@ -141,6 +164,7 @@ paths:
           description: Multiple Choice
   '/status/301':
     get:
+      operationId: getStatus301
       tags:
         - Redirection messages
       summary: Returns a "301 Moved Permanently"
@@ -151,6 +175,7 @@ paths:
           description: Moved Permanently
   '/status/302':
     get:
+      operationId: getStatus302
       tags:
         - Redirection messages
       summary: Returns a "302 Found"
@@ -162,6 +187,7 @@ paths:
           description: Found
   '/status/303':
     get:
+      operationId: getStatus303
       tags:
         - Redirection messages
       summary: Returns a "303 See Other"
@@ -172,6 +198,7 @@ paths:
           description: See Other
   '/status/304':
     get:
+      operationId: getStatus304
       tags:
         - Redirection messages
       summary: Returns a "304 Not Modified"
@@ -183,6 +210,7 @@ paths:
           description: Not Modified
   '/status/305':
     get:
+      operationId: getStatus305
       tags:
         - Redirection messages
       summary: Returns a "305 Use Proxy"
@@ -194,6 +222,7 @@ paths:
           description: Use Proxy
   '/status/306':
     get:
+      operationId: getStatus306
       tags:
         - Redirection messages
       summary: Returns a "306 Switch Proxy"
@@ -204,6 +233,7 @@ paths:
           description: Switch Proxy
   '/status/307':
     get:
+      operationId: getStatus307
       tags:
         - Redirection messages
       summary: Returns a "307 Temporary Redirect"
@@ -218,6 +248,7 @@ paths:
           description: Temporary Redirect
   '/status/308':
     get:
+      operationId: getStatus308
       tags:
         - Redirection messages
       summary: Returns a "308 Permanent Redirect"
@@ -231,15 +262,19 @@ paths:
           description: Permanent Redirect
   '/status/400':
     get:
+      operationId: getStatus400
       tags:
         - Client error responses
       summary: Returns a "400 Bad Request"
       description: The server could not understand the request due to invalid syntax.
       responses:
+        '200':
+          description: OK
         '400':
           description: Bad Request
   '/status/401':
     get:
+      operationId: getStatus401
       tags:
         - Client error responses
       summary: Returns a "401 Unauthorized"
@@ -247,10 +282,13 @@ paths:
         this response means "unauthenticated". That is, the client must authenticate
         itself to get the requested response.
       responses:
+        '200':
+          description: OK
         '401':
           description: Unauthorized
   '/status/402':
     get:
+      operationId: getStatus402
       tags:
         - Client error responses
       summary: Returns a "402 Payment Required"
@@ -258,10 +296,13 @@ paths:
         for creating this code was using it for digital payment systems, however this
         status code is used very rarely and no standard convention exists.
       responses:
+        '200':
+          description: OK
         '402':
           description: Payment Required
   '/status/403':
     get:
+      operationId: getStatus403
       tags:
         - Client error responses
       summary: Returns a "403 Forbidden"
@@ -269,10 +310,13 @@ paths:
         it is unauthorized, so the server is refusing to give the requested resource.
         Unlike 401, the client's identity is known to the server.
       responses:
+        '200':
+          description: OK
         '403':
           description: Forbidden
   '/status/404':
     get:
+      operationId: getStatus404
       tags:
         - Client error responses
       summary: Returns a "404 Not Found"
@@ -283,6 +327,8 @@ paths:
         an unauthorized client. This response code is probably the most famous one
         due to its frequent occurrence on the web.
       responses:
+        '200':
+          description: OK
         '404':
           description: Not Found
   '/status/405':
@@ -759,6 +805,7 @@ paths:
           description: Loop Detected
   '/status/509':
     get:
+      operationId: getStatus509
       tags:
         - Server error responses
       summary: Returns a "508 Bandwidth Limit Exceeded"
@@ -767,6 +814,7 @@ paths:
           description: Bandwidth Limit Exceeded
   '/status/510':
     get:
+      operationId: getStatus510
       tags:
         - Server error responses
       summary: Returns a "510 Not Extended"
@@ -777,6 +825,7 @@ paths:
           description: Not Extended
   '/status/511':
     get:
+      operationId: getStatus511
       tags:
         - Server error responses
       summary: Returns a "511 Network Authentication Required"
@@ -787,6 +836,7 @@ paths:
           description: Network Authentication Required
   '/status/520':
     get:
+      operationId: getStatus520
       tags:
         - Server error responses
       summary: Returns a "520 Web Server Returned an Unknown Error"
@@ -796,6 +846,7 @@ paths:
           description: Web Server Returned an Unknown Error
   '/status/512':
     get:
+      operationId: getStatus512
       tags:
         - Server error responses
       summary: Returns a "512 Web Server Is Down"
@@ -805,6 +856,7 @@ paths:
           description: Web Server Is Down
   '/status/522':
     get:
+      operationId: getStatus522
       tags:
         - Server error responses
       summary: Returns a "522 Connection Timed Out"
@@ -814,6 +866,7 @@ paths:
           description: Connection Timed Out
   '/status/523':
     get:
+      operationId: getStatus523
       tags:
         - Server error responses
       summary: Returns a "523 Origin Is Unreachable"
@@ -823,6 +876,7 @@ paths:
           description: Origin Is Unreachable
   '/status/524':
     get:
+      operationId: getStatus524
       tags:
         - Server error responses
       summary: Returns a "524 A Timeout Occurred"
@@ -832,6 +886,7 @@ paths:
           description: A Timeout Occurred
   '/status/525':
     get:
+      operationId: getStatus525
       tags:
         - Server error responses
       summary: Returns a "525 SSL Handshake Failed"
@@ -841,6 +896,7 @@ paths:
           description: SSL Handshake Failed
   '/status/526':
     get:
+      operationId: getStatus526
       tags:
         - Server error responses
       summary: Returns a "526 Invalid SSL Certificate"
@@ -850,6 +906,7 @@ paths:
           description: Invalid SSL Certificate
   '/status/527':
     get:
+      operationId: getStatus527
       tags:
         - Server error responses
       summary: Returns a "527 Railgun Error"
@@ -859,6 +916,7 @@ paths:
           description: Railgun Error
   '/status/529':
     get:
+      operationId: getStatus529
       tags:
         - Server error responses
       summary: Returns a "529 Site is Overloaded"
@@ -868,6 +926,7 @@ paths:
           description: Site is Overloaded
   '/status/530':
     get:
+      operationId: getStatus530
       tags:
         - Server error responses
       summary: Returns a "530 Site is Frozen"
@@ -877,6 +936,7 @@ paths:
           description: Site is Frozen
   '/status/598':
     get:
+      operationId: getStatus598
       tags:
         - Server error responses
       summary: Returns a "598 Network Read Timeout Error"
@@ -886,6 +946,7 @@ paths:
           description: Network Read Timeout Error
   '/status/100':
     get:
+      operationId: getStatus100
       tags:
         - Information responses
       summary: Returns a "100 Continue"
@@ -897,6 +958,7 @@ paths:
           description: Continue
   '/status/101':
     get:
+      operationId: getStatus101
       tags:
         - Information responses
       summary: Returns a "101 Switching Protocols"
@@ -909,6 +971,7 @@ paths:
           description: Switching Protocols
   '/status/102':
     get:
+      operationId: getStatus102
       tags:
         - Information responses
       summary: Returns a "102 Processing"
@@ -919,6 +982,7 @@ paths:
           description: Processing
   '/status/103':
     get:
+      operationId: getStatus103
       tags:
         - Information responses
       summary: Returns a "103 Early Hints"

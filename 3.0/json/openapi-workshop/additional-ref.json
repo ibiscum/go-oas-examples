@@ -1,6 +1,17 @@
 {
   "openapi": "3.0.0",
+  "tags": [
+    {
+      "name": "Hoots"
+    }
+  ],
   "info": {
+    "contact": {
+      "name": "API Support",
+      "url": "http://www.example.com/support",
+      "email": "support@example.com"
+    },
+    "description": "Additional references",
     "version": "1.0",
     "title": "Hoot",
     "license": {
@@ -15,6 +26,7 @@
   "paths": {
     "/hoot": {
       "post": {
+        "operationId": "postHoot",
         "summary": "Create a hoot",
         "description": "Post a new hoot to the site",
         "tags": ["Hoots"],
@@ -43,6 +55,7 @@
     },
     "/hoot/{id}": {
       "get": {
+        "operationId": "getHoot",
         "summary": "Get a hoot",
         "tags": ["Hoots"],
         "description": "Get a specific hoot",
