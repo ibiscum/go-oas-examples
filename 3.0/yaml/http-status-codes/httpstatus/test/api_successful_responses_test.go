@@ -11,10 +11,11 @@ package httpstatus
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/ibiscum/go-oas-examples/3.0/yaml/http-status-codes/httpstatus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/ibiscum/go-oas-examples"
 )
 
 func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus200", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus200(context.Background()).Execute()
 
@@ -35,7 +36,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus201", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus201(context.Background()).Execute()
 
@@ -46,7 +47,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus202", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus202(context.Background()).Execute()
 
@@ -57,7 +58,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus203", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus203(context.Background()).Execute()
 
@@ -68,7 +69,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus204", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus204(context.Background()).Execute()
 
@@ -79,7 +80,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus205", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus205(context.Background()).Execute()
 
@@ -90,7 +91,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus206", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus206(context.Background()).Execute()
 
@@ -101,7 +102,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus207", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus207(context.Background()).Execute()
 
@@ -112,7 +113,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus208", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus208(context.Background()).Execute()
 
@@ -123,7 +124,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus218", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus218(context.Background()).Execute()
 
@@ -134,7 +135,7 @@ func Test_httpstatus_SuccessfulResponsesAPIService(t *testing.T) {
 
 	t.Run("Test SuccessfulResponsesAPIService GetStatus226", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.SuccessfulResponsesAPI.GetStatus226(context.Background()).Execute()
 

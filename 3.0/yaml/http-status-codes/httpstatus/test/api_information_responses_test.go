@@ -11,10 +11,11 @@ package httpstatus
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/ibiscum/go-oas-examples/3.0/yaml/http-status-codes/httpstatus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/ibiscum/go-oas-examples"
 )
 
 func Test_httpstatus_InformationResponsesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_httpstatus_InformationResponsesAPIService(t *testing.T) {
 
 	t.Run("Test InformationResponsesAPIService GetStatus100", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.InformationResponsesAPI.GetStatus100(context.Background()).Execute()
 
@@ -35,7 +36,7 @@ func Test_httpstatus_InformationResponsesAPIService(t *testing.T) {
 
 	t.Run("Test InformationResponsesAPIService GetStatus101", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.InformationResponsesAPI.GetStatus101(context.Background()).Execute()
 
@@ -46,7 +47,7 @@ func Test_httpstatus_InformationResponsesAPIService(t *testing.T) {
 
 	t.Run("Test InformationResponsesAPIService GetStatus102", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.InformationResponsesAPI.GetStatus102(context.Background()).Execute()
 
@@ -57,7 +58,7 @@ func Test_httpstatus_InformationResponsesAPIService(t *testing.T) {
 
 	t.Run("Test InformationResponsesAPIService GetStatus103", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.InformationResponsesAPI.GetStatus103(context.Background()).Execute()
 

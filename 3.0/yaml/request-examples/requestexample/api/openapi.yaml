@@ -1,0 +1,720 @@
+openapi: 3.0.0
+info:
+  contact:
+    email: support@example.com
+    name: API Support
+    url: http://www.example.com/support
+  description: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#requestBodyObject
+  title: Support for request body and parameter examples
+  version: 1.0.0
+servers:
+- url: https://httpbin.org/anything
+tags:
+- name: Multiple examples
+- name: Single example
+- name: Multiple media types
+- name: Form data
+paths:
+  /parameterExamples/{param1}/{param2}:
+    get:
+      description: |-
+        This operation has several parameters with examples alongside separately maintained example within `examples` at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: getParameterExamplesParam1Param2
+      parameters:
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 1)
+            summary: example summary (param 1)
+            value: param1-example
+          yetAnotherParamExample:
+            value: param1-example-again
+        explode: false
+        in: path
+        name: param1
+        required: true
+        schema:
+          type: string
+        style: simple
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 2)
+            summary: example summary (param 2)
+            value: param2-example
+        explode: false
+        in: path
+        name: param2
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                userRegistration:
+                  value:
+                    summary: example summary (response)
+                    description: a lengthier example description (response)
+                    id: 1234
+                    email: test+response@example.com
+                    name: Test user name (response)
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+        "400":
+          content:
+            application/xml:
+              examples:
+                response:
+                  value: <?xml version="1.0" encoding="UTF-8"?><note><body>Invalid
+                    user!</body></note>
+          description: Validation failed
+        default:
+          content:
+            application/json:
+              examples:
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: Within `examples` (parameters)
+      tags:
+      - Multiple examples
+    patch:
+      description: |-
+        This operation has parameter and body examples alongside separately maintained example within `examples` at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: patchParameterExamplesParam1Param2
+      parameters:
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 1)
+            summary: example summary (param 1)
+            value: param1-example
+          yetAnotherParamExample:
+            value: param1-example-again
+        explode: false
+        in: path
+        name: param1
+        required: true
+        schema:
+          type: string
+        style: simple
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 2)
+            summary: example summary (param 2)
+            value: param2-example
+        explode: false
+        in: path
+        name: param2
+        required: true
+        schema:
+          type: string
+        style: simple
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 3)
+            summary: example summary (param 3)
+            value: param3-example
+        explode: true
+        in: query
+        name: param3
+        required: false
+        schema:
+          type: string
+        style: form
+      - example: param4-example
+        explode: true
+        in: query
+        name: param4
+        required: false
+        schema:
+          type: string
+        style: form
+      - examples:
+          userRegistration:
+            description: a lengthier example description (param 5)
+            summary: example summary (param 5)
+            value: param5-example
+        explode: false
+        in: header
+        name: param5
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: param6-example
+        explode: false
+        in: header
+        name: param6
+        required: false
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            examples:
+              userRegistration:
+                value:
+                  id: 1234
+                  email: test@example.com
+                  name: Test user name
+              userRegistration alt:
+                value:
+                  id: 5678
+                  email: test@example.com
+                  name: Test user name
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                userRegistration:
+                  value:
+                    summary: example summary (response)
+                    description: a lengthier example description (response)
+                    id: 1234
+                    email: test+response@example.com
+                    name: Test user name (response)
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+        "400":
+          content:
+            application/xml:
+              examples:
+                response:
+                  value: <?xml version="1.0" encoding="UTF-8"?><note><body>Invalid
+                    user!</body></note>
+          description: Validation failed
+        default:
+          content:
+            application/json:
+              examples:
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: Within `examples` (mixed)
+      tags:
+      - Multiple examples
+    put:
+      description: |-
+        This operation has a param example and `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: putParameterExamplesParam1Param2
+      parameters:
+      - example: param1-example
+        explode: false
+        in: path
+        name: param1
+        required: true
+        schema:
+          type: string
+        style: simple
+      - example: param2-example
+        explode: false
+        in: path
+        name: param2
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 12343354
+              email: test@example.com
+              name: Test user name
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 12343354
+                email: test@example.com
+                name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: Within `example`
+      tags:
+      - Single example
+  /requestBody:
+    patch:
+      description: |-
+        This operation has a `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: patchRequestBody
+      requestBody:
+        content:
+          application/json:
+            example:
+              id: 12343354
+              email: test@example.com
+              name: Test user name
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                id: 12343354
+                email: test@example.com
+                name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: Within `example`
+      tags:
+      - Single example
+    post:
+      description: |-
+        This operation has a `requestBody` with separately maintained examples within `examples` at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: postRequestBody
+      requestBody:
+        content:
+          application/json:
+            examples:
+              userRegistration:
+                value:
+                  id: 1234
+                  email: test@example.com
+                  name: Test user name
+              userRegistration alt:
+                value:
+                  id: 5678
+                  email: test@example.com
+                  name: Test user name
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                userRegistration:
+                  description: a lengthier example description (response)
+                  summary: example summary (response)
+                  value:
+                    id: 1234
+                    email: test+response@example.com
+                    name: Test user name (response)
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+        "400":
+          content:
+            application/xml:
+              examples:
+                response:
+                  value: <?xml version="1.0" encoding="UTF-8"?><note><body>Invalid
+                    user!</body></note>
+          description: Validation failed
+        default:
+          content:
+            application/json:
+              examples:
+                response:
+                  value:
+                    id: 1234
+                    email: test@example.com
+                    name: Test user name
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: Within `examples` (body)
+      tags:
+      - Multiple examples
+    put:
+      description: |-
+        This operation has a `requestBody` with separately maintained example within a `$ref` in a simple `example` object at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: putRequestBody
+      requestBody:
+        content:
+          application/json:
+            example:
+              $ref: '#/components/examples/user/value'
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example:
+                $ref: '#/components/examples/user/value'
+              schema:
+                $ref: '#/components/schemas/user'
+          description: OK
+      summary: '`$ref` within `example`'
+      tags:
+      - Single example
+  /requestBody-primitive-example:
+    patch:
+      description: |-
+        This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing stringified JSON object.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: patchRequestBodyPrimitiveExample
+      requestBody:
+        content:
+          application/json:
+            examples:
+              cat:
+                summary: An example of a cat
+                value:
+                  name: Fluffy
+                  petType: Cat
+              dog:
+                summary: An example of a dog
+                value:
+                  name: Buster
+                  petType: Dog
+            schema:
+              $ref: '#/components/schemas/pet'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                cat:
+                  summary: An example of a cat
+                  value:
+                    name: Fluffy
+                    petType: Cat
+                dog:
+                  summary: An example of a dog
+                  value:
+                    name: Buster
+                    petType: Dog
+              schema:
+                $ref: '#/components/schemas/pet'
+          description: OK
+      summary: Stringified JSON object in an `examples` value
+      tags:
+      - Multiple examples
+    post:
+      description: |-
+        This operation has a `requestBody` with separately maintained **primitive** example within a simple `example` object at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: postRequestBodyPrimitiveExample
+      requestBody:
+        content:
+          application/json:
+            example: "column1,column2,column3,column4"
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              example: "column1,column2,column3,column4"
+              schema:
+                type: string
+          description: OK
+      summary: Primitive `example`
+      tags:
+      - Single example
+    put:
+      description: |-
+        This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing a stringified JSON array.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: putRequestBodyPrimitiveExample
+      requestBody:
+        content:
+          application/json:
+            examples:
+              cat:
+                summary: An example of a cat
+                value:
+                - name: Fluffy
+                  petType: Cat
+              dog:
+                summary: An example of a dog
+                value:
+                - name: Buster
+                  petType: Dog
+            schema:
+              $ref: '#/components/schemas/pets'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                cat:
+                  summary: An example of a cat
+                  value:
+                  - name: Fluffy
+                    petType: Cat
+                dog:
+                  summary: An example of a dog
+                  value:
+                  - name: Buster
+                    petType: Dog
+              schema:
+                $ref: '#/components/schemas/pets'
+          description: OK
+      summary: Stringified JSON arrays in an `examples` value
+      tags:
+      - Multiple examples
+  /requestBody-multi-media-types:
+    post:
+      description: |-
+        This operation has a `requestBody` containing multiple media types with each containing a separately maintained example within `examples` at the Media Type Object level.
+
+        📚 OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
+      operationId: postRequestBodyMultiMediaTypes
+      requestBody:
+        content:
+          text/plain:
+            examples:
+              response:
+                value: OK
+          application/json:
+            examples:
+              cat:
+                summary: An example of a cat
+                value:
+                  name: Fluffy
+                  petType: Cat
+              dog:
+                summary: An example of a dog
+                value:
+                  name: Buster
+                  petType: Dog
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              examples:
+                response:
+                  value: OK
+            application/json:
+              examples:
+                cat:
+                  summary: An example of a cat
+                  value:
+                    name: Fluffy
+                    petType: Cat
+                dog:
+                  summary: An example of a dog
+                  value:
+                    name: Buster
+                    petType: Dog
+          description: OK
+        "400":
+          content:
+            application/xml:
+              examples:
+                response:
+                  value: <?xml version="1.0" encoding="UTF-8"?><note><body>Invalid
+                    pet!</body></note>
+          description: Validation failed
+      summary: Within `examples`
+      tags:
+      - Multiple media types
+  /requestBody-form-data-example:
+    post:
+      description: Requst body with form data
+      operationId: postRequestBodyFormDataExample
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            examples:
+              auth_example:
+                value:
+                  client_id: id123
+                  client_secret: secret456
+                  scope: 789
+            schema:
+              $ref: '#/components/schemas/postRequestBodyFormDataExample_request'
+        required: false
+      responses:
+        "200":
+          content:
+            application/json:
+              examples:
+                auth_example:
+                  value:
+                    access_token: 123
+                    token_type: type456
+                    expires_in: 789
+              schema:
+                $ref: '#/components/schemas/Token'
+          description: Valid Token
+        "401":
+          description: Unauthorized
+      summary: Demo handling of formData
+      tags:
+      - Form data
+components:
+  examples:
+    user:
+      value:
+        id: 12343354
+        email: test@example.com
+        name: Test user name
+  schemas:
+    pet:
+      example:
+        petType: Cat
+        name: name
+      properties:
+        name:
+          type: string
+        petType:
+          enum:
+          - Cat
+          - Dog
+          type: string
+      type: object
+    pets:
+      items:
+        $ref: '#/components/schemas/pet'
+      type: array
+    tag:
+      properties:
+        id:
+          format: int64
+          type: integer
+        name:
+          type: string
+      type: object
+    Token:
+      example:
+        access_token: 0
+        token_type: token_type
+        expires_in: 6
+      properties:
+        access_token:
+          format: int32
+          type: integer
+        token_type:
+          type: string
+        expires_in:
+          format: int32
+          type: integer
+      required:
+      - access_token
+      - expires_in
+      - token_type
+      title: Token
+      type: object
+    user:
+      example:
+        name: name
+        id: 0.8008281904610115
+        email: email
+      properties:
+        id:
+          type: number
+        email:
+          type: string
+        name:
+          type: string
+      type: object
+    postRequestBodyFormDataExample_request:
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        scope:
+          format: int32
+          type: integer
+      required:
+      - client_id
+      - client_secret
+      type: object

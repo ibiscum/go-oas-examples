@@ -11,10 +11,11 @@ package httpstatus
 
 import (
 	"context"
+	"testing"
+
+	openapiclient "github.com/ibiscum/go-oas-examples/3.0/yaml/http-status-codes/httpstatus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
-	openapiclient "github.com/ibiscum/go-oas-examples"
 )
 
 func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
@@ -24,7 +25,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus300", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus300(context.Background()).Execute()
 
@@ -35,7 +36,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus301", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus301(context.Background()).Execute()
 
@@ -46,7 +47,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus302", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus302(context.Background()).Execute()
 
@@ -57,7 +58,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus303", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus303(context.Background()).Execute()
 
@@ -68,7 +69,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus304", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus304(context.Background()).Execute()
 
@@ -79,7 +80,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus305", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus305(context.Background()).Execute()
 
@@ -90,7 +91,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus306", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus306(context.Background()).Execute()
 
@@ -101,7 +102,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus307", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus307(context.Background()).Execute()
 
@@ -112,7 +113,7 @@ func Test_httpstatus_RedirectionMessagesAPIService(t *testing.T) {
 
 	t.Run("Test RedirectionMessagesAPIService GetStatus308", func(t *testing.T) {
 
-		t.Skip("skip test")  // remove to run test
+		t.Skip("skip test") // remove to run test
 
 		httpRes, err := apiClient.RedirectionMessagesAPI.GetStatus308(context.Background()).Execute()
 

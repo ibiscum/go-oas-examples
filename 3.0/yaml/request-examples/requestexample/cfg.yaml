@@ -1,0 +1,6 @@
+{
+  "disallowAdditionalPropertiesIfNotPresent": false,
+  "isGoSubmodule": false,
+  "packageName" : "requestexample",
+  "withGoMod" : false
+}

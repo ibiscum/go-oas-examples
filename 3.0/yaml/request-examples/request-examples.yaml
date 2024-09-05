@@ -1,5 +1,9 @@
 openapi: 3.0.0
 info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
   title: Support for request body and parameter examples
   description: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#requestBodyObject
   version: 1.0.0
@@ -9,9 +13,11 @@ tags:
   - name: Multiple examples
   - name: Single example
   - name: Multiple media types
+  - name: Form data
 paths:
   '/parameterExamples/{param1}/{param2}':
     get:
+      operationId: getParameterExamplesParam1Param2
       tags:
         - Multiple examples
       summary: Within `examples` (parameters)
@@ -83,6 +89,7 @@ paths:
                     email: test@example.com
                     name: Test user name
     patch:
+      operationId: patchParameterExamplesParam1Param2
       tags:
         - Multiple examples
       summary: Within `examples` (mixed)
@@ -200,6 +207,7 @@ paths:
                     email: test@example.com
                     name: Test user name
     put:
+      operationId: putParameterExamplesParam1Param2
       tags:
         - Single example
       summary: Within `example`
@@ -244,6 +252,7 @@ paths:
                 name: Test user name
   '/requestBody':
     post:
+      operationId: postRequestBody
       tags:
         - Multiple examples
       summary: Within `examples` (body)
@@ -309,6 +318,7 @@ paths:
                     email: test@example.com
                     name: Test user name
     patch:
+      operationId: patchRequestBody
       tags:
         - Single example
       summary: Within `example`
@@ -338,6 +348,7 @@ paths:
                 email: test@example.com
                 name: Test user name
     put:
+      operationId: putRequestBody
       tags:
         - Single example
       summary: '`$ref` within `example`'
@@ -365,6 +376,7 @@ paths:
                 '$ref': '#/components/examples/user/value'
   '/requestBody-primitive-example':
     post:
+      operationId: postRequestBodyPrimitiveExample
       tags:
         - Single example
       summary: Primitive `example`
@@ -389,6 +401,7 @@ paths:
                 type: string
               example: column1,column2,column3,column4
     patch:
+      operationId: patchRequestBodyPrimitiveExample
       tags:
         - Multiple examples
       summary: Stringified JSON object in an `examples` value
@@ -406,15 +419,13 @@ paths:
             examples:
               cat:
                 summary: An example of a cat
-                value: |-
-                  {
+                value: {
                     "name": "Fluffy",
                     "petType": "Cat"
                   }
               dog:
                 summary: An example of a dog
-                value: |-
-                  {
+                value: {
                     "name": "Buster",
                     "petType": "Dog"
                   }
@@ -428,19 +439,18 @@ paths:
               examples:
                 cat:
                   summary: An example of a cat
-                  value: |-
-                    {
+                  value: {
                       "name": "Fluffy",
                       "petType": "Cat"
                     }
                 dog:
                   summary: An example of a dog
-                  value: |-
-                    {
+                  value: {
                       "name": "Buster",
                       "petType": "Dog"
                     }
     put:
+      operationId: putRequestBodyPrimitiveExample
       tags:
         - Multiple examples
       summary: Stringified JSON arrays in an `examples` value
@@ -458,8 +468,7 @@ paths:
             examples:
               cat:
                 summary: An example of a cat
-                value: |-
-                  [
+                value: [
                     {
                       "name": "Fluffy",
                       "petType": "Cat"
@@ -467,8 +476,7 @@ paths:
                   ]
               dog:
                 summary: An example of a dog
-                value: |-
-                  [
+                value: [
                     {
                       "name": "Buster",
                       "petType": "Dog"
@@ -484,8 +492,7 @@ paths:
               examples:
                 cat:
                   summary: An example of a cat
-                  value: |-
-                    [
+                  value: [
                       {
                         "name": "Fluffy",
                         "petType": "Cat"
@@ -493,8 +500,7 @@ paths:
                     ]
                 dog:
                   summary: An example of a dog
-                  value: |-
-                    [
+                  value: [
                       {
                         "name": "Buster",
                         "petType": "Dog"
@@ -502,6 +508,7 @@ paths:
                     ]
   '/requestBody-multi-media-types':
     post:
+      operationId: postRequestBodyMultiMediaTypes
       tags:
         - Multiple media types
       summary: Within `examples`
@@ -559,8 +566,11 @@ paths:
                     pet!</body></note>
   '/requestBody-form-data-example':
     post:
+      description: Requst body with form data
+      operationId: postRequestBodyFormDataExample
       summary: Demo handling of formData
-      operationId: demoFormData
+      tags:
+        - Form data
       requestBody:
         content:
           application/x-www-form-urlencoded:
