@@ -1,5 +1,9 @@
 openapi: 3.0.3
+tags:
+  - name: parameter
 info:
+  contact:
+    name: Example
   title: Extreme parameter cases
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#parameter-object
   version: 1.0.0
@@ -8,7 +12,11 @@ servers:
 paths:
   '/anything/all-param-types/{id}/{id2}':
     post:
-      summary: Utilizes all available parameter types.
+      operationId: post-anything-all-param-types-id-id2
+      summary: Parameter types.
+      description: Utilizes all available parameter types.
+      tags:
+        - parameter
       parameters:
         - name: id
           in: path

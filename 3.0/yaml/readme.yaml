@@ -997,42 +997,42 @@ components:
             oneOf:
               - '$ref': '#/components/schemas/error_APIKEY_EMPTY'
               - '$ref': '#/components/schemas/error_APIKEY_NOTFOUND'
-    error_APIKEY_EMPTY:
-      description: An API key was not supplied.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APIKEY_EMPTY'
-    error_APIKEY_MISMATCH:
-      description: The API key doesn't match the project.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APIKEY_MISMATCH'
-    error_APIKEY_NOTFOUND:
-      description: The API key couldn't be located.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APIKEY_NOTFOUND'
-    error_APPLY_INVALID_EMAIL:
-      description: You need to provide a valid email.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APPLY_INVALID_EMAIL'
-    error_APPLY_INVALID_JOB:
-      description: You need to provide a job.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APPLY_INVALID_JOB'
-    error_APPLY_INVALID_NAME:
-      description: You need to provide a name.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_APPLY_INVALID_NAME'
+    # error_APIKEY_EMPTY:
+    #   description: An API key was not supplied.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APIKEY_EMPTY'
+    # error_APIKEY_MISMATCH:
+    #   description: The API key doesn't match the project.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APIKEY_MISMATCH'
+    # error_APIKEY_NOTFOUND:
+    #   description: The API key couldn't be located.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APIKEY_NOTFOUND'
+    # error_APPLY_INVALID_EMAIL:
+    #   description: You need to provide a valid email.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APPLY_INVALID_EMAIL'
+    # error_APPLY_INVALID_JOB:
+    #   description: You need to provide a job.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APPLY_INVALID_JOB'
+    # error_APPLY_INVALID_NAME:
+    #   description: You need to provide a name.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_APPLY_INVALID_NAME'
     error_CATEGORY_INVALID:
       description: The category couldn't be saved.
       content:
@@ -1045,18 +1045,18 @@ components:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_CATEGORY_NOTFOUND'
-    error_CHANGELOG_INVALID:
-      description: The changelog couldn't be saved.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_CHANGELOG_INVALID'
-    error_CHANGELOG_NOTFOUND:
-      description: The changelog couldn't be found.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_CHANGELOG_NOTFOUND'
+    # error_CHANGELOG_INVALID:
+    #   description: The changelog couldn't be saved.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_CHANGELOG_INVALID'
+    # error_CHANGELOG_NOTFOUND:
+    #   description: The changelog couldn't be found.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_CHANGELOG_NOTFOUND'
     error_CUSTOMPAGE_INVALID:
       description: The page couldn't be saved.
       content:
@@ -1081,78 +1081,78 @@ components:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_DOC_NOTFOUND'
-    error_ENDPOINT_NOTFOUND:
-      description: The endpoint doesn't exist.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_ENDPOINT_NOTFOUND'
-    error_INTERNAL_ERROR:
-      description: An unknown error has occurred.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_INTERNAL_ERROR'
-    error_PROJECT_NEEDSSTAGING:
-      description: The project does not have staging enabled.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_PROJECT_NEEDSSTAGING'
-    error_PROJECT_NOTFOUND:
-      description: The project couldn't be found.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_PROJECT_NOTFOUND'
-    error_RATE_LIMITED:
-      description: The request has been rate limited.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_RATE_LIMITED'
-    error_REGISTRY_INVALID:
-      description: The registry entry couldn't be found.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_REGISTRY_INVALID'
+    # error_ENDPOINT_NOTFOUND:
+    #   description: The endpoint doesn't exist.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_ENDPOINT_NOTFOUND'
+    # error_INTERNAL_ERROR:
+    #   description: An unknown error has occurred.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_INTERNAL_ERROR'
+    # error_PROJECT_NEEDSSTAGING:
+    #   description: The project does not have staging enabled.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_PROJECT_NEEDSSTAGING'
+    # error_PROJECT_NOTFOUND:
+    #   description: The project couldn't be found.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_PROJECT_NOTFOUND'
+    # error_RATE_LIMITED:
+    #   description: The request has been rate limited.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_RATE_LIMITED'
+    # error_REGISTRY_INVALID:
+    #   description: The registry entry couldn't be found.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_REGISTRY_INVALID'
     error_REGISTRY_NOTFOUND:
       description: The registry entry couldn't be found.
       content:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_REGISTRY_NOTFOUND'
-    error_SPEC_FILE_EMPTY:
-      description: A spec file wasn't included.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_SPEC_FILE_EMPTY'
-    error_SPEC_ID_DUPLICATE:
-      description: The spec ID already tied to another version.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_SPEC_ID_DUPLICATE'
+    # error_SPEC_FILE_EMPTY:
+    #   description: A spec file wasn't included.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_SPEC_FILE_EMPTY'
+    # error_SPEC_ID_DUPLICATE:
+    #   description: The spec ID already tied to another version.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_SPEC_ID_DUPLICATE'
     error_SPEC_ID_INVALID:
       description: The spec ID isn't valid.
       content:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_SPEC_ID_INVALID'
-    error_SPEC_INVALID:
-      description: The uploaded spec isn't valid JSON or YAML.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_SPEC_INVALID'
-    error_SPEC_INVALID_SCHEMA:
-      description: The uploaded spec has OpenAPI validation errors.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_SPEC_INVALID_SCHEMA'
+    # error_SPEC_INVALID:
+    #   description: The uploaded spec isn't valid JSON or YAML.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_SPEC_INVALID'
+    # error_SPEC_INVALID_SCHEMA:
+    #   description: The uploaded spec has OpenAPI validation errors.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_SPEC_INVALID_SCHEMA'
     error_SPEC_NOTFOUND:
       description: The spec couldn't be found.
       content:
@@ -1165,18 +1165,18 @@ components:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_SPEC_TIMEOUT'
-    error_SPEC_VERSION_NOTFOUND:
-      description: The spec version couldn't be found.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_SPEC_VERSION_NOTFOUND'
-    error_UNEXPECTED_ERROR:
-      description: An unknown error has occurred.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_UNEXPECTED_ERROR'
+    # error_SPEC_VERSION_NOTFOUND:
+    #   description: The spec version couldn't be found.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_SPEC_VERSION_NOTFOUND'
+    # error_UNEXPECTED_ERROR:
+    #   description: An unknown error has occurred.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_UNEXPECTED_ERROR'
     error_VERSION_CANT_DEMOTE_STABLE:
       description: A stable version can't be demoted.
       content:
@@ -1189,36 +1189,36 @@ components:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_VERSION_CANT_REMOVE_STABLE'
-    error_VERSION_DUPLICATE:
-      description: The version already exists.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_VERSION_DUPLICATE'
+    # error_VERSION_DUPLICATE:
+    #   description: The version already exists.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_VERSION_DUPLICATE'
     error_VERSION_EMPTY:
       description: No version was supplied.
       content:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_VERSION_EMPTY'
-    error_VERSION_FORK_EMPTY:
-      description: New versions need to be forked from an existing version.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_VERSION_FORK_EMPTY'
+    # error_VERSION_FORK_EMPTY:
+    #   description: New versions need to be forked from an existing version.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_VERSION_FORK_EMPTY'
     error_VERSION_FORK_NOTFOUND:
       description: The version couldn't be found.
       content:
         application/json:
           schema:
             '$ref': '#/components/schemas/error_VERSION_FORK_NOTFOUND'
-    error_VERSION_INVALID:
-      description: The version is invalid.
-      content:
-        application/json:
-          schema:
-            '$ref': '#/components/schemas/error_VERSION_INVALID'
+    # error_VERSION_INVALID:
+    #   description: The version is invalid.
+    #   content:
+    #     application/json:
+    #       schema:
+    #         '$ref': '#/components/schemas/error_VERSION_INVALID'
     error_VERSION_NOTFOUND:
       description: The version couldn't be found.
       content:
@@ -1621,30 +1621,30 @@ components:
             error:
               type: string
               default: APIKEY_NOTFOUND
-    error_APPLY_INVALID_EMAIL:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: APPLY_INVALID_EMAIL
-    error_APPLY_INVALID_JOB:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: APPLY_INVALID_JOB
-    error_APPLY_INVALID_NAME:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: APPLY_INVALID_NAME
+    # error_APPLY_INVALID_EMAIL:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: APPLY_INVALID_EMAIL
+    # error_APPLY_INVALID_JOB:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: APPLY_INVALID_JOB
+    # error_APPLY_INVALID_NAME:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: APPLY_INVALID_NAME
     error_CATEGORY_INVALID:
       allOf:
         - '$ref': '#/components/schemas/baseError'
@@ -1661,22 +1661,22 @@ components:
             error:
               type: string
               default: CATEGORY_NOTFOUND
-    error_CHANGELOG_INVALID:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: CHANGELOG_INVALID
-    error_CHANGELOG_NOTFOUND:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: CHANGELOG_NOTFOUND
+    # error_CHANGELOG_INVALID:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: CHANGELOG_INVALID
+    # error_CHANGELOG_NOTFOUND:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: CHANGELOG_NOTFOUND
     error_CUSTOMPAGE_INVALID:
       allOf:
         - '$ref': '#/components/schemas/baseError'
@@ -1709,54 +1709,57 @@ components:
             error:
               type: string
               default: DOC_NOTFOUND
-    error_ENDPOINT_NOTFOUND:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: ENDPOINT_NOTFOUND
-    error_INTERNAL_ERROR:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: INTERNAL_ERROR
-    error_PROJECT_NEEDSSTAGING:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: PROJECT_NEEDSSTAGING
-    error_PROJECT_NOTFOUND:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: PROJECT_NOTFOUND
-    error_RATE_LIMITED:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: RATE_LIMITED
-    error_REGISTRY_INVALID:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: REGISTRY_INVALID
+    # error_ENDPOINT_NOTFOUND:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: ENDPOINT_NOTFOUND
+    # error_INTERNAL_ERROR:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: INTERNAL_ERROR
+    # error_PROJECT_NEEDSSTAGING:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           example: PROJECT_NOTFOUND
+    #           type: string
+    #           default: PROJECT_NEEDSSTAGING
+    # error_PROJECT_NOTFOUND:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           example: PROJECT_NEEDSSTAGING
+    #           type: string
+    #           default: PROJECT_NOTFOUND
+    # error_RATE_LIMITED:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           example: PROJECT_NOTFOUND
+    #           type: string
+    #           default: RATE_LIMITED
+    # error_REGISTRY_INVALID:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: REGISTRY_INVALID
     error_REGISTRY_NOTFOUND:
       allOf:
         - '$ref': '#/components/schemas/baseError'
@@ -1779,6 +1782,7 @@ components:
         - type: object
           properties:
             error:
+              example: SPEC_FILE_EMPTY
               type: string
               default: SPEC_ID_DUPLICATE
     error_SPEC_ID_INVALID:
@@ -1787,6 +1791,7 @@ components:
         - type: object
           properties:
             error:
+              example: SPEC_ID_DUPLICATE
               type: string
               default: SPEC_ID_INVALID
     error_SPEC_INVALID:
@@ -1829,14 +1834,14 @@ components:
             error:
               type: string
               default: SPEC_VERSION_NOTFOUND
-    error_UNEXPECTED_ERROR:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: UNEXPECTED_ERROR
+    # error_UNEXPECTED_ERROR:
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       properties:
+    #         error:
+    #           type: string
+    #           default: UNEXPECTED_ERROR
     error_VERSION_CANT_DEMOTE_STABLE:
       allOf:
         - '$ref': '#/components/schemas/baseError'
@@ -1878,26 +1883,38 @@ components:
               type: string
               default: VERSION_FORK_EMPTY
     error_VERSION_FORK_NOTFOUND:
+      description: Fork of version cannot be found
       allOf:
         - '$ref': '#/components/schemas/baseError'
         - type: object
+          example:
+            error: VERSION_INVALID
           properties:
             error:
+              example: VERSION_INVALID
               type: string
               default: VERSION_FORK_NOTFOUND
-    error_VERSION_INVALID:
-      allOf:
-        - '$ref': '#/components/schemas/baseError'
-        - type: object
-          properties:
-            error:
-              type: string
-              default: VERSION_INVALID
+    # error_VERSION_INVALID:
+    #   description: Schema error_VERSION_INVALID
+    #   allOf:
+    #     - '$ref': '#/components/schemas/baseError'
+    #     - type: object
+    #       example: 
+    #         error: VERSION_FORK_NOTFOUND
+    #       properties:
+    #         error:
+    #           example: VERSION_NOTFOUND
+    #           type: string
+    #           default: VERSION_INVALID
     error_VERSION_NOTFOUND:
+      description: Schema error_VERSION_NOTFOUND
       allOf:
         - '$ref': '#/components/schemas/baseError'
         - type: object
+          example:
+            error: VERSION_FORK_NOTFOUND
           properties:
             error:
+              example: VERSION_INVALID
               type: string
               default: VERSION_NOTFOUND

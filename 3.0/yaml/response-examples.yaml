@@ -1,19 +1,29 @@
 openapi: 3.0.3
+tags:
+  - name: example
+  - name: examples
 info:
+  contact:
+    name: Example
   title: Response example support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#mediaTypeObject
   version: 1.0.0
 servers:
-  - url: https://httpbin.org/
+  - url: https://httpbin.org
 paths:
   '/example':
     get:
+      summary: Get example
+      operationId: get-example
+      tags:
+        - example
       description: Showcase of responses with an `example` property present.
       responses:
         '200':
           description: OK
           headers:
             TestHeader:
+              example: test-example-header
               description: A test example header
               schema:
                 type: string
@@ -33,6 +43,10 @@ paths:
                   name: Test user name
   '/examples':
     get:
+      operationId: get-examples
+      summary: Get examples
+      tags:
+        - examples
       description: Showcase of responses with an `examples` property present.
       responses:
         '201':
@@ -75,7 +89,7 @@ paths:
               examples:
                 response:
                   value:
-                    '$ref': '#/components/schemas/UserResponse/example'
+                    '$ref': '#/components/schemas/UserResponse'
             text/csv, text/comma-separated-values:
               examples:
                 display_view=app:
@@ -83,6 +97,7 @@ paths:
 components:
   schemas:
     UserResponse:
+      description: Custom user response example
       example:
         user:
           email: test@example.com

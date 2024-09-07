@@ -191,7 +191,7 @@ paths:
         is improper, in this case we should ignore the discriminator instead of failing
         to render the operation.
       tags:
-        - Quirks
+        - quirks
       requestBody:
         content:
           application/json:
@@ -219,7 +219,7 @@ paths:
       summary: Discriminator without `anyOf` or `oneOf` that Redocly supports
       description: Redocly allows users to define [a discriminator mapping without an `anyOf` or `oneOf` that contains the discriminated objects](https://redocly.com/docs/resources/discriminator#allof-for-inheritance). This endpoint demonstrates that.
       tags:
-        - Quirks
+        - quirks
       requestBody:
         content:
           application/json:
@@ -242,7 +242,7 @@ paths:
       description: This operation contains a schema that at one point produced an
         edgecase within the form system where `formData` was `undefined`.
       tags:
-        - Quirks
+        - quirks
       requestBody:
         required: true
         content:
@@ -260,19 +260,19 @@ paths:
         '200':
           description: OK
 components:
-  requestBodies:
-    nested-one-of-ref:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              config:
-                oneOf:
-                  - '$ref': '#/components/schemas/string1'
-                  - '$ref': '#/components/schemas/string2'
-            additionalProperties: false
+  # requestBodies:
+    # nested-one-of-ref:
+    #   required: true
+    #   content:
+    #     application/json:
+    #       schema:
+    #         type: object
+    #         properties:
+    #           config:
+    #             oneOf:
+    #               - '$ref': '#/components/schemas/string1'
+    #               - '$ref': '#/components/schemas/string2'
+    #         additionalProperties: false
   schemas:
     OptionOneNoDisc:
       example:
@@ -392,14 +392,14 @@ components:
         d:
           example: Property D
           type: string
-    string1:
-      description: Variation one of string
-      example: B
-      type: string
-    string2:
-      example: A
-      description: Variation two of string
-      type: string
+    # string1:
+    #   description: Variation one of string
+    #   example: B
+    #   type: string
+    # string2:
+    #   example: A
+    #   description: Variation two of string
+    #   type: string
     PetNoDisc:
       description: Pet with no discriminator
       example:

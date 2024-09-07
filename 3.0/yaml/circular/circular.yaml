@@ -1,5 +1,10 @@
 openapi: 3.0.1
+tags:
+  - name: anything
 info:
+  contact:
+    name: HttpBin
+  description: API definition
   title: API definition with a circular $ref
   version: 1.0.0
 servers:
@@ -7,6 +12,10 @@ servers:
 paths:
   '/anything':
     get:
+      operationId: get-anything
+      description: Get anything
+      tags:
+        - anything
       responses:
         '200':
           description: OK

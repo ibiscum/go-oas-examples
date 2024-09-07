@@ -1,5 +1,9 @@
 openapi: 3.0.3
+tags:
+  - name: post
 info:
+  contact:
+    name: Example
   title: Cookie parameters
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#parameter-object
   version: 1.0.0
@@ -8,6 +12,10 @@ servers:
 paths:
   '/post':
     post:
+      operationId: post-post
+      description: post post
+      tags:
+        - post
       parameters:
         - in: cookie
           name: foo

@@ -1,6 +1,0 @@
-{
-  "disallowAdditionalPropertiesIfNotPresent": false,
-  "isGoSubmodule": false,
-  "packageName" : "ps",
-  "withGoMod" : false
-}

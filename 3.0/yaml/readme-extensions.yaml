@@ -1,5 +1,7 @@
 openapi: 3.0.3
 info:
+  contact:
+    name: Example
   title: ReadMe custom OpenAPI extensions demo
   description: https://docs.readme.com/docs/openapi-extensions
   version: 1.0.0

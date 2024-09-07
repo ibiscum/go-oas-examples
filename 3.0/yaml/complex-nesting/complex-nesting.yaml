@@ -150,14 +150,16 @@ components:
       properties:
         objectOfObjectsAndArrays:
           description: Object containing objects and arrays
-          '$ref': '#/components/schemas/ObjectOfObjectsAndArrays'
+          items:
+            '$ref': '#/components/schemas/ObjectOfObjectsAndArrays'
         arrayOfObjectsOfObjectsAndArrays:
           description: Array of objects (containing objects and arrays)
-          '$ref': '#/components/schemas/ArrayOfObjectsOfObjectsAndArrays'
+          items:
+            '$ref': '#/components/schemas/ArrayOfObjectsOfObjectsAndArrays'
         objectOfAdditionalProperties:
-          description: Object containing an `additionalProperties` declaration that's
-            comprised of a polymorphic `oneOf`.
-          '$ref': '#/components/schemas/ObjectOfAdditionalPropertiesObjectPolymorphism'
+          description: Object containing an `additionalProperties` declaration that's comprised of a polymorphic `oneOf`.
+          items:
+            '$ref': '#/components/schemas/ObjectOfAdditionalPropertiesObjectPolymorphism'
         string:
           type: string
     ArrayOfPrimitives:
@@ -173,13 +175,16 @@ components:
       properties:
         singleObject:
           description: Simple flat object
-          '$ref': '#/components/schemas/FlatObject'
+          items:
+           '$ref': '#/components/schemas/FlatObject'
         arrayOfPrimitives:
           description: Array of primitives
-          '$ref': '#/components/schemas/ArrayOfPrimitives'
+          items:
+            '$ref': '#/components/schemas/ArrayOfPrimitives'
         arrayOfObjects:
           description: Array of objects
-          '$ref': '#/components/schemas/ArrayOfFlatObjects'
+          items:
+            '$ref': '#/components/schemas/ArrayOfFlatObjects'
         primitive:
           type: string
     ObjectOfAdditionalPropertiesObjectPolymorphism:
@@ -194,16 +199,12 @@ components:
           metadata:
             nullable: true
             oneOf:
-              - title: ' '
+              - title: ''
                 type: object
-              - title: Flat object option 1
-                item: '$ref': '#/components/schemas/FlatObject'
-              - title: Flat object option 2
-                '$ref': '#/components/schemas/FlatObject'
-              - title: Flat object option 3
-                '$ref': '#/components/schemas/FlatObject'
-              - title: Object with depth
-                '$ref': '#/components/schemas/ObjectWithArray'
+              - '$ref': '#/components/schemas/FlatObject'
+              - '$ref': '#/components/schemas/FlatObject'
+              - '$ref': '#/components/schemas/FlatObject'
+              - '$ref': '#/components/schemas/ObjectWithArray'
     FlatObject:
       type: object
       properties:
@@ -226,15 +227,26 @@ components:
               inputs:
                 type: array
                 items:
+                  example:
+                    input 1: Input One
                   type: object
                   properties:
                     input 1:
+                      example: Input One
                       type: string
                     input 2:
+                      example: Input Two
                       type: string
               nums:
+                example: [
+                  0,
+                  1,
+                  2,
+                  3
+                ]
                 type: array
                 items:
+                  example: 0
                   type: integer
                   enum:
                     - 0
