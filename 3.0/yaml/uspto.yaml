@@ -37,6 +37,7 @@ paths:
         - metadata
       operationId: list-data-sets
       summary: List available data sets
+      description: get list of available data sets
       responses:
         '200':
           description: Returns a list of data sets

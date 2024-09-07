@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/ibiscum/go-oas-examples/3.0/yaml/request-examples/requestexample"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -25,7 +25,7 @@ func Test_requestexample_SingleExampleAPIService(t *testing.T) {
 
 	t.Run("Test SingleExampleAPIService PostRequestBodyPrimitiveExample", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		//t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.SingleExampleAPI.PostRequestBodyPrimitiveExample(context.Background()).Execute()
 
@@ -50,28 +50,28 @@ func Test_requestexample_SingleExampleAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test SingleExampleAPIService RequestBodyPatch", func(t *testing.T) {
+	// t.Run("Test SingleExampleAPIService RequestBodyPatch", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+	// 	t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SingleExampleAPI.RequestBodyPatch(context.Background()).Execute()
+	// 	resp, httpRes, err := apiClient.SingleExampleAPI.RequestBodyPatch(context.Background()).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+	// 	require.Nil(t, err)
+	// 	require.NotNil(t, resp)
+	// 	assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+	// })
 
-	t.Run("Test SingleExampleAPIService RequestBodyPut", func(t *testing.T) {
+	// t.Run("Test SingleExampleAPIService RequestBodyPut", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+	// 	t.Skip("skip test") // remove to run test
 
-		resp, httpRes, err := apiClient.SingleExampleAPI.RequestBodyPut(context.Background()).Execute()
+	// 	resp, httpRes, err := apiClient.SingleExampleAPI.RequestBodyPut(context.Background()).Execute()
 
-		require.Nil(t, err)
-		require.NotNil(t, resp)
-		assert.Equal(t, 200, httpRes.StatusCode)
+	// 	require.Nil(t, err)
+	// 	require.NotNil(t, resp)
+	// 	assert.Equal(t, 200, httpRes.StatusCode)
 
-	})
+	// })
 
 }

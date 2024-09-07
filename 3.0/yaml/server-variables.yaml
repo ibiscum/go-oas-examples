@@ -1,5 +1,11 @@
 openapi: 3.0.3
+tags:
+  - name: Path
+  - name: Operation
+  - name: Global
 info:
+  contact:
+    name: Example
   title: Server variables
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#serverVariableObject
   version: 1.0.0
@@ -33,6 +39,7 @@ servers:
 paths:
   '/global':
     post:
+      operationId: post-global
       summary: Global servers + variables
       description: "Support and handling of servers and server variables.\n\n\U0001F4DA
         OpenAPI specification references:\n\n* [3.0.3 Server Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#serverObject)\n\n*
@@ -44,6 +51,7 @@ paths:
           description: OK
   '/operation':
     post:
+      operationId: post-operation
       summary: Operation-level servers + variables
       description: "Support and handling of servers and server variables set at the
         operation level.\n\n\U0001F4DA OpenAPI specification references:\n\n* [3.0.3
@@ -74,6 +82,7 @@ paths:
           subpath:
             default: demo
     put:
+      operationId: put-path
       summary: Path-common level operation servers
       description: "Support and handling of servers and server variables set at the
         path level.\n\n\U0001F4DA OpenAPI specification references:\n\n* [3.0.3 Path
@@ -95,6 +104,7 @@ paths:
           subpath:
             default: demo
     put:
+      operationId: put-combo
       summary: Path-common level and operation-level operation servers
       description: "Support and handling of servers and server variables set at the
         path **and** operation level.\n\n\U0001F4DA OpenAPI specification references:\n\n*

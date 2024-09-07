@@ -1,16 +1,26 @@
 openapi: 3.0.3
+tags:
+  - name: flow
+  - name: form
 info:
+  contact:
+    name: HttpBin
   version: 1.0.0
-  title: Support for cases where multiple alternate security types (AND, OR, AND OR)
-    are listed
+  title: Support for cases where multiple alternate security types (AND, OR, AND OR) are listed
   description: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#securitySchemeObject
 servers:
   - url: https://httpbin.org
 paths:
   '/anything/and':
     post:
-      summary: Multiple forms of auth are required (&&)
+      operationId: post-anything-and
+      tags:
+        - form
+      summary: Multiple forms of auth
+      description: Multiple forms of auth are required (&&)
       responses:
+        '200':
+          description: Ok
         '401':
           description: Unauthorized
       security:
@@ -20,8 +30,14 @@ paths:
             - write:things
   '/anything/or':
     post:
-      summary: Two forms of auth can be used, only one is required (||)
+      operationId: post-anything-or
+      summary: Two forms of auth
+      description: Two forms of auth can be used, only one is required (||)
+      tags:
+        - form
       responses:
+        '200':
+          description: Ok
         '401':
           description: Unauthorized
       security:
@@ -30,9 +46,14 @@ paths:
         - apiKey_header: []
   '/anything/and-or':
     post:
-      summary: Two security flows are present, one of which has multiple forms of
-        required auth (&& ||)
+      operationId: post-anything-and-or
+      tags:
+        - flow
+      summary: Two security flows
+      description: Two security flows are present, one of which has multiple forms of required auth (&& ||)
       responses:
+        '200':
+          description: Ok
         '401':
           description: Unauthorized
       security:
@@ -43,9 +64,14 @@ paths:
             - write:things
   '/anything/many-and-or':
     post:
-      summary: Many security flows are present, each with multiple forms of required
-        auth (&& ||)
+      operationId: post-anything-many-and-or
+      summary: Many security flows
+      description: Many security flows are present, each with multiple forms of required auth (&& ||)
+      tags:
+        - flow
       responses:
+        '200': 
+          description: Ok
         '401':
           description: Unauthorized
       security:

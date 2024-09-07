@@ -24,37 +24,34 @@ import (
 // SingleExampleAPIService SingleExampleAPI service
 type SingleExampleAPIService service
 
-type ApiPatchRequestBodyRequest struct {
+type ApiPatchRequestBodySingleRequest struct {
 	ctx context.Context
 	ApiService *SingleExampleAPIService
 	user *User
 }
 
-func (r ApiPatchRequestBodyRequest) User(user User) ApiPatchRequestBodyRequest {
+func (r ApiPatchRequestBodySingleRequest) User(user User) ApiPatchRequestBodySingleRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiPatchRequestBodyRequest) Execute() (*User, *http.Response, error) {
-	return r.ApiService.PatchRequestBodyExecute(r)
+func (r ApiPatchRequestBodySingleRequest) Execute() (*User, *http.Response, error) {
+	return r.ApiService.PatchRequestBodySingleExecute(r)
 }
 
 /*
-PatchRequestBody Within `example`
+PatchRequestBodySingle Within `example`
 
 This operation has a `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPatchRequestBodyRequest
+ @return ApiPatchRequestBodySingleRequest
 */
-func (a *SingleExampleAPIService) PatchRequestBody(ctx context.Context) ApiPatchRequestBodyRequest {
-	return ApiPatchRequestBodyRequest{
+func (a *SingleExampleAPIService) PatchRequestBodySingle(ctx context.Context) ApiPatchRequestBodySingleRequest {
+	return ApiPatchRequestBodySingleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -62,7 +59,7 @@ func (a *SingleExampleAPIService) PatchRequestBody(ctx context.Context) ApiPatch
 
 // Execute executes the request
 //  @return User
-func (a *SingleExampleAPIService) PatchRequestBodyExecute(r ApiPatchRequestBodyRequest) (*User, *http.Response, error) {
+func (a *SingleExampleAPIService) PatchRequestBodySingleExecute(r ApiPatchRequestBodySingleRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPatch
 		localVarPostBody     interface{}
@@ -70,7 +67,7 @@ func (a *SingleExampleAPIService) PatchRequestBodyExecute(r ApiPatchRequestBodyR
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SingleExampleAPIService.PatchRequestBody")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SingleExampleAPIService.PatchRequestBodySingle")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -159,11 +156,8 @@ func (r ApiPostRequestBodyPrimitiveExampleRequest) Execute() (string, *http.Resp
 PostRequestBodyPrimitiveExample Primitive `example`
 
 This operation has a `requestBody` with separately maintained **primitive** example within a simple `example` object at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -277,11 +271,8 @@ func (r ApiPutParameterExamplesParam1Param2Request) Execute() (*User, *http.Resp
 PutParameterExamplesParam1Param2 Within `example`
 
 This operation has a param example and `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -380,37 +371,34 @@ func (a *SingleExampleAPIService) PutParameterExamplesParam1Param2Execute(r ApiP
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPutRequestBodyRequest struct {
+type ApiPutRequestBodySingleRequest struct {
 	ctx context.Context
 	ApiService *SingleExampleAPIService
 	user *User
 }
 
-func (r ApiPutRequestBodyRequest) User(user User) ApiPutRequestBodyRequest {
+func (r ApiPutRequestBodySingleRequest) User(user User) ApiPutRequestBodySingleRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiPutRequestBodyRequest) Execute() (*User, *http.Response, error) {
-	return r.ApiService.PutRequestBodyExecute(r)
+func (r ApiPutRequestBodySingleRequest) Execute() (*User, *http.Response, error) {
+	return r.ApiService.PutRequestBodySingleExecute(r)
 }
 
 /*
-PutRequestBody `$ref` within `example`
+PutRequestBodySingle `$ref` within `example`
 
 This operation has a `requestBody` with separately maintained example within a `$ref` in a simple `example` object at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPutRequestBodyRequest
+ @return ApiPutRequestBodySingleRequest
 */
-func (a *SingleExampleAPIService) PutRequestBody(ctx context.Context) ApiPutRequestBodyRequest {
-	return ApiPutRequestBodyRequest{
+func (a *SingleExampleAPIService) PutRequestBodySingle(ctx context.Context) ApiPutRequestBodySingleRequest {
+	return ApiPutRequestBodySingleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -418,7 +406,7 @@ func (a *SingleExampleAPIService) PutRequestBody(ctx context.Context) ApiPutRequ
 
 // Execute executes the request
 //  @return User
-func (a *SingleExampleAPIService) PutRequestBodyExecute(r ApiPutRequestBodyRequest) (*User, *http.Response, error) {
+func (a *SingleExampleAPIService) PutRequestBodySingleExecute(r ApiPutRequestBodySingleRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPut
 		localVarPostBody     interface{}
@@ -426,7 +414,7 @@ func (a *SingleExampleAPIService) PutRequestBodyExecute(r ApiPutRequestBodyReque
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SingleExampleAPIService.PutRequestBody")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "SingleExampleAPIService.PutRequestBodySingle")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}

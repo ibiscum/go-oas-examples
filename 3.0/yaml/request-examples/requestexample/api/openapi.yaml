@@ -19,11 +19,8 @@ paths:
     get:
       description: |-
         This operation has several parameters with examples alongside separately maintained example within `examples` at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: getParameterExamplesParam1Param2
       parameters:
@@ -99,11 +96,8 @@ paths:
     patch:
       description: |-
         This operation has parameter and body examples alongside separately maintained example within `examples` at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: patchParameterExamplesParam1Param2
       parameters:
@@ -236,11 +230,8 @@ paths:
     put:
       description: |-
         This operation has a param example and `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: putParameterExamplesParam1Param2
       parameters:
@@ -288,13 +279,10 @@ paths:
     patch:
       description: |-
         This operation has a `requestBody` with separately maintained example within a simple `example` object at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
-      operationId: patchRequestBody
+      operationId: patchRequestBodySingle
       requestBody:
         content:
           application/json:
@@ -322,13 +310,10 @@ paths:
     post:
       description: |-
         This operation has a `requestBody` with separately maintained examples within `examples` at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
-      operationId: postRequestBody
+      operationId: postRequestBodyMultiple
       requestBody:
         content:
           application/json:
@@ -392,13 +377,10 @@ paths:
     put:
       description: |-
         This operation has a `requestBody` with separately maintained example within a `$ref` in a simple `example` object at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
-      operationId: putRequestBody
+      operationId: putRequestBodySingle
       requestBody:
         content:
           application/json:
@@ -423,11 +405,8 @@ paths:
     patch:
       description: |-
         This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing stringified JSON object.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: patchRequestBodyPrimitiveExample
       requestBody:
@@ -471,11 +450,8 @@ paths:
     post:
       description: |-
         This operation has a `requestBody` with separately maintained **primitive** example within a simple `example` object at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: postRequestBodyPrimitiveExample
       requestBody:
@@ -499,11 +475,8 @@ paths:
     put:
       description: |-
         This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing a stringified JSON array.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: putRequestBodyPrimitiveExample
       requestBody:
@@ -548,11 +521,8 @@ paths:
     post:
       description: |-
         This operation has a `requestBody` containing multiple media types with each containing a separately maintained example within `examples` at the Media Type Object level.
-
         📚 OpenAPI specification references:
-
         * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
         * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       operationId: postRequestBodyMultiMediaTypes
       requestBody:
@@ -712,6 +682,7 @@ components:
         client_secret:
           type: string
         scope:
+          example: 123
           format: int32
           type: integer
       required:

@@ -69,7 +69,7 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
-  '/pet/findByStatus':
+  '/pet/find-by-status':
     get:
       tags:
         - pet
@@ -78,6 +78,7 @@ paths:
       operationId: findPetsByStatus
       parameters:
         - name: status
+          example: []
           in: query
           description: Status values that need to be considered for filter
           required: true
@@ -85,6 +86,7 @@ paths:
           schema:
             type: array
             items:
+              example: pending
               type: string
               enum:
                 - available
@@ -96,11 +98,13 @@ paths:
           description: successful operation
           content:
             application/xml:
+              example: []
               schema:
                 type: array
                 items:
                   '$ref': '#/components/schemas/Pet'
             application/json:
+              example: []
               schema:
                 type: array
                 items:
@@ -111,7 +115,7 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
-  '/pet/findByTags':
+  '/pet/find-by-tags':
     get:
       tags:
         - pet
@@ -126,8 +130,10 @@ paths:
           required: true
           explode: true
           schema:
+            example: []
             type: array
             items:
+              example: Items
               type: string
       responses:
         '200':
@@ -135,11 +141,13 @@ paths:
           content:
             application/xml:
               schema:
+                example: []
                 type: array
                 items:
                   '$ref': '#/components/schemas/Pet'
             application/json:
               schema:
+                example: []
                 type: array
                 items:
                   '$ref': '#/components/schemas/Pet'
@@ -163,6 +171,7 @@ paths:
           description: ID of pet to return
           required: true
           schema:
+            example: 123
             type: integer
             format: int64
       responses:
@@ -195,21 +204,30 @@ paths:
           description: ID of pet that needs to be updated
           required: true
           schema:
+            example: 123
             type: integer
             format: int64
       requestBody:
+        description: Post operation to update pet status
         content:
           application/x-www-form-urlencoded:
             schema:
+              example: 
+                name: Adele
+                status: sold
               type: object
               properties:
                 name:
+                  example: Updated name of the pet
                   description: Updated name of the pet
                   type: string
                 status:
+                  example: Updated status of the pet
                   description: Updated status of the pet
                   type: string
       responses:
+        '200':
+          description: Valid input
         '405':
           description: Invalid input
       security:
@@ -217,25 +235,30 @@ paths:
             - write:pets
             - read:pets
     delete:
+      description: Delete a pet from database
       tags:
         - pet
       summary: Deletes a pet
-      description: ''
       operationId: deletePet
       parameters:
         - name: api_key
+          description: The API key
           in: header
           required: false
           schema:
+            example: api_key
             type: string
         - name: petId
           in: path
           description: Pet id to delete
           required: true
           schema:
+            example: 123
             type: integer
             format: int64
       responses:
+        '200':
+          description: OK, valid ID
         '400':
           description: Invalid ID supplied
         '404':
@@ -244,12 +267,12 @@ paths:
         - petstore_auth:
             - write:pets
             - read:pets
-  '/pet/{petId}/uploadImage':
+  '/pet/{petId}/upload-image':
     post:
       tags:
         - pet
       summary: Uploads an image
-      description: ''
+      description: Upload an image of pet
       operationId: uploadFile
       parameters:
         - name: petId
@@ -257,18 +280,24 @@ paths:
           description: ID of pet to update
           required: true
           schema:
+            example: 123
             type: integer
             format: int64
       requestBody:
+        description: multipart/form-data as object
         content:
           multipart/form-data:
             schema:
+              example: 
+                additionalMetadata: Additional data to pass to server
               type: object
               properties:
                 additionalMetadata:
+                  example: Additional data to pass to server
                   description: Additional data to pass to server
                   type: string
                 file:
+                  example: file_binary
                   description: file to upload
                   type: string
                   format: binary
@@ -296,18 +325,24 @@ paths:
           content:
             application/json:
               schema:
+                example: {
+                  sold: 100,
+                  pending: 200,
+                  available: 300
+                }
                 type: object
                 additionalProperties:
+                  example: 123
                   type: integer
                   format: int32
       security:
         - api_key: []
   '/store/order':
     post:
+      description: Place an order for a pet from store
       tags:
         - store
       summary: Place an order for a pet
-      description: ''
       operationId: placeOrder
       requestBody:
         content:
@@ -342,6 +377,7 @@ paths:
           description: ID of pet that needs to be fetched
           required: true
           schema:
+            example: 9
             type: integer
             format: int64
             minimum: 1
@@ -373,6 +409,7 @@ paths:
           description: ID of the order that needs to be deleted
           required: true
           schema:
+            example: 5
             type: integer
             format: int64
             minimum: 1
@@ -398,38 +435,44 @@ paths:
         description: Created user object
         required: true
       responses:
+        '200':
+          description: successful operation
         default:
           description: successful operation
-  '/user/createWithArray':
+  '/user/create-with-array':
     post:
       tags:
         - user
       summary: Creates list of users with given input array
-      description: ''
+      description: Creates list of users by given input array
       operationId: createUsersWithArrayInput
       requestBody:
         '$ref': '#/components/requestBodies/UserArray'
       responses:
+        '200':
+          description: successful operation
         default:
           description: successful operation
-  '/user/createWithList':
+  '/user/create-with-list':
     post:
       tags:
         - user
       summary: Creates list of users with given input array
-      description: ''
+      description: Creates list of users by given input array
       operationId: createUsersWithListInput
       requestBody:
         '$ref': '#/components/requestBodies/UserArray'
       responses:
+        '200':
+          description: OK, successful operation post user with list
         default:
-          description: successful operation
+          description: successful operation post user with list
   '/user/login':
     get:
       tags:
         - user
       summary: Logs user into the system
-      description: ''
+      description: Endpoint for user login
       operationId: loginUser
       parameters:
         - name: username
@@ -437,33 +480,39 @@ paths:
           description: The user name for login
           required: true
           schema:
+            example: john_doe
             type: string
         - name: password
           in: query
           description: The password for login in clear text
           required: true
           schema:
+            example: password
             type: string
       responses:
         '200':
-          description: successful operation
+          description: successful operation get user login
           headers:
             X-Rate-Limit:
               description: calls per hour allowed by the user
               schema:
+                example: 123
                 type: integer
                 format: int32
             X-Expires-After:
               description: date in UTC when token expires
               schema:
+                example: "2018-03-20T09:12:28Z"
                 type: string
                 format: date-time
           content:
             application/xml:
+              example: valid xml
               schema:
                 type: string
             application/json:
               schema:
+                example: user/login
                 type: string
         '400':
           description: Invalid username/password supplied
@@ -472,28 +521,31 @@ paths:
       tags:
         - user
       summary: Logs out current logged in user session
-      description: ''
+      description: Logs out current logged in user in current session 
       operationId: logoutUser
       responses:
+        '200':
+          description: successful operation logout user
         default:
-          description: successful operation
+          description: successful operation logout user default
   '/user/{username}':
     get:
       tags:
         - user
       summary: Get user by user name
-      description: ''
+      description: Get user by parameter user name
       operationId: getUserByName
       parameters:
         - name: username
           in: path
-          description: 'The name that needs to be fetched. Use user1 for testing. '
+          description: The name that needs to be fetched. Use user1 for testing.
           required: true
           schema:
+            example: John Doe
             type: string
       responses:
         '200':
-          description: successful operation
+          description: successful operation get user by user name
           content:
             application/xml:
               schema:

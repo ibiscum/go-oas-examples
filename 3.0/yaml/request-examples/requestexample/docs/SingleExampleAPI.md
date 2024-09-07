@@ -4,16 +4,16 @@ All URIs are relative to *https://httpbin.org/anything*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**PatchRequestBody**](SingleExampleAPI.md#PatchRequestBody) | **Patch** /requestBody | Within &#x60;example&#x60;
+[**PatchRequestBodySingle**](SingleExampleAPI.md#PatchRequestBodySingle) | **Patch** /requestBody | Within &#x60;example&#x60;
 [**PostRequestBodyPrimitiveExample**](SingleExampleAPI.md#PostRequestBodyPrimitiveExample) | **Post** /requestBody-primitive-example | Primitive &#x60;example&#x60;
 [**PutParameterExamplesParam1Param2**](SingleExampleAPI.md#PutParameterExamplesParam1Param2) | **Put** /parameterExamples/{param1}/{param2} | Within &#x60;example&#x60;
-[**PutRequestBody**](SingleExampleAPI.md#PutRequestBody) | **Put** /requestBody | &#x60;$ref&#x60; within &#x60;example&#x60;
+[**PutRequestBodySingle**](SingleExampleAPI.md#PutRequestBodySingle) | **Put** /requestBody | &#x60;$ref&#x60; within &#x60;example&#x60;
 
 
 
-## PatchRequestBody
+## PatchRequestBodySingle
 
-> User PatchRequestBody(ctx).User(user).Execute()
+> User PatchRequestBodySingle(ctx).User(user).Execute()
 
 Within `example`
 
@@ -28,7 +28,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -36,13 +36,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SingleExampleAPI.PatchRequestBody(context.Background()).User(user).Execute()
+	resp, r, err := apiClient.SingleExampleAPI.PatchRequestBodySingle(context.Background()).User(user).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SingleExampleAPI.PatchRequestBody``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SingleExampleAPI.PatchRequestBodySingle``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PatchRequestBody`: User
-	fmt.Fprintf(os.Stdout, "Response from `SingleExampleAPI.PatchRequestBody`: %v\n", resp)
+	// response from `PatchRequestBodySingle`: User
+	fmt.Fprintf(os.Stdout, "Response from `SingleExampleAPI.PatchRequestBodySingle`: %v\n", resp)
 }
 ```
 
@@ -52,7 +52,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPatchRequestBodyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPatchRequestBodySingleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -94,7 +94,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -160,7 +160,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -218,9 +218,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PutRequestBody
+## PutRequestBodySingle
 
-> User PutRequestBody(ctx).User(user).Execute()
+> User PutRequestBodySingle(ctx).User(user).Execute()
 
 `$ref` within `example`
 
@@ -235,7 +235,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -243,13 +243,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.SingleExampleAPI.PutRequestBody(context.Background()).User(user).Execute()
+	resp, r, err := apiClient.SingleExampleAPI.PutRequestBodySingle(context.Background()).User(user).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `SingleExampleAPI.PutRequestBody``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `SingleExampleAPI.PutRequestBodySingle``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PutRequestBody`: User
-	fmt.Fprintf(os.Stdout, "Response from `SingleExampleAPI.PutRequestBody`: %v\n", resp)
+	// response from `PutRequestBodySingle`: User
+	fmt.Fprintf(os.Stdout, "Response from `SingleExampleAPI.PutRequestBodySingle`: %v\n", resp)
 }
 ```
 
@@ -259,7 +259,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPutRequestBodyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPutRequestBodySingleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes

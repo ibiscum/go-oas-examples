@@ -15,7 +15,7 @@ tags:
   - name: Multiple media types
   - name: Form data
 paths:
-  '/parameterExamples/{param1}/{param2}':
+  '/parameter-examples/{param1}/{param2}':
     get:
       operationId: getParameterExamplesParam1Param2
       tags:
@@ -27,6 +27,7 @@ paths:
         [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
       parameters:
         - name: param1
+          description: This is the first parameter
           in: path
           required: true
           schema:
@@ -39,6 +40,7 @@ paths:
             yetAnotherParamExample:
               value: param1-example-again
         - name: param2
+          description: This is the second parameter
           in: path
           required: true
           schema:
@@ -99,6 +101,7 @@ paths:
         [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
       parameters:
         - name: param1
+          description: This is the first parameter for the patch operation
           in: path
           required: true
           schema:
@@ -224,6 +227,7 @@ paths:
             type: string
           example: param1-example
         - name: param2
+          description: This is the second parameter
           in: path
           required: true
           schema:
@@ -250,7 +254,7 @@ paths:
                 id: 12343354
                 email: test@example.com
                 name: Test user name
-  '/requestBody':
+  '/request-body':
     post:
       operationId: postRequestBody
       tags:
@@ -374,17 +378,20 @@ paths:
                 '$ref': '#/components/schemas/user'
               example:
                 '$ref': '#/components/examples/user/value'
-  '/requestBody-primitive-example':
+  '/request-body-primitive-example':
     post:
       operationId: postRequestBodyPrimitiveExample
       tags:
         - Single example
       summary: Primitive `example`
-      description: "This operation has a `requestBody` with separately maintained
-        **primitive** example within a simple `example` object at the Media Type Object
-        level.\n\n\U0001F4DA OpenAPI specification references:\n\n* [3.0.3 Media Type
-        Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)\n\n*
-        [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
+      description: |
+        This operation has a `requestBody` with separately maintained **primitive** example within a simple `example` object at the Media Type Object
+        level.
+        
+        \U0001F4DA OpenAPI specification references:
+        
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       requestBody:
         required: true
         content:
@@ -394,7 +401,7 @@ paths:
             example: column1,column2,column3,column4
       responses:
         '200':
-          description: OK
+          description: OK, request body primitive example, post operation
           content:
             application/json:
               schema:
@@ -405,12 +412,16 @@ paths:
       tags:
         - Multiple examples
       summary: Stringified JSON object in an `examples` value
-      description: "This operation has a `requestBody` with separately maintained
-        example within `examples` at the Media Type Object level containing stringified
-        JSON object.\n\n\U0001F4DA OpenAPI specification references:\n\n* [3.0.3 Media
-        Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)\n\n*
-        [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
+      description: |
+        This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level
+        containing stringified JSON object.
+        
+        \U0001F4DA OpenAPI specification references:
+        
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       requestBody:
+        description: Request body primitive example, patch operation
         required: true
         content:
           application/json:
@@ -431,7 +442,7 @@ paths:
                   }
       responses:
         '200':
-          description: OK
+          description: OK, request body primitive example, patch operation
           content:
             application/json:
               schema:
@@ -454,12 +465,16 @@ paths:
       tags:
         - Multiple examples
       summary: Stringified JSON arrays in an `examples` value
-      description: "This operation has a `requestBody` with separately maintained
-        example within `examples` at the Media Type Object level containing a stringified
-        JSON array.\n\n\U0001F4DA OpenAPI specification references:\n\n* [3.0.3 Media
-        Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)\n\n*
-        [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
+      description: |
+        This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level
+        containing a stringified JSON array.
+        
+        \U0001F4DA OpenAPI specification references:
+
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
       requestBody:
+        description: Request body primitive example, put operation
         required: true
         content:
           application/json:
@@ -484,7 +499,7 @@ paths:
                   ]
       responses:
         '200':
-          description: OK
+          description: OK, request body primitive example, pu toperation
           content:
             application/json:
               schema:
@@ -506,18 +521,22 @@ paths:
                         "petType": "Dog"
                       }
                     ]
-  '/requestBody-multi-media-types':
+  '/request-body-multimedia-types':
     post:
       operationId: postRequestBodyMultiMediaTypes
       tags:
         - Multiple media types
       summary: Within `examples`
-      description: "This operation has a `requestBody` containing multiple media types
-        with each containing a separately maintained example within `examples` at
-        the Media Type Object level.\n\n\U0001F4DA OpenAPI specification references:\n\n*
-        [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)\n\n*
-        [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
+      description: |
+        This operation has a `requestBody` containing multiple media types with each containing
+        a separately maintained example within `examples` at the Media Type Object level.
+        
+        \U0001F4DA OpenAPI specification references:
+        
+        * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
+        * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)"
       requestBody:
+        description: Request body for multimedia types
         required: true
         content:
           text/plain:
@@ -538,7 +557,7 @@ paths:
                   petType: Dog
       responses:
         '200':
-          description: OK
+          description: OK, request body for 
           content:
             text/plain:
               examples:
@@ -557,21 +576,22 @@ paths:
                     name: Buster
                     petType: Dog
         '400':
-          description: Validation failed
+          description: Bad request, validation failed
           content:
             application/xml:
               examples:
                 response:
                   value: <?xml version="1.0" encoding="UTF-8"?><note><body>Invalid
                     pet!</body></note>
-  '/requestBody-form-data-example':
+  '/request-body-form-data-example':
     post:
-      description: Requst body with form data
+      description: Request body with form data
       operationId: postRequestBodyFormDataExample
       summary: Demo handling of formData
       tags:
         - Form data
       requestBody:
+        description: Request body for form data
         content:
           application/x-www-form-urlencoded:
             schema:
@@ -581,10 +601,13 @@ paths:
               type: object
               properties:
                 client_id:
+                  example: client_id
                   type: string
                 client_secret:
+                  example: '!_client_secret_!'
                   type: string
                 scope:
+                  example: 5
                   type: integer
                   format: int32
             examples:
@@ -612,34 +635,56 @@ paths:
 components:
   examples:
     user:
+      description: Definition of a user object
       value:
         id: 12343354
         email: test@example.com
         name: Test user name
   schemas:
     pet:
+      description: Definition of a pet object
+      example:
+        name: Jane
+        petType: Cat
       type: object
       properties:
         name:
+          example: Jane
           type: string
         petType:
+          example: Cat
           type: string
           enum:
             - Cat
             - Dog
     pets:
+      description: Array of pets
+      example: 
+        - pet:
+          name: Paula
+          petType: Cat
+        - pet:
+          name: Carlo
+          petType: Dog
       type: array
       items:
         '$ref': '#/components/schemas/pet'
-    tag:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
+    # tag:
+    #   type: object
+    #   properties:
+    #     id:
+    #       example: 123456
+    #       type: integer
+    #       format: int64
+    #     name:
+    #       example: Paula
+    #       type: string
     Token:
+      description: Definition of token object
+      example:
+        token_type: JWT
+        expires_in: 60
+        access_token: 12345
       title: Token
       required:
         - access_token
@@ -648,19 +693,30 @@ components:
       type: object
       properties:
         access_token:
+          example: 12345
           type: integer
           format: int32
         token_type:
+          example: JWT
           type: string
         expires_in:
+          example: 60
           type: integer
           format: int32
     user:
+      description: Definition of a user record 
+      example:
+        id: 123
+        email: ohn.doe@example.com
+        name: John Doe
       type: object
       properties:
         id:
+          example: 123
           type: number
         email:
+          example: john.doe@example.com
           type: string
         name:
+          example: John Doe
           type: string

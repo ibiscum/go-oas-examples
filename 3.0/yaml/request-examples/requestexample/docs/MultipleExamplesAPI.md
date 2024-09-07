@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**GetParameterExamplesParam1Param2**](MultipleExamplesAPI.md#GetParameterExamplesParam1Param2) | **Get** /parameterExamples/{param1}/{param2} | Within &#x60;examples&#x60; (parameters)
 [**PatchParameterExamplesParam1Param2**](MultipleExamplesAPI.md#PatchParameterExamplesParam1Param2) | **Patch** /parameterExamples/{param1}/{param2} | Within &#x60;examples&#x60; (mixed)
 [**PatchRequestBodyPrimitiveExample**](MultipleExamplesAPI.md#PatchRequestBodyPrimitiveExample) | **Patch** /requestBody-primitive-example | Stringified JSON object in an &#x60;examples&#x60; value
-[**PostRequestBody**](MultipleExamplesAPI.md#PostRequestBody) | **Post** /requestBody | Within &#x60;examples&#x60; (body)
+[**PostRequestBodyMultiple**](MultipleExamplesAPI.md#PostRequestBodyMultiple) | **Post** /requestBody | Within &#x60;examples&#x60; (body)
 [**PutRequestBodyPrimitiveExample**](MultipleExamplesAPI.md#PutRequestBodyPrimitiveExample) | **Put** /requestBody-primitive-example | Stringified JSON arrays in an &#x60;examples&#x60; value
 
 
@@ -29,7 +29,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -102,7 +102,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -185,7 +185,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -234,9 +234,9 @@ No authorization required
 [[Back to README]](../README.md)
 
 
-## PostRequestBody
+## PostRequestBodyMultiple
 
-> User PostRequestBody(ctx).User(user).Execute()
+> User PostRequestBodyMultiple(ctx).User(user).Execute()
 
 Within `examples` (body)
 
@@ -251,7 +251,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {
@@ -259,13 +259,13 @@ func main() {
 
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
-	resp, r, err := apiClient.MultipleExamplesAPI.PostRequestBody(context.Background()).User(user).Execute()
+	resp, r, err := apiClient.MultipleExamplesAPI.PostRequestBodyMultiple(context.Background()).User(user).Execute()
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error when calling `MultipleExamplesAPI.PostRequestBody``: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error when calling `MultipleExamplesAPI.PostRequestBodyMultiple``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `PostRequestBody`: User
-	fmt.Fprintf(os.Stdout, "Response from `MultipleExamplesAPI.PostRequestBody`: %v\n", resp)
+	// response from `PostRequestBodyMultiple`: User
+	fmt.Fprintf(os.Stdout, "Response from `MultipleExamplesAPI.PostRequestBodyMultiple`: %v\n", resp)
 }
 ```
 
@@ -275,7 +275,7 @@ func main() {
 
 ### Other Parameters
 
-Other parameters are passed through a pointer to a apiPostRequestBodyRequest struct via the builder pattern
+Other parameters are passed through a pointer to a apiPostRequestBodyMultipleRequest struct via the builder pattern
 
 
 Name | Type | Description  | Notes
@@ -317,7 +317,7 @@ import (
 	"context"
 	"fmt"
 	"os"
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/GIT_USER_ID/GIT_REPO_ID"
 )
 
 func main() {

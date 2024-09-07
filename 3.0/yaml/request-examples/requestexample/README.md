@@ -23,7 +23,7 @@ go get golang.org/x/net/context
 Put the package under your project folder and add the following in import:
 
 ```go
-import requestexample "github.com/ibiscum/go-oas-examples"
+import requestexample "github.com/GIT_USER_ID/GIT_REPO_ID"
 ```
 
 To use a proxy, set the environment variable `HTTP_PROXY`:
@@ -83,13 +83,13 @@ Class | Method | HTTP request | Description
 *MultipleExamplesAPI* | [**GetParameterExamplesParam1Param2**](docs/MultipleExamplesAPI.md#getparameterexamplesparam1param2) | **Get** /parameterExamples/{param1}/{param2} | Within &#x60;examples&#x60; (parameters)
 *MultipleExamplesAPI* | [**PatchParameterExamplesParam1Param2**](docs/MultipleExamplesAPI.md#patchparameterexamplesparam1param2) | **Patch** /parameterExamples/{param1}/{param2} | Within &#x60;examples&#x60; (mixed)
 *MultipleExamplesAPI* | [**PatchRequestBodyPrimitiveExample**](docs/MultipleExamplesAPI.md#patchrequestbodyprimitiveexample) | **Patch** /requestBody-primitive-example | Stringified JSON object in an &#x60;examples&#x60; value
-*MultipleExamplesAPI* | [**PostRequestBody**](docs/MultipleExamplesAPI.md#postrequestbody) | **Post** /requestBody | Within &#x60;examples&#x60; (body)
+*MultipleExamplesAPI* | [**PostRequestBodyMultiple**](docs/MultipleExamplesAPI.md#postrequestbodymultiple) | **Post** /requestBody | Within &#x60;examples&#x60; (body)
 *MultipleExamplesAPI* | [**PutRequestBodyPrimitiveExample**](docs/MultipleExamplesAPI.md#putrequestbodyprimitiveexample) | **Put** /requestBody-primitive-example | Stringified JSON arrays in an &#x60;examples&#x60; value
 *MultipleMediaTypesAPI* | [**PostRequestBodyMultiMediaTypes**](docs/MultipleMediaTypesAPI.md#postrequestbodymultimediatypes) | **Post** /requestBody-multi-media-types | Within &#x60;examples&#x60;
-*SingleExampleAPI* | [**PatchRequestBody**](docs/SingleExampleAPI.md#patchrequestbody) | **Patch** /requestBody | Within &#x60;example&#x60;
+*SingleExampleAPI* | [**PatchRequestBodySingle**](docs/SingleExampleAPI.md#patchrequestbodysingle) | **Patch** /requestBody | Within &#x60;example&#x60;
 *SingleExampleAPI* | [**PostRequestBodyPrimitiveExample**](docs/SingleExampleAPI.md#postrequestbodyprimitiveexample) | **Post** /requestBody-primitive-example | Primitive &#x60;example&#x60;
 *SingleExampleAPI* | [**PutParameterExamplesParam1Param2**](docs/SingleExampleAPI.md#putparameterexamplesparam1param2) | **Put** /parameterExamples/{param1}/{param2} | Within &#x60;example&#x60;
-*SingleExampleAPI* | [**PutRequestBody**](docs/SingleExampleAPI.md#putrequestbody) | **Put** /requestBody | &#x60;$ref&#x60; within &#x60;example&#x60;
+*SingleExampleAPI* | [**PutRequestBodySingle**](docs/SingleExampleAPI.md#putrequestbodysingle) | **Put** /requestBody | &#x60;$ref&#x60; within &#x60;example&#x60;
 
 
 ## Documentation For Models

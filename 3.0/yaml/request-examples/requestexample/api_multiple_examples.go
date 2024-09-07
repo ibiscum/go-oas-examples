@@ -39,11 +39,8 @@ func (r ApiGetParameterExamplesParam1Param2Request) Execute() (*User, *http.Resp
 GetParameterExamplesParam1Param2 Within `examples` (parameters)
 
 This operation has several parameters with examples alongside separately maintained example within `examples` at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -190,11 +187,8 @@ func (r ApiPatchParameterExamplesParam1Param2Request) Execute() (*User, *http.Re
 PatchParameterExamplesParam1Param2 Within `examples` (mixed)
 
 This operation has parameter and body examples alongside separately maintained example within `examples` at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -333,11 +327,8 @@ func (r ApiPatchRequestBodyPrimitiveExampleRequest) Execute() (*Pet, *http.Respo
 PatchRequestBodyPrimitiveExample Stringified JSON object in an `examples` value
 
 This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing stringified JSON object.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
@@ -430,37 +421,34 @@ func (a *MultipleExamplesAPIService) PatchRequestBodyPrimitiveExampleExecute(r A
 	return localVarReturnValue, localVarHTTPResponse, nil
 }
 
-type ApiPostRequestBodyRequest struct {
+type ApiPostRequestBodyMultipleRequest struct {
 	ctx context.Context
 	ApiService *MultipleExamplesAPIService
 	user *User
 }
 
-func (r ApiPostRequestBodyRequest) User(user User) ApiPostRequestBodyRequest {
+func (r ApiPostRequestBodyMultipleRequest) User(user User) ApiPostRequestBodyMultipleRequest {
 	r.user = &user
 	return r
 }
 
-func (r ApiPostRequestBodyRequest) Execute() (*User, *http.Response, error) {
-	return r.ApiService.PostRequestBodyExecute(r)
+func (r ApiPostRequestBodyMultipleRequest) Execute() (*User, *http.Response, error) {
+	return r.ApiService.PostRequestBodyMultipleExecute(r)
 }
 
 /*
-PostRequestBody Within `examples` (body)
+PostRequestBodyMultiple Within `examples` (body)
 
 This operation has a `requestBody` with separately maintained examples within `examples` at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiPostRequestBodyRequest
+ @return ApiPostRequestBodyMultipleRequest
 */
-func (a *MultipleExamplesAPIService) PostRequestBody(ctx context.Context) ApiPostRequestBodyRequest {
-	return ApiPostRequestBodyRequest{
+func (a *MultipleExamplesAPIService) PostRequestBodyMultiple(ctx context.Context) ApiPostRequestBodyMultipleRequest {
+	return ApiPostRequestBodyMultipleRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
@@ -468,7 +456,7 @@ func (a *MultipleExamplesAPIService) PostRequestBody(ctx context.Context) ApiPos
 
 // Execute executes the request
 //  @return User
-func (a *MultipleExamplesAPIService) PostRequestBodyExecute(r ApiPostRequestBodyRequest) (*User, *http.Response, error) {
+func (a *MultipleExamplesAPIService) PostRequestBodyMultipleExecute(r ApiPostRequestBodyMultipleRequest) (*User, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
@@ -476,7 +464,7 @@ func (a *MultipleExamplesAPIService) PostRequestBodyExecute(r ApiPostRequestBody
 		localVarReturnValue  *User
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultipleExamplesAPIService.PostRequestBody")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MultipleExamplesAPIService.PostRequestBodyMultiple")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
@@ -573,11 +561,8 @@ func (r ApiPutRequestBodyPrimitiveExampleRequest) Execute() ([]Pet, *http.Respon
 PutRequestBodyPrimitiveExample Stringified JSON arrays in an `examples` value
 
 This operation has a `requestBody` with separately maintained example within `examples` at the Media Type Object level containing a stringified JSON array.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().

@@ -13,7 +13,7 @@ import (
 	"context"
 	"testing"
 
-	openapiclient "github.com/ibiscum/go-oas-examples"
+	openapiclient "github.com/ibiscum/go-oas-examples/3.0/yaml/request-examples/requestexample"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -25,7 +25,7 @@ func Test_requestexample_FormDataAPIService(t *testing.T) {
 
 	t.Run("Test FormDataAPIService PostRequestBodyFormDataExample", func(t *testing.T) {
 
-		t.Skip("skip test") // remove to run test
+		// t.Skip("skip test") // remove to run test
 
 		resp, httpRes, err := apiClient.FormDataAPI.PostRequestBodyFormDataExample(context.Background()).Execute()
 

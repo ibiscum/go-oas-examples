@@ -36,11 +36,8 @@ func (r ApiPostRequestBodyMultiMediaTypesRequest) Execute() (*http.Response, err
 PostRequestBodyMultiMediaTypes Within `examples`
 
 This operation has a `requestBody` containing multiple media types with each containing a separately maintained example within `examples` at the Media Type Object level.
-
 📚 OpenAPI specification references:
-
 * [3.0.3 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#mediaTypeObject)
-
 * [3.1.0 Media Type Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#mediaTypeObject)
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
