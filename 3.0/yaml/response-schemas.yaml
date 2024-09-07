@@ -1,5 +1,9 @@
 openapi: 3.0.3
+tags:
+  - name: array-of-primitives
 info:
+  contact:
+    name: Example
   title: Responses with various schema formats
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#schema-object
   version: '1.0'
@@ -8,7 +12,11 @@ servers:
 paths:
   '/anything/array-of-primitives':
     get:
+      operationId: get-anything-array-of-primitives
       summary: Array of primitives
+      description: Array of primitives detail
+      tags:
+        - array-of-primitives
       responses:
         '200':
           description: OK
@@ -20,6 +28,7 @@ paths:
                   type: string
   '/anything/object':
     get:
+      operationId: get-anything-object
       summary: Object (also demonstrates readonly/writeonly)
       requestBody:
         content:
@@ -35,6 +44,7 @@ paths:
                 '$ref': '#/components/schemas/Object'
   '/anything/markdown':
     get:
+      operationId: get-anything-markdown
       summary: Markdown
       responses:
         '200':
@@ -55,6 +65,7 @@ paths:
                 '$ref': '#/components/schemas/Object'
   '/anything/array-of-objects':
     get:
+      operationId: get-anything-array-of-objects
       summary: Array of objects
       responses:
         '200':

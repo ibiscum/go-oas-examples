@@ -1,0 +1,82 @@
+openapi: 3.0.0
+tags:
+  - name: recursive
+info:
+  contact:
+    name: API Support
+    url: http://www.example.com/support
+    email: support@example.com
+  version: 1.0.0
+  title: Recursive Nodes
+  description: This is a slimmed down single path version recursive nodes.
+servers:
+  - url: https://example.com
+paths:
+  '/node/{id}':
+    parameters:
+      - name: id
+        description: Identifier for node
+        in: path
+        required: true
+        schema:
+          example: 389d0a35-e1f1-4c93-bb38-aff38eb9b7fb
+          type: string
+          format: uuid
+    put:
+      operationId: put-node
+      tags:
+        - recursive
+      summary: Update a node
+      description: This operation will update a node in the database.
+      responses:
+        '200':
+          description: Ok
+        '400':
+          description: Invalid id value
+    get:
+      operationId: get-node
+      tags:
+        - recursive
+      summary: Find a node
+      description: This operation will find a node in the database.
+      responses:
+        '200':
+          description: Finding a node was successful
+          content:
+            application/json:
+              example: []
+              schema:
+                type: object
+                items:
+                  '$ref': '#/components/schemas/node'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    nodes:
+      description: Array of nodes
+      example: []
+      type: array
+      items:
+        '$ref': '#/components/schemas/node'
+    node:
+      description: single node
+      example:
+        id: 7867ea0d-cb08-40db-aeeb-4e11d4efa993
+        level: 0
+        relationship: parent
+      properties:
+        id: 
+          example: 7d970e5c-a3a7-4ac9-b7ab-5ddf2bd8809f
+          type: string
+          format: uuid
+        level:
+          example: 1
+          type: integer
+          format: int8
+        relationship:
+          example: child
+          type: string
+        items:
+          '$ref': '#/components/schemas/nodes'
+      type: object

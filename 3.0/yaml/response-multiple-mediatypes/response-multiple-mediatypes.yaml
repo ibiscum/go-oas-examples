@@ -1,5 +1,10 @@
 openapi: 3.0.3
+tags:
+  - name: multiple
+  - name: single
 info:
+  contact: 
+    name: Example
   title: Responses with multiple media types
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#responseObject
   version: 1.0.0
@@ -8,20 +13,31 @@ servers:
 paths:
   '/multiple-types-multiple-examples':
     post:
-      summary: Multiple response types with multiple examples
+      operationId: post-multiple-types-multiple-examples
+      tags:
+        - multiple
+      summary: Multiple types, multiple examples
+      description: Multiple response types with multiple examples
       requestBody:
+        description: Request body multiple-types-multiple-examples
         content:
           application/json:
+            example: {
+              'string (format: date-time)': '2024-03-09T13:00:00Z'
+            }
             schema:
               type: object
               properties:
                 'string (format: date)':
+                  example: '2024-03-09'
                   type: string
                   format: date
                 'string (format: date-time)':
+                  example: '2024-03-09T13:00:00Z'
                   type: string
                   format: date-time
                 'string (format: string)':
+                  example: String
                   type: string
                   format: string
       responses:
@@ -61,20 +77,31 @@ paths:
                     forget me this weekend!</body></note>
   '/multiple-types-single-example':
     post:
-      summary: Multiple response types with a single example
+      operationId: post-multiple-types-single-example
+      description: Multiple response types with a single example
+      summary: Multiple response types, single example
+      tags:
+        - single
       requestBody:
+        description: Request body multiple-types-single-example
         content:
           application/json:
+            example: {
+              'string (format: date)': '2024-03-08'
+            }
             schema:
               type: object
               properties:
                 'string (format: date)':
+                  example: '2024-03-08'
                   type: string
                   format: date
                 'string (format: date-time)':
+                  example: '2024-03-08T13:00:00Z'
                   type: string
                   format: date-time
                 'string (format: string)':
+                  example: String
                   type: string
                   format: string
       responses:
@@ -106,7 +133,11 @@ paths:
                     forget me this weekend!</body></note>
   '/single-type-multiple-examples':
     get:
-      summary: Single media type with multiple examples
+      operationId: get-single-type-multiple-examples
+      tags:
+        - single
+      description: Single media type with multiple examples
+      summary: Single media type, multiple examples
       responses:
         '200':
           description: OK
@@ -140,7 +171,11 @@ paths:
                     forget me this weekend!</body></note>
   '/single-type-single-example':
     get:
-      summary: Single media type with a single example
+      operationId: get-single-type-single-example
+      summary: Single media type, single example
+      description: Single media type with a single example
+      tags:
+        - single
       responses:
         '200':
           description: OK
