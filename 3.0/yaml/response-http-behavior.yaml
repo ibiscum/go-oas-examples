@@ -1,5 +1,11 @@
 openapi: 3.0.0
+tags:
+  - name: header
+  - name: redirect
+  - name: status
 info:
+  contact:
+    name: Example
   description: This is a sample definition to test unique HTTP behavior.
   version: 1.0.0
   title: HTTP test
@@ -11,6 +17,8 @@ servers:
 paths:
   '/cache':
     get:
+      tags:
+        - header
       summary: Load a file with caching headers
       description: Making this request without these parameters should make an uncached
         request. When you provide `if-modified-since` or `if-none-match` you should
@@ -18,6 +26,7 @@ paths:
       operationId: cached
       parameters:
         - name: If-Modified-Since
+          example: '2024-08-03T13:00:00Z'
           in: header
           description: An RFC 3339 formatted `date-time` string, preferably in UTC.
             If the resource was last updated before the provided `date-time`, the server
@@ -28,6 +37,7 @@ paths:
             type: string
             format: date-time
         - name: If-None-Match
+          example: 304 Not Modified
           in: header
           description: If you provide a value here, it will be checked against the generated
             ETAG of the target resource. If they match, you'll get a `304 Not Modified`
@@ -36,29 +46,46 @@ paths:
           schema:
             type: string
       responses:
+        '200':
+          description: Ok
         default:
           description: successful response
       security:
         - api_key: []
   '/status/302':
     get:
+      tags:
+        - redirect
       summary: Redirect
       description: Returns a `302 Found` status
       operationId: redirect
       responses:
+        '300':
+          description: Redirect
         default:
           description: successful response
       security:
         - api_key: []
   '/status/204':
     get:
+      tags:
+        - status
       summary: No content
       description: Returns a `204 No Content` with no body
       operationId: nocontent
       responses:
+        '204':
+          description: 204 No Content
         default:
           description: successful response
       security:
         - api_key: []
+components:
+  securitySchemes:
+    api_key:
+      description: API key
+      type: apiKey
+      name: api_key
+      in: header
 x-readme:
   proxy-enabled: false
