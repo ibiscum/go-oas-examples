@@ -1,6 +1,0 @@
-{
-  "disallowAdditionalPropertiesIfNotPresent": false,
-  "isGoSubmodule": false,
-  "packageName" : "httpstatus",
-  "withGoMod" : false
-}

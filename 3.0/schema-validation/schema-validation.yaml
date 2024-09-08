@@ -8,7 +8,7 @@ info:
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#path-item-object
   version: 1.0.0
 servers:
-  - url: https://httpbin.org
+  - url: https://localhost:8000
 paths:
   '/anything/numbers':
     parameters:
