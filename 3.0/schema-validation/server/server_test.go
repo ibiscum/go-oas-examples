@@ -1,160 +1,146 @@
 package main
 
 import (
+	"io"
 	"net/http/httptest"
+	"strings"
 	"testing"
 
 	"github.com/gorilla/mux"
+	"github.com/ibiscum/go-oas-examples/3.0/schema-validation/server/api"
+	middleware "github.com/oapi-codegen/nethttp-middleware"
 	"github.com/oapi-codegen/testutil"
+	"github.com/stretchr/testify/require"
 )
 
 func doGet(t *testing.T, mux *mux.Router, url string) *httptest.ResponseRecorder {
-	response := testutil.NewRequest().Get(url).WithAcceptJson().GoWithHTTPHandler(t, mux)
+	response := testutil.NewRequest().Get(url).WithAccept("text/plain; charset=utf-8").GoWithHTTPHandler(t, mux)
 	return response.Recorder
 }
 
-// func TestPetStore(t *testing.T) {
-// 	var err error
+func TestCustomServer(t *testing.T) {
+	var err error
 
-// 	// Get the swagger description of our API
-// 	swagger, err := api.GetSwagger()
-// 	require.NoError(t, err)
+	// Get the swagger description of our API
+	swagger, err := api.GetSwagger()
+	require.NoError(t, err)
 
-// 	// Clear out the servers array in the swagger spec, that skips validating
-// 	// that server names match. We don't know how this thing will be run.
-// 	swagger.Servers = nil
+	// Clear out the servers array in the swagger spec, that skips validating
+	// that server names match. We don't know how this thing will be run.
+	swagger.Servers = nil
 
-// 	// This is how you set up a basic Gorilla router
-// 	r := mux.NewRouter()
+	// This is how you set up a basic chi router
+	router := mux.NewRouter()
 
-// 	// Use our validation middleware to check all requests against the
-// 	// OpenAPI schema.
-// 	r.Use(middleware.OapiRequestValidator(swagger))
+	// Use our validation middleware to check all requests against the
+	// OpenAPI schema.
+	router.Use(middleware.OapiRequestValidator(swagger))
 
-// 	store := api.NewPetStore()
-// 	api.HandlerFromMux(store, r)
+	// Create an instance of our handler which satisfies the generated interface
+	custom_server := api.NewCustomServer()
+	custom_server_strict_handler := api.NewStrictHandler(custom_server, nil)
 
-// 	t.Run("Add pet", func(t *testing.T) {
-// 		tag := "TagOfSpot"
-// 		newPet := api.NewPet{
-// 			Name: "Spot",
-// 			Tag:  &tag,
-// 		}
+	// We now register our custom_server above as the handler for the interface
+	api.HandlerFromMux(custom_server_strict_handler, router)
 
-// 		rr := testutil.NewRequest().Post("/pets").WithJsonBody(newPet).GoWithHTTPHandler(t, r).Recorder
-// 		assert.Equal(t, http.StatusCreated, rr.Code)
+	t.Run("get-anything-numbers-01", func(t *testing.T) {
+		rr := doGet(t, router, "/anything/numbers")
+		body, err := io.ReadAll(rr.Body)
+		if err != nil {
+			t.Fatalf("body: %#v", err)
+		}
+		require.Equal(t, true, strings.Contains(string(body), "parameter \"id-required\" in query has an error: value is required but missing\n"))
+	})
 
-// 		var resultPet api.Pet
-// 		err = json.NewDecoder(rr.Body).Decode(&resultPet)
-// 		assert.NoError(t, err, "error unmarshaling response")
-// 		assert.Equal(t, newPet.Name, resultPet.Name)
-// 		assert.Equal(t, *newPet.Tag, *resultPet.Tag)
-// 	})
+	t.Run("get-anything-numbers-02", func(t *testing.T) {
+		rr := doGet(t, router, "/anything/numbers?id-required=9")
+		body, err := io.ReadAll(rr.Body)
+		if err != nil {
+			t.Fatalf("body: %#v", err)
+		}
+		require.Equal(t, true, strings.Contains(string(body), "parameter \"id-required\" in query has an error: number must be at least 10\n"))
+	})
 
-// 	t.Run("Find pet by ID", func(t *testing.T) {
-// 		pet := api.Pet{
-// 			Id: 100,
-// 		}
+	// 	t.Run("List all pets", func(t *testing.T) {
+	// 		store.Pets = map[int64]api.Pet{
+	// 			1: {},
+	// 			2: {},
+	// 		}
 
-// 		store.Pets[pet.Id] = pet
-// 		rr := doGet(t, r, fmt.Sprintf("/pets/%d", pet.Id))
+	// 		// Now, list all pets, we should have two
+	// 		rr := doGet(t, r, "/pets")
+	// 		assert.Equal(t, http.StatusOK, rr.Code)
 
-// 		var resultPet api.Pet
-// 		err = json.NewDecoder(rr.Body).Decode(&resultPet)
-// 		assert.NoError(t, err, "error getting pet")
-// 		assert.Equal(t, pet, resultPet)
-// 	})
+	// 		var petList []api.Pet
+	// 		err = json.NewDecoder(rr.Body).Decode(&petList)
+	// 		assert.NoError(t, err, "error getting response", err)
+	// 		assert.Equal(t, 2, len(petList))
+	// 	})
 
-// 	t.Run("Pet not found", func(t *testing.T) {
-// 		rr := doGet(t, r, "/pets/27179095781")
-// 		assert.Equal(t, http.StatusNotFound, rr.Code)
+	// 	t.Run("Filter pets by tag", func(t *testing.T) {
+	// 		tag := "TagOfFido"
 
-// 		var petError api.Error
-// 		err = json.NewDecoder(rr.Body).Decode(&petError)
-// 		assert.NoError(t, err, "error getting response", err)
-// 		assert.Equal(t, int32(http.StatusNotFound), petError.Code)
-// 	})
+	// 		store.Pets = map[int64]api.Pet{
+	// 			1: {
+	// 				Tag: &tag,
+	// 			},
+	// 			2: {},
+	// 		}
 
-// 	t.Run("List all pets", func(t *testing.T) {
-// 		store.Pets = map[int64]api.Pet{
-// 			1: {},
-// 			2: {},
-// 		}
+	// 		// Filter pets by tag, we should have 1
+	// 		rr := doGet(t, r, "/pets?tags=TagOfFido")
+	// 		assert.Equal(t, http.StatusOK, rr.Code)
 
-// 		// Now, list all pets, we should have two
-// 		rr := doGet(t, r, "/pets")
-// 		assert.Equal(t, http.StatusOK, rr.Code)
+	// 		var petList []api.Pet
+	// 		err = json.NewDecoder(rr.Body).Decode(&petList)
+	// 		assert.NoError(t, err, "error getting response", err)
+	// 		assert.Equal(t, 1, len(petList))
+	// 	})
 
-// 		var petList []api.Pet
-// 		err = json.NewDecoder(rr.Body).Decode(&petList)
-// 		assert.NoError(t, err, "error getting response", err)
-// 		assert.Equal(t, 2, len(petList))
-// 	})
+	// 	t.Run("Filter pets by tag", func(t *testing.T) {
+	// 		store.Pets = map[int64]api.Pet{
+	// 			1: {},
+	// 			2: {},
+	// 		}
 
-// 	t.Run("Filter pets by tag", func(t *testing.T) {
-// 		tag := "TagOfFido"
+	// 		// Filter pets by non existent tag, we should have 0
+	// 		rr := doGet(t, r, "/pets?tags=NotExists")
+	// 		assert.Equal(t, http.StatusOK, rr.Code)
 
-// 		store.Pets = map[int64]api.Pet{
-// 			1: {
-// 				Tag: &tag,
-// 			},
-// 			2: {},
-// 		}
+	// 		var petList []api.Pet
+	// 		err = json.NewDecoder(rr.Body).Decode(&petList)
+	// 		assert.NoError(t, err, "error getting response", err)
+	// 		assert.Equal(t, 0, len(petList))
+	// 	})
 
-// 		// Filter pets by tag, we should have 1
-// 		rr := doGet(t, r, "/pets?tags=TagOfFido")
-// 		assert.Equal(t, http.StatusOK, rr.Code)
+	// 	t.Run("Delete pets", func(t *testing.T) {
+	// 		store.Pets = map[int64]api.Pet{
+	// 			1: {},
+	// 			2: {},
+	// 		}
 
-// 		var petList []api.Pet
-// 		err = json.NewDecoder(rr.Body).Decode(&petList)
-// 		assert.NoError(t, err, "error getting response", err)
-// 		assert.Equal(t, 1, len(petList))
-// 	})
+	// 		// Let's delete non-existent pet
+	// 		rr := testutil.NewRequest().Delete("/pets/7").GoWithHTTPHandler(t, r).Recorder
+	// 		assert.Equal(t, http.StatusNotFound, rr.Code)
 
-// 	t.Run("Filter pets by tag", func(t *testing.T) {
-// 		store.Pets = map[int64]api.Pet{
-// 			1: {},
-// 			2: {},
-// 		}
+	// 		var petError api.Error
+	// 		err = json.NewDecoder(rr.Body).Decode(&petError)
+	// 		assert.NoError(t, err, "error unmarshaling PetError")
+	// 		assert.Equal(t, int32(http.StatusNotFound), petError.Code)
 
-// 		// Filter pets by non existent tag, we should have 0
-// 		rr := doGet(t, r, "/pets?tags=NotExists")
-// 		assert.Equal(t, http.StatusOK, rr.Code)
+	// 		// Now, delete both real pets
+	// 		rr = testutil.NewRequest().Delete("/pets/1").GoWithHTTPHandler(t, r).Recorder
+	// 		assert.Equal(t, http.StatusNoContent, rr.Code)
 
-// 		var petList []api.Pet
-// 		err = json.NewDecoder(rr.Body).Decode(&petList)
-// 		assert.NoError(t, err, "error getting response", err)
-// 		assert.Equal(t, 0, len(petList))
-// 	})
+	// 		rr = testutil.NewRequest().Delete("/pets/2").GoWithHTTPHandler(t, r).Recorder
+	// 		assert.Equal(t, http.StatusNoContent, rr.Code)
 
-// 	t.Run("Delete pets", func(t *testing.T) {
-// 		store.Pets = map[int64]api.Pet{
-// 			1: {},
-// 			2: {},
-// 		}
-
-// 		// Let's delete non-existent pet
-// 		rr := testutil.NewRequest().Delete("/pets/7").GoWithHTTPHandler(t, r).Recorder
-// 		assert.Equal(t, http.StatusNotFound, rr.Code)
-
-// 		var petError api.Error
-// 		err = json.NewDecoder(rr.Body).Decode(&petError)
-// 		assert.NoError(t, err, "error unmarshaling PetError")
-// 		assert.Equal(t, int32(http.StatusNotFound), petError.Code)
-
-// 		// Now, delete both real pets
-// 		rr = testutil.NewRequest().Delete("/pets/1").GoWithHTTPHandler(t, r).Recorder
-// 		assert.Equal(t, http.StatusNoContent, rr.Code)
-
-// 		rr = testutil.NewRequest().Delete("/pets/2").GoWithHTTPHandler(t, r).Recorder
-// 		assert.Equal(t, http.StatusNoContent, rr.Code)
-
-// 		// Should have no pets left.
-// 		var petList []api.Pet
-// 		rr = doGet(t, r, "/pets")
-// 		assert.Equal(t, http.StatusOK, rr.Code)
-// 		err = json.NewDecoder(rr.Body).Decode(&petList)
-// 		assert.NoError(t, err, "error getting response", err)
-// 		assert.Equal(t, 0, len(petList))
-// 	})
-// }
+	//		// Should have no pets left.
+	//		var petList []api.Pet
+	//		rr = doGet(t, r, "/pets")
+	//		assert.Equal(t, http.StatusOK, rr.Code)
+	//		err = json.NewDecoder(rr.Body).Decode(&petList)
+	//		assert.NoError(t, err, "error getting response", err)
+	//		assert.Equal(t, 0, len(petList))
+	//	})
+}

@@ -13,6 +13,7 @@ paths:
   '/anything/numbers':
     parameters:
       - in: query
+        description: Required parameter id-required
         name: id-required
         schema:
           type: number
@@ -23,6 +24,7 @@ paths:
           example: 14
         required: true
       - in: query
+        description: Optional parameter id-optional
         name: id-optional
         schema:
           type: number
@@ -33,6 +35,7 @@ paths:
           example: 14
         required: false
       - in: query
+        description: Required parameter id-exclusive-required
         name: id-exclusive-required
         schema:
           type: number
@@ -42,9 +45,10 @@ paths:
           exclusiveMaximum: true
           multipleOf: 2
           default: 12
-          example: 14
+          example: 12
         required: true
       - in: query
+        description: Optional parameter id-exclusive-optional
         name: id-exclusive-optional
         schema:
           type: number
@@ -64,10 +68,11 @@ paths:
         - validation
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-numbers
   '/anything/strings':
     parameters:
       - in: query
+        description: Required parameter name-length-required
         name: name-length-required
         schema:
           type: string
@@ -77,6 +82,7 @@ paths:
           example: this is an example
         required: true
       - in: query
+        description: Optional parameter name-length-optional
         name: name-length-optional
         schema:
           type: string
@@ -86,6 +92,7 @@ paths:
           example: this is an example
         required: false
       - in: query
+        description: Required parameter name-pattern-required
         name: name-pattern-required
         schema:
           type: string
@@ -100,10 +107,13 @@ paths:
           following regex should work. It won't work if unicode is enabled because
           it has unescaped brace literals "
         schema:
+          example: '0000-1111-2222-3333-4444-5555-6666-7777'
           type: string
-          pattern: '^(?:{[0-9a-fA-F]{4}(?:-?[0-9a-fA-F]{4}){7}}|[0-9a-fA-F]{4}(?:-?[0-9a-fA-F]{4}){7})$'
+          pattern: '^([0-9a-fA-F]{4}(?:-?[0-9a-fA-F]{4}){7})$'
+          # pattern: '^(?:{[0-9a-fA-F]{4}(?:-?[0-9a-fA-F]{4}){7}}|[0-9a-fA-F]{4}(?:-?[0-9a-fA-F]{4}){7})$'
         required: true
       - in: query
+        description: Optional parameter name-pattern-optional as string
         name: name-pattern-optional
         schema:
           type: string
@@ -123,6 +133,7 @@ paths:
   '/anything/jsonschema-formats':
     parameters:
       - in: query
+        description: Optional parameter date-time as string
         name: date-time
         schema:
           type: string
@@ -131,6 +142,7 @@ paths:
           example: '1996-12-19T16:39:57-08:00'
         required: true
       - in: query
+        description: Optional parameter date as string
         name: date
         schema:
           type: string
@@ -139,6 +151,7 @@ paths:
           example: '1996-12-19'
         required: false
       - in: query
+        description: Optional parameter time as string
         name: time
         schema:
           type: string
@@ -147,6 +160,7 @@ paths:
           example: 16:39:57-08:00
         required: false
       - in: query
+        description: Optional parameter duration as string
         name: duration
         schema:
           type: string
@@ -155,6 +169,7 @@ paths:
           example: 'P3W'
         required: false
       - in: query
+        description: Optional parameter email as string
         name: email
         schema:
           type: string
@@ -163,6 +178,7 @@ paths:
           example: example@readme.io
         required: false
       - in: query
+        description: Optional parameter idn-email as string
         name: idn-email
         schema:
           type: string
@@ -171,6 +187,7 @@ paths:
           example: अजय@डाटा.भारत
         required: false
       - in: query
+        description: Optional parameter hostname as string
         name: hostname
         schema:
           type: string
@@ -179,6 +196,7 @@ paths:
           example: readme.com
         required: false
       - in: query
+        description: Optional parameter idn-hostname as string
         name: idn-hostname
         schema:
           type: string
@@ -187,6 +205,7 @@ paths:
           example: Bücher.example
         required: false
       - in: query
+        description: Optional parameter ipv4 as string
         name: ipv4
         schema:
           type: string
@@ -195,6 +214,7 @@ paths:
           example: 127.0.0.1
         required: false
       - in: query
+        description: Optional parameter ipv6 as string
         name: ipv6
         schema:
           type: string
@@ -203,6 +223,7 @@ paths:
           example: 0:0:0:0:0:0:0:1
         required: false
       - in: query
+        description: Optional parameter uri as string
         name: uri
         schema:
           type: string
@@ -211,6 +232,7 @@ paths:
           example: mailto:John.Doe@example.com
         required: false
       - in: query
+        description: Optional parameter uri-reference as string
         name: uri-reference
         schema:
           type: string
@@ -219,6 +241,7 @@ paths:
           example: '/example'
         required: false
       - in: query
+        description: Optional parameter iri as string
         name: iri
         schema:
           type: string
@@ -227,6 +250,7 @@ paths:
           example: https://en.wiktionary.org/wiki/ῥόδον
         required: false
       - in: query
+        description: Optional parameter iri-reference as string
         name: iri-reference
         schema:
           type: string
@@ -236,6 +260,7 @@ paths:
         required: false
       - in: query
         name: uuid
+        description: Optional parameter uuid as string
         schema:
           type: string
           format: uuid
@@ -244,6 +269,7 @@ paths:
         required: false
       - in: query
         name: uri-template
+        description: Optional parameter uri-template as string
         schema:
           type: string
           format: uri-template
@@ -251,6 +277,7 @@ paths:
           example: http://example.com/dictionary/{term:1}/{term}
         required: false
       - in: query
+        description: Optional parameter json-pointer as string
         name: json-pointer
         schema:
           type: string
@@ -259,6 +286,7 @@ paths:
           example: '/a~1b'
         required: false
       - in: query
+        description: Optional parameter relative-json-pointer as string
         name: relative-json-pointer
         schema:
           type: string
@@ -267,6 +295,7 @@ paths:
           example: 2/foo/0
         required: false
       - in: query
+        description: Optional parameter regex as string
         name: regex
         schema:
           type: string
@@ -282,10 +311,11 @@ paths:
         - validation
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-jsonschema-formats
   '/anything/oas-formats':
     parameters:
       - in: query
+        description: Optional parameter int32 as integer
         name: int32
         schema:
           type: integer
@@ -294,6 +324,7 @@ paths:
           example: 23456
         required: true
       - in: query
+        description: Optional parameter int64 as integer
         name: int64
         schema:
           type: integer
@@ -302,6 +333,7 @@ paths:
           example: 4000000000
         required: false
       - in: query
+        description: Optional parameter float as number
         name: float
         schema:
           type: number
@@ -310,6 +342,7 @@ paths:
           example: 2.0
         required: false
       - in: query
+        description: Optional parameter double as number
         name: double
         schema:
           type: number
@@ -318,18 +351,23 @@ paths:
           example: 4000000000.0
         required: false
       - in: query
+        description: Optional parameter byte as string
         name: byte
         schema:
+          example: '9798'
           type: string
           format: byte
         required: false
       - in: query
+        description: Optional parameter binary as string
         name: binary
         schema:
+          example: '9798'
           type: string
           format: binary
         required: false
       - in: query
+        description: Optional parameter password
         name: password
         schema:
           type: string
@@ -344,10 +382,11 @@ paths:
         - validation
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-oas-formats
   '/anything/booleans':
     parameters:
       - in: query
+        description: Required parameter boolean true/false
         name: tf-required
         schema:
           type: boolean
@@ -370,4 +409,4 @@ paths:
       summary: Booleans
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-booleans

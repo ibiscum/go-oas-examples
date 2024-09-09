@@ -24,6 +24,7 @@ import (
 
 // GetAnythingBooleansParams defines parameters for GetAnythingBooleans.
 type GetAnythingBooleansParams struct {
+	// TfRequired Required parameter boolean true/false
 	TfRequired bool `form:"tf-required" json:"tf-required"`
 
 	// TfOptional Optional boolean
@@ -32,55 +33,119 @@ type GetAnythingBooleansParams struct {
 
 // GetAnythingJsonschemaFormatsParams defines parameters for GetAnythingJsonschemaFormats.
 type GetAnythingJsonschemaFormatsParams struct {
-	DateTime            time.Time            `form:"date-time" json:"date-time"`
-	Date                *openapi_types.Date  `form:"date,omitempty" json:"date,omitempty"`
-	Time                *string              `form:"time,omitempty" json:"time,omitempty"`
-	Duration            *string              `form:"duration,omitempty" json:"duration,omitempty"`
-	Email               *openapi_types.Email `form:"email,omitempty" json:"email,omitempty"`
-	IdnEmail            *string              `form:"idn-email,omitempty" json:"idn-email,omitempty"`
-	Hostname            *string              `form:"hostname,omitempty" json:"hostname,omitempty"`
-	IdnHostname         *string              `form:"idn-hostname,omitempty" json:"idn-hostname,omitempty"`
-	Ipv4                *string              `form:"ipv4,omitempty" json:"ipv4,omitempty"`
-	Ipv6                *string              `form:"ipv6,omitempty" json:"ipv6,omitempty"`
-	Uri                 *string              `form:"uri,omitempty" json:"uri,omitempty"`
-	UriReference        *string              `form:"uri-reference,omitempty" json:"uri-reference,omitempty"`
-	Iri                 *string              `form:"iri,omitempty" json:"iri,omitempty"`
-	IriReference        *string              `form:"iri-reference,omitempty" json:"iri-reference,omitempty"`
-	Uuid                *openapi_types.UUID  `form:"uuid,omitempty" json:"uuid,omitempty"`
-	UriTemplate         *string              `form:"uri-template,omitempty" json:"uri-template,omitempty"`
-	JsonPointer         *string              `form:"json-pointer,omitempty" json:"json-pointer,omitempty"`
-	RelativeJsonPointer *string              `form:"relative-json-pointer,omitempty" json:"relative-json-pointer,omitempty"`
-	Regex               *string              `form:"regex,omitempty" json:"regex,omitempty"`
+	// DateTime Optional parameter date-time as string
+	DateTime time.Time `form:"date-time" json:"date-time"`
+
+	// Date Optional parameter date as string
+	Date *openapi_types.Date `form:"date,omitempty" json:"date,omitempty"`
+
+	// Time Optional parameter time as string
+	Time *string `form:"time,omitempty" json:"time,omitempty"`
+
+	// Duration Optional parameter duration as string
+	Duration *string `form:"duration,omitempty" json:"duration,omitempty"`
+
+	// Email Optional parameter email as string
+	Email *openapi_types.Email `form:"email,omitempty" json:"email,omitempty"`
+
+	// IdnEmail Optional parameter idn-email as string
+	IdnEmail *string `form:"idn-email,omitempty" json:"idn-email,omitempty"`
+
+	// Hostname Optional parameter hostname as string
+	Hostname *string `form:"hostname,omitempty" json:"hostname,omitempty"`
+
+	// IdnHostname Optional parameter idn-hostname as string
+	IdnHostname *string `form:"idn-hostname,omitempty" json:"idn-hostname,omitempty"`
+
+	// Ipv4 Optional parameter ipv4 as string
+	Ipv4 *string `form:"ipv4,omitempty" json:"ipv4,omitempty"`
+
+	// Ipv6 Optional parameter ipv6 as string
+	Ipv6 *string `form:"ipv6,omitempty" json:"ipv6,omitempty"`
+
+	// Uri Optional parameter uri as string
+	Uri *string `form:"uri,omitempty" json:"uri,omitempty"`
+
+	// UriReference Optional parameter uri-reference as string
+	UriReference *string `form:"uri-reference,omitempty" json:"uri-reference,omitempty"`
+
+	// Iri Optional parameter iri as string
+	Iri *string `form:"iri,omitempty" json:"iri,omitempty"`
+
+	// IriReference Optional parameter iri-reference as string
+	IriReference *string `form:"iri-reference,omitempty" json:"iri-reference,omitempty"`
+
+	// Uuid Optional parameter uuid as string
+	Uuid *openapi_types.UUID `form:"uuid,omitempty" json:"uuid,omitempty"`
+
+	// UriTemplate Optional parameter uri-template as string
+	UriTemplate *string `form:"uri-template,omitempty" json:"uri-template,omitempty"`
+
+	// JsonPointer Optional parameter json-pointer as string
+	JsonPointer *string `form:"json-pointer,omitempty" json:"json-pointer,omitempty"`
+
+	// RelativeJsonPointer Optional parameter relative-json-pointer as string
+	RelativeJsonPointer *string `form:"relative-json-pointer,omitempty" json:"relative-json-pointer,omitempty"`
+
+	// Regex Optional parameter regex as string
+	Regex *string `form:"regex,omitempty" json:"regex,omitempty"`
 }
 
 // GetAnythingNumbersParams defines parameters for GetAnythingNumbers.
 type GetAnythingNumbersParams struct {
-	IdRequired          float32  `form:"id-required" json:"id-required"`
-	IdOptional          *float32 `form:"id-optional,omitempty" json:"id-optional,omitempty"`
-	IdExclusiveRequired float32  `form:"id-exclusive-required" json:"id-exclusive-required"`
+	// IdRequired Required parameter id-required
+	IdRequired float32 `form:"id-required" json:"id-required"`
+
+	// IdOptional Optional parameter id-optional
+	IdOptional *float32 `form:"id-optional,omitempty" json:"id-optional,omitempty"`
+
+	// IdExclusiveRequired Required parameter id-exclusive-required
+	IdExclusiveRequired float32 `form:"id-exclusive-required" json:"id-exclusive-required"`
+
+	// IdExclusiveOptional Optional parameter id-exclusive-optional
 	IdExclusiveOptional *float32 `form:"id-exclusive-optional,omitempty" json:"id-exclusive-optional,omitempty"`
 }
 
 // GetAnythingOasFormatsParams defines parameters for GetAnythingOasFormats.
 type GetAnythingOasFormatsParams struct {
-	Int32    int32               `form:"int32" json:"int32"`
-	Int64    *int64              `form:"int64,omitempty" json:"int64,omitempty"`
-	Float    *float32            `form:"float,omitempty" json:"float,omitempty"`
-	Double   *float64            `form:"double,omitempty" json:"double,omitempty"`
-	Byte     *[]byte             `form:"byte,omitempty" json:"byte,omitempty"`
-	Binary   *openapi_types.File `form:"binary,omitempty" json:"binary,omitempty"`
-	Password *string             `form:"password,omitempty" json:"password,omitempty"`
+	// Int32 Optional parameter int32 as integer
+	Int32 int32 `form:"int32" json:"int32"`
+
+	// Int64 Optional parameter int64 as integer
+	Int64 *int64 `form:"int64,omitempty" json:"int64,omitempty"`
+
+	// Float Optional parameter float as number
+	Float *float32 `form:"float,omitempty" json:"float,omitempty"`
+
+	// Double Optional parameter double as number
+	Double *float64 `form:"double,omitempty" json:"double,omitempty"`
+
+	// Byte Optional parameter byte as string
+	Byte *[]byte `form:"byte,omitempty" json:"byte,omitempty"`
+
+	// Binary Optional parameter binary as string
+	Binary *openapi_types.File `form:"binary,omitempty" json:"binary,omitempty"`
+
+	// Password Optional parameter password
+	Password *string `form:"password,omitempty" json:"password,omitempty"`
 }
 
 // GetAnythingStringsParams defines parameters for GetAnythingStrings.
 type GetAnythingStringsParams struct {
-	NameLengthRequired  string  `form:"name-length-required" json:"name-length-required"`
-	NameLengthOptional  *string `form:"name-length-optional,omitempty" json:"name-length-optional,omitempty"`
-	NamePatternRequired string  `form:"name-pattern-required" json:"name-pattern-required"`
+	// NameLengthRequired Required parameter name-length-required
+	NameLengthRequired string `form:"name-length-required" json:"name-length-required"`
+
+	// NameLengthOptional Optional parameter name-length-optional
+	NameLengthOptional *string `form:"name-length-optional,omitempty" json:"name-length-optional,omitempty"`
+
+	// NamePatternRequired Required parameter name-pattern-required
+	NamePatternRequired string `form:"name-pattern-required" json:"name-pattern-required"`
 
 	// ComplexPatternRequired OpenAPI 3.0.3, which defaults to JSON Schema v4, does not provide the unicode flag to the input tooltip regex validation. This means that the following regex should work. It won't work if unicode is enabled because it has unescaped brace literals
-	ComplexPatternRequired string  `form:"complex-pattern-required" json:"complex-pattern-required"`
-	NamePatternOptional    *string `form:"name-pattern-optional,omitempty" json:"name-pattern-optional,omitempty"`
+	ComplexPatternRequired string `form:"complex-pattern-required" json:"complex-pattern-required"`
+
+	// NamePatternOptional Optional parameter name-pattern-optional as string
+	NamePatternOptional *string `form:"name-pattern-optional,omitempty" json:"name-pattern-optional,omitempty"`
 }
 
 // ServerInterface represents all server handlers.
@@ -950,34 +1015,38 @@ func (sh *strictHandler) GetAnythingStrings(w http.ResponseWriter, r *http.Reque
 // Base64 encoded, gzipped, json marshaled Swagger object
 var swaggerSpec = []string{
 
-	"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",
+	"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",
 }
 
 // GetSwagger returns the content of the embedded swagger specification file
