@@ -1,6 +1,11 @@
 openapi: 3.0.3
 tags:
   - name: array-of-primitives
+  - name: object
+  - name: string
+  - name: ref
+  - name: polymorphism
+  - name: markdown
 info:
   contact:
     name: Example
@@ -29,7 +34,10 @@ paths:
   '/anything/object':
     get:
       operationId: get-anything-object
+      description: Object (also demonstrates readonly/writeonly) details
       summary: Object (also demonstrates readonly/writeonly)
+      tags:
+        - object
       requestBody:
         content:
           application/json:
@@ -44,8 +52,11 @@ paths:
                 '$ref': '#/components/schemas/Object'
   '/anything/markdown':
     get:
+      description: Markdown details
       operationId: get-anything-markdown
       summary: Markdown
+      tags:
+      - markdown
       responses:
         '200':
           description: |-
@@ -78,7 +89,11 @@ paths:
                   '$ref': '#/components/schemas/Object'
   '/anything/polymorphism':
     get:
+      operationId: get-anything-polymorphism
       summary: Polymorphism
+      description: Polymorphism details
+      tags:
+        - polymorphism
       responses:
         '200':
           description: OK
@@ -92,7 +107,11 @@ paths:
                   - type: string
   '/anything/recursive':
     get:
+      operationId: get-anything-recursive
       summary: Recursive $ref lookup
+      description: Recursive $ref lookup details
+      tags:
+        - ref
       responses:
         '200':
           description: OK
@@ -104,10 +123,13 @@ paths:
                   '$ref': '#/components/schemas/Node'
   '/anything/returns-as-json-but-is-actually-string':
     get:
+      operationId: get-anything-returns-as-json-but-is-actually-string
       summary: Returns as JSON, but is actually a simple string
       description: This example is to ensure that we don't hard fail out on attempting
         to parse a non-JSON string as JSON, and instead fallback to the standard syntax
         highlighter.
+      tags:
+        - string
       responses:
         '200':
           description: OK
@@ -121,6 +143,10 @@ paths:
                   value: 96fab4bb-ff68-43e2-94d8-7046f3173d9c
   '/multiple-responses/object':
     get:
+      operationId: get-multiple-responses-object
+      description: Multiple responses object
+      tags:
+        - object
       summary: Object
       responses:
         '200':
@@ -148,47 +174,85 @@ paths:
 components:
   schemas:
     Node:
+      example:
+        children: 
       type: object
       properties:
         children:
+          example: 
+            - Node:
           type: array
           items:
             '$ref': '#/components/schemas/Node'
     Object:
+      example: 
+        primitive: String
+        read-only: String
+      description: Definition of an oject
       type: object
       properties:
         primitive:
+          example: String
           type: string
           title: primitive title
         read-only:
+          example: String
           type: string
           readOnly: true
         write-only:
+          example: String
           type: string
           writeOnly: true
         object:
+          example:
+            primitive: false
           type: object
           properties:
             primitive:
               type: boolean
         array:
+          example: [
+            primitive: true,
+            primitive: false
+          ]
           type: array
           items:
+            example:
+              primitive: true
             type: object
             properties:
               primitive:
                 type: boolean
         pets:
+          example:
+            - name: Paula
+              photoUrls: [
+                http://example.com/photo/photo01.jpg,
+                http://example.com/photo/photo02.jpg 
+              ]
+            - name: Emma
+              photoUrls: [
+                http://example.com/photo/photo03.jpg,
+                http://example.com/photo/photo04.jpg 
+              ]
           type: array
           items:
             '$ref': '#/components/schemas/Pet'
     Pet:
+      example: 
+        name: Paula
+        photoUrls: [
+          http://example.com/photo/photo01.jpg,
+          http://example.com/photo/photo02.jpg 
+        ]
+      description: Definition of a pet object
       type: object
       required:
         - name
         - photoUrls
       properties:
         id:
+          example: 1234567890
           type: integer
           format: int64
         name:
@@ -249,10 +313,16 @@ components:
           type: string
           example: doggie
         photoUrls:
+          example: [
+            'http://example.com/image/photo01.png',
+            'http://example.com/image/photo02.png'
+          ]
           type: array
           items:
+            example: 'http://example.com/image/photo.png'
             type: string
         status:
+          example: available
           type: string
           description: pet status in the store
           enum:
