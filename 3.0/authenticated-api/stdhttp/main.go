@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/oapi-codegen/oapi-codegen/v2/examples/authenticated-api/stdhttp/api"
-	"github.com/oapi-codegen/oapi-codegen/v2/examples/authenticated-api/stdhttp/server"
+	"github.com/ibiscum/go-oas-examples/3.0/authenticated-api/stdhttp/api"
+	"github.com/ibiscum/go-oas-examples/3.0/authenticated-api/stdhttp/server"
 )
 
 func main() {

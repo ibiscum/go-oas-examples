@@ -9,8 +9,8 @@ import (
 	"sync"
 
 	"github.com/getkin/kin-openapi/openapi3filter"
+	"github.com/ibiscum/go-oas-examples/3.0/authenticated-api/stdhttp/api"
 	middleware "github.com/oapi-codegen/nethttp-middleware"
-	"github.com/oapi-codegen/oapi-codegen/v2/examples/authenticated-api/stdhttp/api"
 )
 
 type server struct {
