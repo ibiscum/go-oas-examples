@@ -81,7 +81,7 @@ paths:
                     - available
                     - pending
                     - sold
-                  example: --
+                  example: sold
                 enum (with non-value example) *required:
                   type: string
                   description: This enum has an example that isn't part of the enum,
@@ -90,7 +90,7 @@ paths:
                     - available
                     - pending
                     - sold
-                  example: Choose...
+                  example: available
                 enum (with empty option):
                   type: string
                   description: This enum has an empty string (`""`) as one of its
@@ -102,13 +102,12 @@ paths:
                     - sold
                 enum (with duplicate options):
                   type: string
-                  description: This enum has multiple duplicate options, they should
-                    get deduped in the UI
+                  description: This enum has multiple duplicate options, they should get deduped in the UI
                   enum:
-                    - ''
+                    # - ''
                     - ''
                     - available
-                    - available
+                    # - available
                 enum (with empty option and empty default):
                   type: string
                   description: This enum has a an empty string (`""`) as its only
@@ -190,20 +189,19 @@ paths:
                   description: This enum has an empty string (`""`) as one of its
                     available options.
                   enum:
-                    - ''
+                    # - ''
                     - 0
                     - 1
                     - 2
                 enum (with duplicate options):
                   type: number
-                  description: This enum has multiple duplicate options, they should
-                    get deduped in the UI
+                  description: This enum has multiple duplicate options, they should get deduped in the UI
                   enum:
-                    - ''
-                    - ''
                     - 0
+                    # - ''
+                    - 1
                     - 2
-                    - 2
+                    # - 2
               required:
                 - enum *required
                 - enum (with default) *required
@@ -212,17 +210,22 @@ paths:
         '200':
           description: OK
     put:
-      operationId: boolean_enumSupport
+      operationId: put-boolean-enum-support
       summary: Boolean enum support
-      description: "Support and handling of enums on `type: boolean` schemas.\n\n\U0001F4DA
-        OpenAPI specification references:\n\n* [3.0.3 Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#schemaObject)\n\n*
-        [3.1.0 Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#schemaObject)"
+      description: "Support and handling of enums on `type: boolean` schemas.\n\n
+        \U0001F4DA OpenAPI specification references:\n\n* [3.0.3 Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#schemaObject)\n\n
+        * [3.1.0 Schema Object](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.1.0.md#schemaObject)"
       tags:
         - Enums
       requestBody:
         content:
           application/json:
             schema:
+              example:
+                enum *required: true
+                enum (with default) *required: true
+                enum (with example) *required: Example-01
+
               type: object
               properties:
                 enum:
@@ -252,10 +255,13 @@ paths:
                     - true
                     - false
                   default: true
+                enum (with example) *required:
+                  example: Option-01
+                  type: string
               required:
                 - enum *required
                 - enum (with default) *required
                 - enum (with example) *required
       responses:
         '200':
-          description: OK
+          description: OK, operation put-boolean-enum-support

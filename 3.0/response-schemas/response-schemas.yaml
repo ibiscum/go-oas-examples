@@ -28,8 +28,12 @@ paths:
           content:
             application/json:
               schema:
+                example:
+                  - String 01
+                  - String 02
                 type: array
                 items:
+                  example: Item string
                   type: string
   '/anything/object':
     get:
@@ -39,13 +43,14 @@ paths:
       tags:
         - object
       requestBody:
+        description: Request body, operation get-anything-object
         content:
           application/json:
             schema:
               '$ref': '#/components/schemas/Object'
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-object
           content:
             application/json:
               schema:
@@ -69,7 +74,7 @@ paths:
               schema:
                 '$ref': '#/components/schemas/Object'
         '400':
-          description: OK
+          description: NOK, operation get-anything-markdown 
           content:
             application/json:
               schema:
@@ -77,13 +82,19 @@ paths:
   '/anything/array-of-objects':
     get:
       operationId: get-anything-array-of-objects
+      description: Operation get-anything-array-of-objects
+      tags:
+        - object
       summary: Array of objects
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-array-of-objects
           content:
             application/json:
               schema:
+                example:
+                  - Object:
+                  - Object:
                 type: array
                 items:
                   '$ref': '#/components/schemas/Object'
@@ -96,15 +107,23 @@ paths:
         - polymorphism
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-polymorphism
           content:
             application/json:
+              example:
+                name: Paula
+                photoUrls: [
+                  http://example.com/photo/photo01.jpg,
+                  http://example.com/photo/photo02.jpg
+                ]
               schema:
                 oneOf:
                   - type: string
+                    example: Pet first object
                     title: first object
                   - '$ref': '#/components/schemas/Pet'
                   - type: string
+                    example: Pet polymorphism
   '/anything/recursive':
     get:
       operationId: get-anything-recursive
@@ -114,10 +133,13 @@ paths:
         - ref
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-recursive
           content:
             application/json:
               schema:
+                example: [
+
+                ]
                 type: array
                 items:
                   '$ref': '#/components/schemas/Node'
@@ -132,7 +154,7 @@ paths:
         - string
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything-returns-as-json-but-is-actually-string
           content:
             application/json:
               schema:
@@ -150,30 +172,41 @@ paths:
       summary: Object
       responses:
         '200':
-          description: OK
+          description: OK, operation get-multiple-responses-object
           content:
             application/json:
               schema:
+                example:
+                  hello: Hello
+                  there: There
                 type: object
                 properties:
                   hello:
+                    example: Hello
                     type: string
                   there:
+                    example: There
                     type: string
         '400':
           description: A 400 error response
           content:
             application/json:
               schema:
+                example:
+                  obi: Obi
+                  wan: Wan
                 type: object
                 properties:
                   obi:
+                    example: Obi
                     type: string
                   wan:
+                    example: Wan
                     type: string
 components:
   schemas:
     Node:
+      description: Circular reference Node
       example:
         children: 
       type: object

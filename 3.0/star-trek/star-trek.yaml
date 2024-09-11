@@ -1,5 +1,8 @@
 openapi: 3.0.1
 info:
+  description: Star Trek API
+  contact:
+    name: STAPI
   title: STAPI
   version: 1.0.0
 servers:
@@ -7,6 +10,7 @@ servers:
 paths:
   '/animal':
     get:
+      operationId: get-animal
       tags:
         - Animal
       description: Retrival of a single animal
@@ -1591,6 +1595,7 @@ paths:
                 '$ref': '#/components/schemas/Error'
   '/conflict/search':
     get:
+      operationId: get-conflict-search
       tags:
         - Conflict
       description: Pagination over conflicts
@@ -2555,6 +2560,7 @@ paths:
                 '$ref': '#/components/schemas/MagazineBaseResponse'
   '/magazineSeries':
     get:
+      operationId: 
       tags:
         - MagazineSeries
       description: Retrival of a single magazine series

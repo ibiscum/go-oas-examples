@@ -1,5 +1,9 @@
 openapi: 3.0.3
+tags:
+  - name: additional
 info:
+  contact:
+    name: Example
   title: Support for `additionalProperties` declarations
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#schema-object
   version: 1.0.0
@@ -9,6 +13,10 @@ paths:
   '/post':
     post:
       summary: Should allow additionalProperties in JSON schema
+      description: Should allow additionalProperties in JSON schema details
+      operationId: post-post
+      tags:
+      - additional
       requestBody:
         content:
           application/json:
@@ -125,15 +133,26 @@ paths:
 components:
   schemas:
     ref:
+      example: 45
       type: integer
     ref-with-ref:
+      example:
+        code: 201
+        text: OK
+      description: Object ref-with-ref
       type: object
       properties:
         code:
+          example: 201
           type: integer
         text:
+          example: Arbitrary text
           type: string
         array:
+          example:
+            - 30
+            - 31
+            - 33
           type: array
           items:
             '$ref': '#/components/schemas/ref'
