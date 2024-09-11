@@ -1,1 +1,0 @@
-    oapi-codegen -config api-cfg.yaml ../../schema-validation.yaml

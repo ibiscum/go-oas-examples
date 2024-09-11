@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/gorilla/mux"
-	"github.com/ibiscum/go-oas-examples/3.0/schema-validation/server/api"
+	"github.com/ibiscum/go-oas-examples/3.0/schema-validation/api"
 	middleware "github.com/oapi-codegen/nethttp-middleware"
 	"github.com/oapi-codegen/testutil"
 	"github.com/stretchr/testify/require"

@@ -3,17 +3,18 @@ tags:
   - name: anything
 info:
   contact:
-    name: HttpBin
+    name: Example
   description: API definition
   title: API definition with a circular $ref
   version: 1.0.0
 servers:
-  - url: https://httpbin.org
+  - url: https://localhost:8001
 paths:
   '/anything':
     get:
+      summary: Get anything
       operationId: get-anything
-      description: Get anything
+      description: Description of get anything
       tags:
         - anything
       responses:
@@ -28,23 +29,31 @@ paths:
 components:
   schemas:
     ErrorMessage:
+      description: Detailed error message
+      example:
+        statusCode: 400
+        error: Bad request
       type: object
       additionalProperties: false
       properties:
         statusCode:
+          example: 400
           type: integer
           format: int32
         error:
+          example: Bad request
           type: string
           nullable: true
         inner:
           '$ref': '#/components/schemas/ErrorMessage'
         canBeRetried:
+          example: Yes
           type: string
           enum:
             - Unknown
-            - 'Yes'
-            - 'No'
+            - Yes
+            - No
         detailedErrorCode:
+          example: 12345
           type: integer
           format: int32
