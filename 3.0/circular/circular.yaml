@@ -19,9 +19,13 @@ paths:
         - anything
       responses:
         '200':
-          description: OK
+          description: OK, operation get-anything
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/ErrorMessage'
         '404':
-          description: Not found
+          description: Not found, operation get-anything
           content:
             application/json:
               schema:

@@ -7,12 +7,12 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/ibiscum/go-oas-examples/3.0/cicular/api"
+	"github.com/ibiscum/go-oas-examples/3.0/circular/api"
 	middleware "github.com/oapi-codegen/nethttp-middleware"
 )
 
 func main() {
-	port := flag.String("port", "8000", "Port for test HTTP server")
+	port := flag.String("port", "8001", "Port for test HTTP server")
 	flag.Parse()
 
 	swagger, err := api.GetSwagger()

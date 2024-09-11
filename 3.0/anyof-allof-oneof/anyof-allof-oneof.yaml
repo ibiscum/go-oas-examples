@@ -1,0 +1,127 @@
+openapi: "3.0.0"
+tags:
+  - name: anything
+servers: 
+  - url: https://localhost:8001
+info:
+  contact:
+    name: Example
+  version: 1.0.0
+  title: Using complex schemas
+  description: An example of `anyOf`, `allOf` and `oneOf`
+paths: 
+  '/client-with-id':
+    get:
+      summary: Get client-with-id
+      operationId: get-client-with-id
+      description: Description of operation get-client-with-id
+      tags:
+        - anything
+      responses:
+        '200':
+          description: OK, operation get-client-with-id
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/ClientWithId'
+  '/identity-with-duplicate-field':
+    get:
+      summary: Get identity-with-duplicate-field
+      operationId: get-identity-with-duplicate-field
+      description: Description of operation get-identity-with-duplicate-field
+      tags:
+        - anything
+      responses:
+        '200':
+          description: OK, operation get-identity-with-duplicate-field
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/IdentityWithDuplicateField'
+  '/client-and-maybe-identity':
+    get:
+      summary: Get identity-with-duplicate-field
+      operationId: get-client-and-maybe-identity
+      description: Description of operation get-client-and-maybe-identity
+      tags:
+        - anything
+      responses:
+        '200':
+          description: OK, operation get-client-and-maybe-identity
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/ClientAndMaybeIdentity'
+  '/client-or-identity':
+    get:
+      summary: Get client-or-identity
+      operationId: get-client-or-identity
+      description: Description of operation get-client-or-identity
+      tags:
+        - anything
+      responses:
+        '200':
+          description: OK, operation get-client-or-identity
+          content:
+            application/json:
+              schema:
+                '$ref': '#/components/schemas/ClientOrIdentity'
+components:
+  schemas:
+    # base types
+    Client:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+    Identity:
+      type: object
+      required:
+        - issuer
+      properties:
+        issuer:
+          type: string
+
+    # allOf performs a union of all types defined
+    ClientWithId:
+      allOf:
+        - $ref: '#/components/schemas/Client'
+        - properties:
+            id:
+              type: integer
+          required:
+            - id
+
+    # allOf performs a union of all types defined, but if there's a duplicate field defined, it'll be overwritten by the last schema
+    # https://github.com/deepmap/oapi-codegen/issues/1569
+    IdentityWithDuplicateField:
+      allOf:
+        # `issuer` will be ignored
+        - $ref: '#/components/schemas/Identity'
+        # `issuer` will be ignored
+        - properties:
+            issuer:
+              type: integer
+        # `issuer` will take precedence
+        - properties:
+            issuer:
+              type: object
+              properties:
+                name:
+                  type: string
+              required:
+                - name
+
+    # anyOf results in a type that has an `AsClient`/`MergeClient`/`FromClient` and an `AsIdentity`/`MergeIdentity`/`FromIdentity` method so you can choose which of them you want to retrieve
+    ClientAndMaybeIdentity:
+      anyOf:
+        - $ref: '#/components/schemas/Client'
+        - $ref: '#/components/schemas/Identity'
+
+    # oneOf results in a type that has an `AsClient`/`MergeClient`/`FromClient` and an `AsIdentity`/`MergeIdentity`/`FromIdentity` method so you can choose which of them you want to retrieve
+    ClientOrIdentity:
+      oneOf:
+        - $ref: '#/components/schemas/Client'
+        - $ref: '#/components/schemas/Identity'

@@ -20,5 +20,6 @@ func NewCustomServer() *CustomServer {
 func (cs *CustomServer) GetAnything(ctx context.Context, request GetAnythingRequestObject) (GetAnythingResponseObject, error) {
 	cs.Lock.Lock()
 	defer cs.Lock.Unlock()
-	return nil, nil
+
+	return GetAnything200JSONResponse{}, nil
 }
