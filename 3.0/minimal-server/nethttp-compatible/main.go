@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/oapi-codegen/oapi-codegen/v2/examples/minimal-server/gorillamux/api"
+	"github.com/ibiscum/go-oas-examples/3.0/minimal-server/gorillamux/api"
 )
 
 func main() {

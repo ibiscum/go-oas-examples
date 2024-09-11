@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/oapi-codegen/oapi-codegen/v2/examples/minimal-server/gin/api"
+	"github.com/ibiscum/go-oas-examples/3.0/minimal-server/gin/api"
 )
 
 func main() {

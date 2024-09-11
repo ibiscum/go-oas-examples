@@ -102,6 +102,7 @@ require (
 	github.com/oapi-codegen/echo-middleware v1.0.2
 	github.com/oapi-codegen/fiber-middleware v1.0.2
 	github.com/oapi-codegen/gin-middleware v1.0.2
+	github.com/oapi-codegen/iris-middleware v1.0.5
 	github.com/oapi-codegen/nethttp-middleware v1.0.2
 	github.com/oapi-codegen/oapi-codegen/v2 v2.3.0
 	github.com/oapi-codegen/testutil v1.1.0
