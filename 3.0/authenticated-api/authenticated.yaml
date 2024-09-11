@@ -1,29 +1,45 @@
 openapi: "3.0.0"
+tags:
+  - name: things
+servers:
+  - url: http://localhost:8001
 info:
+  contact:
+    name: Example
   version: 1.0.0
   title: Authenticated API Example
   description: An example API which uses bearer token scopes and JWT auth
 paths:
   /things:
     get:
+      summary: Listing all Things
       operationId: listThings
+      tags:
+        - things
       description: |
         Returns a list of things. Because this endpoint doesn't override the
         global security, it requires a JWT for authentication.
       responses:
-        200:
+        '200':
           description: a list of things
           content:
             application/json:
               schema:
+                example: [
+                  12345,
+                  67890
+                ]
                 type: array
                 items:
                   $ref: '#/components/schemas/ThingWithID'
     post:
+      summary: Adding a Thing
+      tags:
+        - things
       operationId: addThing
       description: |
         Adds a thing to the list of things. This endpoints overrides the global
-        security scheme and requires a `things:w` scope in order to perform a
+        security scheme and requires a **things:w** scope in order to perform a
         write.
       security:
         - BearerAuth:
@@ -33,48 +49,70 @@ paths:
         required: true
         content:
           application/json:
+            example: Thing Two
             schema:
               $ref: '#/components/schemas/Thing'
       responses:
-        201:
+        '201':
           description: The inserted Thing with a unique ID
           content:
             application/json:
               schema:
+                example: [
+                  12345,
+                  67890
+                ]
                 type: array
                 items:
                   $ref: '#/components/schemas/ThingWithID'
+        '400':
+          description: Thing with ID not found
+          content:
+            application/json:
+              example:
+                code: 1001
+                message: Thing is not available
+              schema:
+                $ref: '#/components/schemas/Error'
 components:
   schemas:
     Thing:
+      description: Description of a thing
       properties:
         name:
+          example: Thing One
           type: string
       required:
         - name
     ThingWithID:
+      description: Description of a thing with an ID
       allOf:
         - $ref: '#/components/schemas/Thing'
         - properties:
             id:
+              example: 12345
               type: integer
               format: int64
           required:
             - id
     Error:
+      description: Description of error message
       required:
         - code
         - message
       properties:
         code:
+          example: 1001
           type: integer
           format: int32
           description: Error code
         message:
+          example: This is an error message
           type: string
           description: Error message
   securitySchemes:
     BearerAuth:
+      description: Bearer authorization
       type: http
       scheme: bearer
       bearerFormat: JWT

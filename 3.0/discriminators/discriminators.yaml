@@ -18,8 +18,7 @@ paths:
       tags:
         - quirks
       summary: oneOf with discriminator and mapping
-      description: Polymorphic `oneOf` schema with a top-level discriminator and a
-        mapping definition.
+      description: Polymorphic `oneOf` schema with a top-level discriminator and a mapping definition.
       requestBody:
         content:
           application/json:
