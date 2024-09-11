@@ -36,12 +36,12 @@ func main() {
 	api.RegisterHandlers(e, svr)
 
 	// We're going to print some useful things for interacting with this server.
-	// This token allows access to any API's with no specific claims.
+	// This token allows access to any APIs with no specific claims.
 	readerJWS, err := fa.CreateJWSWithClaims([]string{})
 	if err != nil {
 		log.Fatalln("error creating reader JWS:", err)
 	}
-	// This token allows access to API's with no scopes, and with the "things:w" claim.
+	// This token allows access to APIs with no scopes, and with the "things:w" claim.
 	writerJWS, err := fa.CreateJWSWithClaims([]string{"things:w"})
 	if err != nil {
 		log.Fatalln("error creating writer JWS:", err)
