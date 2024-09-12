@@ -1,5 +1,7 @@
 swagger: '2.0'
 info:
+  contact:
+    name: Example
   version: 1.0.0
   title: Swagger Petstore
   description: This is a slimmed down single path version of the Petstore definition.
@@ -50,7 +52,7 @@ paths:
       tags:
         - pet
       summary: Updates a pet in the store with form data
-      description: ''
+      description: Description of updating a pet in the store with form data
       operationId: updatePetWithForm
       consumes:
         - application/x-www-form-urlencoded
@@ -75,6 +77,8 @@ paths:
           required: false
           type: string
       responses:
+        '200':
+          description: OK
         '405':
           description: Invalid input
       security:
@@ -85,7 +89,7 @@ paths:
       tags:
         - pet
       summary: Deletes a pet
-      description: ''
+      description: Description of deleting a pet
       operationId: deletePet
       produces:
         - application/xml
@@ -102,6 +106,8 @@ paths:
           type: integer
           format: int64
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid ID supplied
         '404':

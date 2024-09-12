@@ -1,6 +1,11 @@
 swagger: '2.0'
+tags:
+  - name: operation
 info:
+  contact:
+    name: Example
   title: Circular reference examples
+  description: Description of circular reference examples
   version: '1.0'
 schemes:
   - http
@@ -8,6 +13,10 @@ host: httpbin.org
 paths:
   '/post':
     post:
+      operationId: post-post
+      description: Description of operation post-post
+      tags:
+        - operation
       parameters:
         - in: body
           name: body

@@ -1,4 +1,6 @@
 swagger: '2.0'
+tags:
+  - name: pets
 info:
   version: '1.0.0'
   title: 'Swagger Petstore'
@@ -19,6 +21,9 @@ produces:
 paths:
   /pets:
     get:
+      operationId: find-pets
+      tags:
+        - pets
       description: 'Returns all pets from the system that the user has access to'
       produces:
         - 'application/json'

@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	port := flag.String("port", "8080", "port where to serve traffic")
+	port := flag.String("port", "8001", "port where to serve traffic")
 
 	e := echo.New()
 

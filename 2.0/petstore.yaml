@@ -34,7 +34,7 @@ paths:
       tags:
         - pet
       summary: Add a new pet to the store
-      description: ''
+      description: Description of adding a new pet to the store
       operationId: addPet
       consumes:
         - application/json
@@ -50,6 +50,8 @@ paths:
           schema:
             '$ref': '#/definitions/Pet'
       responses:
+        '200':
+          description: OK
         '405':
           description: Invalid input
       security:
@@ -60,7 +62,7 @@ paths:
       tags:
         - pet
       summary: Update an existing pet
-      description: ''
+      description: Description of updating an existing pet
       operationId: updatePet
       consumes:
         - application/json
@@ -76,6 +78,8 @@ paths:
           schema:
             '$ref': '#/definitions/Pet'
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid ID supplied
         '404':
@@ -189,7 +193,7 @@ paths:
       tags:
         - pet
       summary: Updates a pet in the store with form data
-      description: ''
+      description: Description of updating a pet in the store with form data
       operationId: updatePetWithForm
       consumes:
         - application/x-www-form-urlencoded
@@ -214,6 +218,8 @@ paths:
           required: false
           type: string
       responses:
+        '200':
+          description: OK
         '405':
           description: Invalid input
       security:
@@ -224,7 +230,7 @@ paths:
       tags:
         - pet
       summary: Deletes a pet
-      description: ''
+      description: Description of deleting a pet
       operationId: deletePet
       produces:
         - application/xml
@@ -241,6 +247,8 @@ paths:
           type: integer
           format: int64
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid ID supplied
         '404':
@@ -253,8 +261,8 @@ paths:
     post:
       tags:
         - pet
-      summary: uploads an image
-      description: ''
+      summary: Uploads an image
+      description: Description of uploading an image
       operationId: uploadFile
       consumes:
         - multipart/form-data
@@ -311,7 +319,7 @@ paths:
       tags:
         - store
       summary: Place an order for a pet
-      description: ''
+      description: Description of ordering a pet
       operationId: placeOrder
       produces:
         - application/xml
@@ -378,6 +386,8 @@ paths:
           minimum: 1
           format: int64
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid ID supplied
         '404':
@@ -400,6 +410,8 @@ paths:
           schema:
             '$ref': '#/definitions/User'
       responses:
+        '200':
+          description: OK
         default:
           description: successful operation
   '/user/createWithArray':
@@ -407,7 +419,7 @@ paths:
       tags:
         - user
       summary: Creates list of users with given input array
-      description: ''
+      description: Description of creating a list of users with given input array
       operationId: createUsersWithArrayInput
       produces:
         - application/xml
@@ -422,6 +434,8 @@ paths:
             items:
               '$ref': '#/definitions/User'
       responses:
+        '200':
+          description: OK
         default:
           description: successful operation
   '/user/createWithList':
@@ -429,7 +443,7 @@ paths:
       tags:
         - user
       summary: Creates list of users with given input array
-      description: ''
+      description: Description of creating a list of users with given input array
       operationId: createUsersWithListInput
       produces:
         - application/xml
@@ -444,6 +458,8 @@ paths:
             items:
               '$ref': '#/definitions/User'
       responses:
+        '200':
+          description: OK
         default:
           description: successful operation
   '/user/login':
@@ -451,7 +467,7 @@ paths:
       tags:
         - user
       summary: Logs user into the system
-      description: ''
+      description: Description of user log in
       operationId: loginUser
       produces:
         - application/xml
@@ -488,13 +504,15 @@ paths:
       tags:
         - user
       summary: Logs out current logged in user session
-      description: ''
+      description: Description of user log out
       operationId: logoutUser
       produces:
         - application/xml
         - application/json
       parameters: []
       responses:
+        '200':
+          description: OK
         default:
           description: successful operation
   '/user/{username}':
@@ -502,7 +520,7 @@ paths:
       tags:
         - user
       summary: Get user by user name
-      description: ''
+      description: Description if finding user by user name
       operationId: getUserByName
       produces:
         - application/xml
@@ -544,6 +562,8 @@ paths:
           schema:
             '$ref': '#/definitions/User'
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid user supplied
         '404':
@@ -564,6 +584,8 @@ paths:
           required: true
           type: string
       responses:
+        '200':
+          description: OK
         '400':
           description: Invalid username supplied
         '404':

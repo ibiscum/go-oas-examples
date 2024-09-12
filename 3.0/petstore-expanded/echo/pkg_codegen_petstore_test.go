@@ -9,7 +9,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	examplePetstoreClient "github.com/ibiscum/go-oas-examples/3.0/petstore-expanded"
+	examplePetstoreClient "github.com/ibiscum/go-oas-examples/3.0/petstore-expanded/client"
 	examplePetstore "github.com/ibiscum/go-oas-examples/3.0/petstore-expanded/echo/api"
 	"github.com/oapi-codegen/oapi-codegen/v2/pkg/codegen"
 	"github.com/stretchr/testify/assert"
