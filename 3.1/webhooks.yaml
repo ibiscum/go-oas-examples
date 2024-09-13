@@ -1,5 +1,10 @@
 openapi: 3.1.0
+servers:
+  - url: http://localhost:8001
 info:
+  contact:
+    name: Example
+  description: Description of webhook example
   title: Webhook Example
   version: 1.0.0
 webhooks:
