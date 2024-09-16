@@ -1,0 +1,1 @@
+    curl --compressed -v -t http://localhost:8080/v1/oauth/tokens -u test_client_1:test_secret -d "grant_type=client_credentials" -d "scope=read_write"

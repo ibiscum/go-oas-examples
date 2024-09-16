@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	port := flag.String("port", "8080", "port where to serve traffic")
+	port := flag.String("port", "8002", "port where to serve traffic")
 
 	r := http.NewServeMux()
 

@@ -8,7 +8,7 @@ info:
   title: Discriminator support
   description: https://github.com/OAI/OpenAPI-Specification/blob/master/versions/3.0.3.md#discriminatorObject
 servers:
-  - url: https://httpbin.org/anything
+  - url: http://localhost:8001
 tags:
   - name: quirks
 paths:
@@ -211,7 +211,7 @@ paths:
                     propertyName: connector_type
       responses:
         '200':
-          description: OK
+          description: OK, operation patch oneOfWithImproperlyPlacedDiscriminator 
   '/redocly-flavored-discriminator':
     patch:
       operationId: redoclyQuirk
@@ -223,6 +223,8 @@ paths:
         content:
           application/json:
             schema:
+              example:
+                vehicle: {}
               type: object
               properties:
                 vehicle:
@@ -233,8 +235,8 @@ paths:
                   default: 'default-value'
       responses:
         '200':
-          description: OK
-  '/potentially-undefined-formData':
+          description: OK, operation patch redoclyQuirk
+  '/potentially-undefined-form-data':
     post:
       operationId: potentiallyUndefinedFormData
       summary: Handling for potentially undefined formData
@@ -257,7 +259,7 @@ paths:
                   application_denied: '#/components/schemas/ApplicationDeniedEvent'
       responses:
         '200':
-          description: OK
+          description: OK, operation post potentiallyUndefinedFormData 
 components:
   # requestBodies:
     # nested-one-of-ref:
@@ -531,7 +533,9 @@ components:
         - event_type
         - event_id
     BaseVehicle:
-      example: {}
+      example: {
+        propertyName: electicity
+      }
       type: object
       description: Vehicle (from [Redocly example](https://redocly.com/docs/resources/discriminator#when-to-use-the-openapi-discriminator))
       discriminator:

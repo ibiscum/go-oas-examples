@@ -23,3 +23,24 @@ func (cs *CustomServer) OneOfWithTopLevelDiscriminatorAndMapping(ctx context.Con
 
 	return OneOfWithTopLevelDiscriminatorAndMapping200Response{}, nil
 }
+
+func (cs *CustomServer) MappingOfSchemaNames(ctx context.Context, request MappingOfSchemaNamesRequestObject) (MappingOfSchemaNamesResponseObject, error) {
+	cs.Lock.Lock()
+	defer cs.Lock.Unlock()
+
+	return MappingOfSchemaNames200Response{}, nil
+}
+
+func (cs *CustomServer) MappingWithDuplicateSchemas(ctx context.Context, request MappingWithDuplicateSchemasRequestObject) (MappingWithDuplicateSchemasResponseObject, error) {
+	cs.Lock.Lock()
+	defer cs.Lock.Unlock()
+
+	return MappingWithDuplicateSchemas201Response{}, nil
+}
+
+func (cs *CustomServer) OneOfWithImproperlyPlacedDiscriminator(ctx context.Context, request OneOfWithImproperlyPlacedDiscriminatorRequestObject) (OneOfWithImproperlyPlacedDiscriminatorResponseObject, error) {
+	cs.Lock.Lock()
+	defer cs.Lock.Unlock()
+
+	return OneOfWithImproperlyPlacedDiscriminator200Response{}, nil
+}

@@ -8,7 +8,7 @@ info:
   title: Support for different security types
   description: https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#securitySchemeObject
 servers:
-  - url: https://httpbin.org
+  - url: https://localhost:8080
 tags:
   - name: API Key
   - name: HTTP
@@ -20,7 +20,7 @@ paths:
     get:
       operationId: apiKey
       summary: Query parameter
-      description: '`apiKey` auth will be supplied within an `apiKey` query parameter.'
+      description: The `apiKey` auth will be supplied within an `apiKey` query parameter.
       tags:
         - API Key
       responses:
@@ -36,7 +36,7 @@ paths:
         - API Key
       responses:
         '200':
-          description: OK
+          description: OK operation cookie
       security:
         - apiKey_cookie: []
     put:
@@ -47,7 +47,7 @@ paths:
         - API Key
       responses:
         '200':
-          description: OK
+          description: OK operation header
       security:
         - apiKey_header: []
   '/anything/basic':
@@ -62,7 +62,7 @@ paths:
         - HTTP
       responses:
         '200':
-          description: OK
+          description: OK operation basic
       security:
         - basic: []
   '/anything/bearer':
@@ -77,7 +77,7 @@ paths:
         - HTTP
       responses:
         '200':
-          description: OK
+          description: OK operation bearer
       security:
         - bearer: []
     put:
@@ -94,7 +94,7 @@ paths:
         - HTTP
       responses:
         '200':
-          description: OK
+          description: OK, operation bearerJwt
       security:
         - bearer_jwt: []
   '/anything/oauth2':
@@ -110,7 +110,7 @@ paths:
         - OAuth 2
       responses:
         '200':
-          description: OK
+          description: OK, operation generalSupportAll
       security:
         - oauth2:
             - write:things
@@ -118,15 +118,16 @@ paths:
       operationId: generalSupportAuthorizationCode
       summary: General support (authorizationCode flow type)
       description: |-
-        > ℹ️
-        > We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user, or the projects JWT, has a qualified `bearer` token and will use that.
+        > ℹ️ generalSupportAuthorizationCode
+        > We currently do not handle OAuth 2 authentication flows so if an operation has an `oauth2` requirement we assume that the user,
+        > or the projects JWT, has a qualified `bearer` token and will use that.
 
         https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#fixed-fields-23
       tags:
         - OAuth 2
       responses:
         '200':
-          description: OK
+          description: OK, operation generalSupportAuthorizationCode
       security:
         - oauth2_authorizationCode:
             - write:things
