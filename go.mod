@@ -113,7 +113,7 @@ require (
 	github.com/oapi-codegen/nethttp-middleware v1.0.2
 	github.com/oapi-codegen/oapi-codegen/v2 v2.3.0
 	github.com/oapi-codegen/testutil v1.1.0
-	github.com/spyzhov/ajson v0.9.4
+	github.com/spyzhov/ajson v0.9.5
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/net v0.29.0 // indirect
 	golang.org/x/oauth2 v0.24.0
