@@ -116,6 +116,6 @@ require (
 	github.com/spyzhov/ajson v0.9.6
 	golang.org/x/lint v0.0.0-20210508222113-6edffad5e616
 	golang.org/x/net v0.47.0 // indirect
-	golang.org/x/oauth2 v0.27.0
+	golang.org/x/oauth2 v0.35.0
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
